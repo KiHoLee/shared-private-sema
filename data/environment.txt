@@ -14,4 +14,9 @@ torch 2.10.0+cu128, NVIDIA RTX A4500) to the printed digits.
 
 Same u24 environment, CPU: check_mask_realization.py sweep (e_mask_sweep.csv,
 e_mask_floor.csv), exp19_static_masks.py, check_shared_only.py,
-check_calibration_snr.py, exp11_mechanism.py.
+check_calibration_snr.py, exp11_mechanism.py, exp20_covariance_receiver.py,
+exp21_conventional_references.py. The LMMSE-fullcov rows of
+e20_covariance_receiver.csv (one 3072 x 3072 Cholesky solve per sample) ran
+in float64 on one RTX PRO 5000 GPU of the same environment (rerun
+2026-11-03); the other E20 rows reproduce the earlier CPU run of E20 to the
+printed digits.

@@ -10,7 +10,7 @@ Conventions enforced here (paper-requirement Section 9):
   * one legend order, enforced by legend() from the RANK list;
   * one marker size and one legend font size, both set once in rcParams;
   * one canvas and one axes rectangle, placed 1:1 in the manuscript
-    (0.8 of a 3.487 in column), so every box prints at the same size;
+    (0.74 of a 3.487 in column), so every box prints at the same size;
   * every figure is audited on the drawn canvas before it is written.
 """
 import csv
@@ -48,7 +48,7 @@ plt.rcParams.update({
 # bottom are the measured extents of an 8.5 pt axis label plus 8 pt log-axis
 # tick labels at scale 1 with a 2 px allowance, 0.08 in right and 0.147 in
 # top. The axes box keeps an exact 8:6 shape at every width.
-WFRAC = float(os.environ.get("TMC_FIG_WFRAC", "0.8"))
+WFRAC = float(os.environ.get("TMC_FIG_WFRAC", "0.74"))
 FIGW = round(WFRAC * 3.487, 3)
 _ML, _MB, _MR, _MT = 0.569, 0.405, 0.085, 0.147
 _AXW = FIGW - _ML - _MR

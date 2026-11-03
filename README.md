@@ -51,11 +51,13 @@ number in the paper is regenerated from the files here.
 | E3 closed loop with masks fixed at the time average, net of pilots (text) | `exp19_static_masks.py` | `e19_static_masks.csv`, `e19_notes.txt` |
 | Calibration over a noisy link (text) | `check_calibration_snr.py` | `e2_calibration_snr.csv` |
 | E3 speed sweep, per-seed SER and visited affinity (letter) | `exp3_speed_stats.py` | `e3_speed_seeds.csv`, `e3_speed_stats.txt` |
+| E20 covariance-aware DR and full-covariance LMMSE on BERT contents (text) | `exp20_covariance_receiver.py` | `e20_covariance_receiver.csv`, `e20_notes.txt` |
+| E21 PCA-ordered OMA, covariance-aware NOMA-SIC and retrieval-candidate statistics (text) | `exp21_conventional_references.py` | `e21_conventional_references.csv`, `e21_notes.txt` |
 | BERT embedding pool (input data) | `extract_bert_embeddings.py` | `bert_agnews_8000.pt`, `bert_pool_regen.txt` |
 
 ## Requirements and conventions
 - CPU runs (all experiments except E7): Python 3.10, NumPy 2.2, matplotlib 3.9, PyTorch 2.5 (CPU) for E2/E5/E15.
-- GPU run (E7, `exp7_learned_sideinfo.py`): Python 3.12, NumPy 2.5, PyTorch 2.11+cu128 on an NVIDIA RTX PRO 5000. The same environment ran the realized-mask sweep, E19, the shared-only and calibration checks and `exp11_mechanism.py` on CPU. Exact versions are in `data/environment.txt`. `semantic_mac.DEVICE` selects CUDA when available.
+- GPU run (E7, `exp7_learned_sideinfo.py`): Python 3.12, NumPy 2.5, PyTorch 2.11+cu128 on an NVIDIA RTX PRO 5000. The same environment ran the realized-mask sweep, E19, E20, E21, the shared-only and calibration checks and `exp11_mechanism.py`, all on CPU except the full-covariance LMMSE rows of E20. Exact versions are in `data/environment.txt`. `semantic_mac.DEVICE` selects CUDA when available.
 - Seeds are fixed inside every script (`np.random.default_rng(<constant>)`,
   `torch.manual_seed`); E7 trains over seeds 0–4.
 - Embeddings are unit norm; the per-user SNR is rho = 1/sigma^2 referenced to a

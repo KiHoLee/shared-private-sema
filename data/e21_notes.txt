@@ -1,0 +1,25 @@
+top-192 principal directions hold 0.8508 of the content energy
+snr=10 OMA             cos=0.0499 ser=1.0000 shared_top1=0.0224 private_top1=0.0243
+snr=10 NOMA-SIC        cos=0.1000 ser=1.0000 shared_top1=0.1599 private_top1=0.1714
+snr=10 LMMSE           cos=0.1984 ser=0.9999 shared_top1=0.9091 private_top1=0.1114
+snr=10 DR-spectral     cos=0.3173 ser=0.9574 shared_top1=0.8692 private_top1=0.0203
+snr=10 OMA-PCA-power   cos=0.1403 ser=0.9866 shared_top1=0.0116 private_top1=0.0077
+snr=10 OMA-PCA-energy  cos=0.2572 ser=0.8822 shared_top1=0.0747 private_top1=0.0524
+snr=10 NOMA-SIC-cov    cos=0.2426 ser=0.9076 shared_top1=0.0607 private_top1=0.0449
+snr=16 OMA             cos=0.0970 ser=1.0000 shared_top1=0.1449 private_top1=0.1529
+snr=16 NOMA-SIC        cos=0.1945 ser=0.9931 shared_top1=0.5380 private_top1=0.5476
+snr=16 LMMSE           cos=0.3588 ser=0.8431 shared_top1=0.9972 private_top1=0.2918
+snr=16 DR-spectral     cos=0.4881 ser=0.2825 shared_top1=0.9958 private_top1=0.1268
+snr=16 OMA-PCA-power   cos=0.2578 ser=0.8820 shared_top1=0.0749 private_top1=0.0535
+snr=16 OMA-PCA-energy  cos=0.4208 ser=0.5126 shared_top1=0.3753 private_top1=0.2874
+snr=16 NOMA-SIC-cov    cos=0.4036 ser=0.5591 shared_top1=0.3429 private_top1=0.2791
+snr=20 OMA             cos=0.1468 ser=1.0000 shared_top1=0.3623 private_top1=0.3834
+snr=20 NOMA-SIC        cos=0.2943 ser=0.8536 shared_top1=0.7639 private_top1=0.7736
+snr=20 LMMSE           cos=0.4920 ser=0.3359 shared_top1=0.9985 private_top1=0.3734
+snr=20 DR-spectral     cos=0.5834 ser=0.0330 shared_top1=0.9985 private_top1=0.3122
+snr=20 OMA-PCA-power   cos=0.3597 ser=0.6625 shared_top1=0.2406 private_top1=0.1773
+snr=20 OMA-PCA-energy  cos=0.5376 ser=0.2667 shared_top1=0.6398 private_top1=0.5527
+snr=20 NOMA-SIC-cov    cos=0.5258 ser=0.2924 shared_top1=0.6168 private_top1=0.5484
+nearest-neighbour cosine, median: private bank 0.519, shared bank 0.605; fraction above 0.9: private 0.013, shared 0.025
+DR-spectral: private top-1 by quartile of the true sentence's nearest-neighbour cosine 0.312 / 0.325 / 0.309 / 0.303; wrong pick vs truth cosine median 0.047, above 0.9 0.002
+LMMSE: private top-1 by quartile of the true sentence's nearest-neighbour cosine 0.382 / 0.381 / 0.368 / 0.362; wrong pick vs truth cosine median -0.004, above 0.9 0.002
