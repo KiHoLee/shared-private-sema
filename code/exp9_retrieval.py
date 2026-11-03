@@ -31,7 +31,7 @@ import torch
 from semantic_mac import (EmbeddingPool, affinity_matrix, matched_filter,
                           demux_lmmse, demux_dr, random_orthogonal,
                           learn_structure_spectral, subspace_error, metrics,
-                          oma_observe, demux_noma_genie)
+                          oma_observe, demux_noma_genie, demux_sr)
 from exp6_sideinfo import demux_block_lmmse
 from exp2_structure import train_adapter
 
@@ -52,7 +52,8 @@ N_TRAIN_POOL = 7000
 IDX_TRAIN = np.arange(N_TRAIN_POOL)
 IDX_EVAL = np.arange(N_TRAIN_POOL, 8000)
 SNR_DB = 20
-NAMES = ["OMA", "NOMA", "LMMSE", "DRspec", "DRadapt", "BLMMSE", "DRoracle"]
+NAMES = ["OMA", "NOMA", "LMMSE", "DRspec", "DRadapt", "BLMMSE", "DRoracle",
+         "SR"]
 
 
 def sample_with_index(pool, batch, a, rng, idx_pool):
@@ -124,6 +125,9 @@ def main():
         "DRadapt": demux_dr(tilde, B, h, rho, a, V_adapt),
         "BLMMSE": demux_block_lmmse(tilde, B, h, rho, a, V_true),
         "DRoracle": demux_dr(tilde, B, h, rho, a, V_true),
+        # SimR draws no randomness, so adding it leaves the other rows
+        # unchanged
+        "SR": demux_sr(tilde, B, h),
     }
 
     # retrieval banks built from the held-out pool, in the latent frame

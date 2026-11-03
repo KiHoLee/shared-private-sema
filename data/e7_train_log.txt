@@ -19,23 +19,23 @@ trained side_info=False seed=3 params=12545
   side_info=False seed=4 step=2000 loss=0.2517
   side_info=False seed=4 step=3000 loss=0.4632
 trained side_info=False seed=4 params=12545
-  side_info=True seed=0 step=1000 loss=0.4756
-  side_info=True seed=0 step=2000 loss=0.2277
-  side_info=True seed=0 step=3000 loss=0.2334
+  side_info=True seed=0 step=1000 loss=0.4762
+  side_info=True seed=0 step=2000 loss=0.2280
+  side_info=True seed=0 step=3000 loss=0.2353
 trained side_info=True seed=0 params=14787
-  side_info=True seed=1 step=1000 loss=0.4012
-  side_info=True seed=1 step=2000 loss=0.6156
-  side_info=True seed=1 step=3000 loss=0.6429
+  side_info=True seed=1 step=1000 loss=0.4010
+  side_info=True seed=1 step=2000 loss=0.6151
+  side_info=True seed=1 step=3000 loss=0.6426
 trained side_info=True seed=1 params=14787
-  side_info=True seed=2 step=1000 loss=0.5398
-  side_info=True seed=2 step=2000 loss=0.6778
-  side_info=True seed=2 step=3000 loss=0.1623
+  side_info=True seed=2 step=1000 loss=0.5399
+  side_info=True seed=2 step=2000 loss=0.6775
+  side_info=True seed=2 step=3000 loss=0.1629
 trained side_info=True seed=2 params=14787
-  side_info=True seed=3 step=1000 loss=0.2216
-  side_info=True seed=3 step=2000 loss=0.7087
-  side_info=True seed=3 step=3000 loss=0.6739
+  side_info=True seed=3 step=1000 loss=0.2214
+  side_info=True seed=3 step=2000 loss=0.7069
+  side_info=True seed=3 step=3000 loss=0.6726
 trained side_info=True seed=3 params=14787
-  side_info=True seed=4 step=1000 loss=0.2954
-  side_info=True seed=4 step=2000 loss=0.2474
-  side_info=True seed=4 step=3000 loss=0.4484
+  side_info=True seed=4 step=1000 loss=0.2950
+  side_info=True seed=4 step=2000 loss=0.2470
+  side_info=True seed=4 step=3000 loss=0.4499
 trained side_info=True seed=4 params=14787

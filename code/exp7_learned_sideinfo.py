@@ -61,7 +61,8 @@ class UserWiseAttention(torch.nn.Module):
     """Per-user query attention over the U matched-filter outputs.
 
     With side_info=True the per-user queries are modulated by a context
-    encoder reading the affinity and the channel gains, and the attention
+    encoder reading the affinity and the absolute and relative channel
+    gains, and the attention
     scores carry an explicit affinity bias and channel-ratio bias, so the
     network is given the same quantities the DR uses."""
 
@@ -75,7 +76,9 @@ class UserWiseAttention(torch.nn.Module):
         self.q = torch.nn.Parameter(torch.randn(U, heads, dk) * 0.1)
         self.log_eta = torch.nn.Parameter(torch.zeros(()))
         if side_info:
-            # context: affinity plus the per-user gain and the mean gain
+            # context: affinity, the per-user gain relative to the mean
+            # gain, and the absolute per-user gain in log scale, which
+            # sets that user's noise level as in the DR
             self.ctx = torch.nn.Sequential(
                 torch.nn.Linear(3, 32), torch.nn.ReLU(),
                 torch.nn.Linear(32, heads * dk))
@@ -92,7 +95,7 @@ class UserWiseAttention(torch.nn.Module):
             hn = h / (h.mean(dim=1, keepdim=True) + 1e-9)      # (B,U)
             ctx_in = torch.stack(
                 [beta.unsqueeze(1).expand(-1, Uu), hn,
-                 hn.mean(dim=1, keepdim=True).expand(-1, Uu)], dim=2)
+                 torch.log(h + 1e-9)], dim=2)
             dq = self.ctx(ctx_in).view(B, Uu, self.H, self.dk)
             sc = sc + torch.einsum('buhk,bihk->buih', dq, K) / math.sqrt(self.dk)
             off = 1.0 - torch.eye(Uu, device=tilde.device)

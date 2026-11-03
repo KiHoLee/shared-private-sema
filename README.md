@@ -21,17 +21,17 @@ number in the paper is regenerated from the files here.
 | Figure | Script | Data |
 |---|---|---|
 | Fig. 1 | `fig1_system_r1.tex` (TikZ) | — |
-| Fig. 2 | `exp1_theory.py` | `e1_beta.csv` (+ `e1_dr_cf.csv` from `check_dr_closedform.py`) |
+| Fig. 2 | `exp1_theory.py` | `e1_beta.csv` (the closed-form text uses `e1_dr_cf.csv` from `check_dr_closedform.py`) |
 | Fig. 3 | `exp1_theory.py` | `e1_snr.csv` |
 | Figs. 4–6 | `exp2_structure.py` | `e2_spectrum_multi.csv`, `e2_subspace_multi.csv`, `e2_ladder.csv` |
 | Figs. 7–8 | `exp3_mobility.py` | `e3_timeseries.csv`, `e3_speed.csv` |
 | Fig. 9 | `exp4_mismatch.py`, `exp4_lmmse_ref.py` | `e4_mismatch.csv`, `e4_lmmse_ref.csv` |
 | Fig. 10 | `exp7_learned_sideinfo.py` | `e7_learned_sideinfo.csv` |
 | Fig. 11 | `exp8_partial_sharing.py` | `e8_partial_sharing.csv` |
-| Fig. 12 | `exp12_corpus.py` (DR-MMSE curve: `exp16_scene_gap.py`) | `e12_corpus.csv`, `e16_scene_gap.csv` |
+| Fig. 12 | `exp12_corpus.py` | `e12_corpus.csv` |
 | Fig. 13 | `exp11_impairments.py` | `e11_imbalance.csv` |
 | Table V | `exp9_retrieval.py` | `e9_retrieval.csv` |
-| Table VI | `exp11_impairments.py` | `e11_phase.csv`, `e11_gain.csv` |
+| Table VI | `exp11_impairments.py` | `e11_phase.csv`, `e11_cest.csv` |
 | E10 (text), thresholds 0.35 to 0.65 | `exp10_eval_choices.py` | `e10_threshold_sweep.csv`, `e10_clip_sweep.csv` |
 | E17 (text) | `exp17_pilot_budget.py` | `e17_pilot_budget.csv` |
 | E17 per-run values (text) | `exp17_perrun.py` | `e17_perrun.txt` |
@@ -42,10 +42,18 @@ number in the paper is regenerated from the files here.
 | E11 branch mechanism and draw spread (text) | `exp11_mechanism.py`, `exp11_seedvar.py` | `e11_mechanism.txt`, `e11_seedvar.txt` |
 | E18 adapter sensitivity (text) | `exp18_adapter_sensitivity.py` | `e18_adapter_sensitivity.csv`, `e18_log.txt` |
 | Runtimes (text) | `runtime_check.py` | `runtimes.txt` |
+| E6, DR vs. DR-MMSE on the private block, single draws and fading average (text) | `check_blmmse_optimality.py`, `check_blmmse_fading.py` | `e6_optimality.txt`, `e6_optimality_fading.txt` |
+| E9 retrieval threshold bins (text) | `exp9_retrieval.py` | `e9_threshold.csv` |
+| E14, E15 DR vs. DR-MMSE retrieval sweep (text, letter) | `exp14_dr_vs_subspace.py`, `exp15_adapter_receiver.py` | `e14_dr_vs_subspace.csv`, `e15_adapter_receiver.csv` |
+| Shared-only receiver, SER at tau = 0.45 (text) | `check_shared_only.py` | `e10_shared_only.csv`, `e10_shared_only_real.csv` |
+| Realized-mask check at two points (text) | `check_mask_realization.py` | `e_mask_check.csv` |
+| Realized-mask SNR sweep, inflated-noise receivers and MSE floor (text) | `check_mask_realization.py sweep` | `e_mask_sweep.csv`, `e_mask_floor.csv` |
+| E3 closed loop with masks fixed at the time average, net of pilots (text) | `exp19_static_masks.py` | `e19_static_masks.csv`, `e19_notes.txt` |
+| Calibration over a noisy link (text) | `check_calibration_snr.py` | `e2_calibration_snr.csv` |
 
 ## Requirements and conventions
 - CPU runs (all experiments except E7): Python 3.10, NumPy 2.2, matplotlib 3.9, PyTorch 2.5 (CPU) for E2/E5/E15.
-- GPU run (E7, `exp7_learned_sideinfo.py`): Python 3.13, NumPy 2.4, PyTorch 2.10+cu128 on an NVIDIA RTX A4500. Exact versions are in `data/environment.txt`. `semantic_mac.DEVICE` selects CUDA when available.
+- GPU run (E7, `exp7_learned_sideinfo.py`): Python 3.12, NumPy 2.5, PyTorch 2.11+cu128 on an NVIDIA RTX PRO 5000. The same environment ran the realized-mask sweep, E19, the shared-only and calibration checks and `exp11_mechanism.py` on CPU. Exact versions are in `data/environment.txt`. `semantic_mac.DEVICE` selects CUDA when available.
 - Seeds are fixed inside every script (`np.random.default_rng(<constant>)`,
   `torch.manual_seed`); E7 trains over seeds 0–4.
 - Embeddings are unit norm; the per-user SNR is rho = 1/sigma^2 referenced to a

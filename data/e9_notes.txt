@@ -7,4 +7,5 @@ DRspec    cos=0.5834 ser=0.0324 shared_top1=0.9987 private_top1=0.3127
 DRadapt   cos=0.5852 ser=0.0274 shared_top1=0.9985 private_top1=0.3956
 BLMMSE    cos=0.6308 ser=0.0112 shared_top1=0.9985 private_top1=0.6393
 DRoracle  cos=0.6231 ser=0.0117 shared_top1=0.9985 private_top1=0.6728
+SR        cos=0.2396 ser=0.9532 shared_top1=0.6542 private_top1=0.6728
 private top-1 retrieval first reaches 50% in the cosine bin starting at 0.6000000000000001

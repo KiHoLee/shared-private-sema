@@ -11,3 +11,10 @@ Per-branch squared error per user (weak..strong); shared error is common to all 
  6 dB: shared err [0.1603 0.1603 0.1603 0.1603]  private err [0.4862 0.4794 0.4686 0.4543]  E[(sum h)^2]=12.62 E[sum h^2]=3.98
 10 dB: shared err [0.1704 0.1704 0.1704 0.1704]  private err [0.4929 0.4856 0.4699 0.4426]  E[(sum h)^2]=11.51 E[sum h^2]=3.97
 15 dB: shared err [0.182 0.182 0.182 0.182]  private err [0.4972 0.4913 0.4739 0.4306]  E[(sum h)^2]=10.28 E[sum h^2]=4.08
+
+Private content per user (weak..strong): DR and LMMSE private-block cosine, and the SER of the DR with its private output discarded (shared only)
+ 0 dB: DR private cos [0.218 0.22  0.218 0.217]  LMMSE private cos [0.234 0.241 0.235 0.234]  shared-only SER [0.039 0.039 0.039 0.039]
+ 3 dB: DR private cos [0.18  0.198 0.224 0.253]  LMMSE private cos [0.191 0.216 0.246 0.28 ]  shared-only SER [0.0545 0.0545 0.0545 0.0545]
+ 6 dB: DR private cos [0.148 0.18  0.227 0.273]  LMMSE private cos [0.153 0.192 0.247 0.309]  shared-only SER [0.0598 0.0598 0.0598 0.0598]
+10 dB: DR private cos [0.108 0.149 0.22  0.308]  LMMSE private cos [0.105 0.159 0.241 0.351]  shared-only SER [0.083 0.083 0.083 0.083]
+15 dB: DR private cos [0.067 0.116 0.204 0.341]  LMMSE private cos [0.06  0.116 0.22  0.393]  shared-only SER [0.1108 0.1108 0.1108 0.1108]

@@ -10,7 +10,8 @@ Output: stdout, saved as data/e11_mechanism.txt.
 import math, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import numpy as np
-from semantic_mac import (affinity_matrix, matched_filter, sample_latents_isotropic, TAU)
+from semantic_mac import (affinity_matrix, matched_filter, sample_latents_isotropic, TAU,
+                          demux_lmmse)
 from exp11_impairments import rayleigh, U, D, DC, BATCH, BETA, SNR_DB
 
 def dr_parts(tilde, B, h, rho, a, z):
@@ -64,3 +65,22 @@ for rdb in (0, 3, 6, 10, 15):
     es = ((sh - zs)**2).sum(-1).mean(0); ep = ((pr - zp)**2).sum(-1).mean(0)
     cs = (np.sum(h, 1)**2).mean(); s2 = (h**2).sum(1).mean()
     print(f"{rdb:2d} dB: shared err {np.round(es,4)}  private err {np.round(ep,4)}  E[(sum h)^2]={cs:.2f} E[sum h^2]={s2:.2f}")
+
+def pcos_u(e, z):
+    """Per-user cosine on the private block (coordinates DC onward)."""
+    ep, zp = e[:, :, DC:], z[:, :, DC:]
+    c = (ep * zp).sum(-1) / (np.linalg.norm(ep, axis=-1) * np.linalg.norm(zp, axis=-1) + 1e-12)
+    return c.mean(axis=0)
+
+print("\nPrivate content per user (weak..strong): DR and LMMSE private-block cosine, "
+      "and the SER of the DR with its private output discarded (shared only)")
+for rdb in (0, 3, 6, 10, 15):
+    rng = np.random.default_rng(303 + rdb)
+    g = np.logspace(-rdb/40, rdb/40, U); g = g/np.sqrt((g**2).mean())
+    z = sample_latents_isotropic(BATCH, U, D, DC, a, rng)
+    h = rayleigh(BATCH, rng, scale=g)
+    tilde, _ = matched_filter(z, B, rho, rng, h_fixed=h)
+    sh, pr, prec = dr_parts(tilde, B, h, rho, a, z)
+    lm, _ = demux_lmmse(tilde, B, h, rho)
+    print(f"{rdb:2d} dB: DR private cos {np.round(pcos_u(sh+pr, z),3)}  LMMSE private cos "
+          f"{np.round(pcos_u(lm, z),3)}  shared-only SER {np.round(ser_u(sh, z),4)}")
