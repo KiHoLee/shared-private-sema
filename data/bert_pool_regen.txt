@@ -1,0 +1,6 @@
+Regeneration check of data/bert_agnews_8000.pt (2026-11-03, server u24)
+command : python code/extract_bert_embeddings.py --dataset wangrongsheng/ag_news --out bert_check3.pt
+packages: Python 3.12.3, torch 2.11 (cu128), transformers 5.22.1, datasets 5.1.0, GPU NVIDIA RTX PRO 5000
+reason  : datasets 5.x rejects the original id "ag_news"; wangrongsheng/ag_news holds the same training split (120,000 items, same first item)
+result  : shape (8000, 768); max |regenerated - shipped| = 2.229e-05; min row cosine 0.99999999996
+original: the shipped pool was produced by the same procedure (5. WCL-DRL/Code/extract_bert_embeddings.py, dataset id "ag_news"); md5 4de31201fc4fb9c6952331082889f119

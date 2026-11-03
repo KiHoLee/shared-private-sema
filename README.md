@@ -50,6 +50,8 @@ number in the paper is regenerated from the files here.
 | Realized-mask SNR sweep, inflated-noise receivers and MSE floor (text) | `check_mask_realization.py sweep` | `e_mask_sweep.csv`, `e_mask_floor.csv` |
 | E3 closed loop with masks fixed at the time average, net of pilots (text) | `exp19_static_masks.py` | `e19_static_masks.csv`, `e19_notes.txt` |
 | Calibration over a noisy link (text) | `check_calibration_snr.py` | `e2_calibration_snr.csv` |
+| E3 speed sweep, per-seed SER and visited affinity (letter) | `exp3_speed_stats.py` | `e3_speed_seeds.csv`, `e3_speed_stats.txt` |
+| BERT embedding pool (input data) | `extract_bert_embeddings.py` | `bert_agnews_8000.pt`, `bert_pool_regen.txt` |
 
 ## Requirements and conventions
 - CPU runs (all experiments except E7): Python 3.10, NumPy 2.2, matplotlib 3.9, PyTorch 2.5 (CPU) for E2/E5/E15.
@@ -59,8 +61,15 @@ number in the paper is regenerated from the files here.
 - Embeddings are unit norm; the per-user SNR is rho = 1/sigma^2 referenced to a
   unit-norm embedding; block-fading Rayleigh gains with E[h^2] = 1 are clipped at
   h_min = 0.2; the SER threshold is tau = 0.45 on the cosine recovery.
-- The BERT embeddings (`data/bert_agnews_8000.pt`, 8000 x 768, bert-base-uncased mean
-  pooled, AG-News) are provided for the real-embedding experiments.
+- The BERT embeddings (`data/bert_agnews_8000.pt`, 8000 x 768) are provided for the
+  real-embedding experiments. Each is the last-layer bert-base-uncased output, mean pooled
+  over the tokens (truncation at 64), of the text before the first period of an AG-News
+  training item, kept when that text has 5 to 30 words. The pool holds the first 8000 such sentences in the
+  training order, shuffled at seed 0. `code/extract_bert_embeddings.py` regenerates it
+  (needs `transformers`, `datasets` and network access). Recent `datasets` releases reject
+  the id `ag_news`, so pass a mirror, e.g. `--dataset wangrongsheng/ag_news`, which
+  reproduced the shipped pool to 2.2e-5 per coordinate (`data/bert_pool_regen.txt`).
+  The script writes `data/bert_agnews_8000_regen.pt` by default and leaves the shipped pool intact.
 
 Run `python3 code/exp1_theory.py` ... `python3 code/exp17_pilot_budget.py` to regenerate
 `data/`, then `python3 code/replot_all.py` to regenerate `fig/`.

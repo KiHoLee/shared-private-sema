@@ -1,0 +1,12 @@
+speed  pair_affinity(se)  DR-genie_ser(se)  DR-tracked_ser(se)  DR-static_ser(se)  LMMSE_ser(se)  gap(paired se)  tracked/genie  max|mean-stored|
+  0.5  0.3435(0.0196)  0.2195(0.0225)  0.2319(0.0243)  0.2485(0.0224)  0.3414(0.0226)  0.0124(0.0025)  1.056  0.0e+00
+  1.0  0.4011(0.0188)  0.1571(0.0171)  0.1726(0.0186)  0.1887(0.0192)  0.2731(0.0188)  0.0155(0.0019)  1.099  0.0e+00
+  2.0  0.3672(0.0102)  0.1880(0.0103)  0.2139(0.0108)  0.2240(0.0111)  0.3094(0.0112)  0.0259(0.0012)  1.138  0.0e+00
+  4.0  0.3743(0.0077)  0.1802(0.0072)  0.2146(0.0082)  0.2167(0.0076)  0.3039(0.0088)  0.0344(0.0015)  1.191  0.0e+00
+  8.0  0.3878(0.0044)  0.1694(0.0044)  0.2040(0.0051)  0.2049(0.0048)  0.2882(0.0048)  0.0346(0.0010)  1.204  0.0e+00
+pooled over 40 trajectories:
+  DR-genie_ser    corr(affinity)=-0.966  fit: affinity -0.9957(0.0442)  log2 speed -0.0015(0.0013)
+  DR-tracked_ser  corr(affinity)=-0.951  fit: affinity -1.0782(0.0482)  log2 speed +0.0053(0.0014)
+  DR-static_ser   corr(affinity)=-0.963  fit: affinity -1.0325(0.0481)  log2 speed +0.0005(0.0014)
+  LMMSE_ser       corr(affinity)=-0.994  fit: affinity -1.0960(0.0201)  log2 speed -0.0008(0.0006)
+  gap             corr(affinity)=-0.126  fit: affinity -0.0825(0.0162)  log2 speed +0.0068(0.0005)
