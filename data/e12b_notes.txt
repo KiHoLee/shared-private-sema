@@ -1,0 +1,83 @@
+tuple check vs data/e12_affinity.csv: max |diff| 3.33e-16, mismatched tuples 0 of 3000
+NPY_DISABLE_CPU_FEATURES='X86_V3 X86_V4 AVX512_ICL AVX512_SPR', numpy 2.5.4
+pool (8000, 768), KNN=8, U=4, N_CAL=200, N_EVAL=3000, evaluated tuples 2981
+measured affinity eval mean 0.3453 sd 0.1288; calibration mean 0.4629 sd 0.1601
+static rank-one fit on all calibration tuples a = 0.6773 0.6707 0.6774 0.6961 (mean a_u a_v 0.4629)
+bin 0.05: n_eval=  21 n_cal= 10 (nearest10) mean a_u a_v evalbin=0.055 calbin=0.169 static=0.463
+bin 0.10: n_eval=  67 n_cal= 10 (nearest10) mean a_u a_v evalbin=0.104 calbin=0.169 static=0.463
+bin 0.15: n_eval= 194 n_cal= 10 (nearest10) mean a_u a_v evalbin=0.153 calbin=0.188 static=0.463
+bin 0.20: n_eval= 304 n_cal= 25 (window) mean a_u a_v evalbin=0.201 calbin=0.229 static=0.463
+bin 0.25: n_eval= 385 n_cal= 44 (window) mean a_u a_v evalbin=0.251 calbin=0.264 static=0.463
+bin 0.30: n_eval= 388 n_cal= 52 (window) mean a_u a_v evalbin=0.300 calbin=0.304 static=0.463
+bin 0.35: n_eval= 389 n_cal= 58 (window) mean a_u a_v evalbin=0.350 calbin=0.354 static=0.463
+bin 0.40: n_eval= 414 n_cal= 64 (window) mean a_u a_v evalbin=0.399 calbin=0.411 static=0.463
+bin 0.45: n_eval= 333 n_cal= 72 (window) mean a_u a_v evalbin=0.449 calbin=0.450 static=0.463
+bin 0.50: n_eval= 267 n_cal= 69 (window) mean a_u a_v evalbin=0.499 calbin=0.494 static=0.463
+bin 0.55: n_eval= 120 n_cal= 56 (window) mean a_u a_v evalbin=0.547 calbin=0.538 static=0.463
+bin 0.60: n_eval=  64 n_cal= 43 (window) mean a_u a_v evalbin=0.597 calbin=0.591 static=0.463
+bin 0.65: n_eval=  35 n_cal= 33 (window) mean a_u a_v evalbin=0.646 calbin=0.645 static=0.463
+20dB evalbin d_c= 32 NOMA ser=0.854/top1=0.874/scene_err=0.116 LMMSE ser=0.609/top1=0.510/scene_err=0.009 BLMMSE ser=0.228/top1=0.347/scene_err=0.121 DR ser=0.240/top1=0.346/scene_err=0.154
+20dB evalbin d_c= 64 NOMA ser=0.854/top1=0.874/scene_err=0.116 LMMSE ser=0.609/top1=0.510/scene_err=0.009 BLMMSE ser=0.262/top1=0.342/scene_err=0.065 DR ser=0.272/top1=0.350/scene_err=0.084
+20dB evalbin d_c=128 NOMA ser=0.854/top1=0.874/scene_err=0.116 LMMSE ser=0.609/top1=0.510/scene_err=0.009 BLMMSE ser=0.355/top1=0.347/scene_err=0.038 DR ser=0.362/top1=0.360/scene_err=0.048
+20dB evalbin d_c=256 NOMA ser=0.854/top1=0.874/scene_err=0.116 LMMSE ser=0.609/top1=0.510/scene_err=0.009 BLMMSE ser=0.515/top1=0.382/scene_err=0.022 DR ser=0.525/top1=0.401/scene_err=0.032
+20dB calbin  d_c= 32 NOMA ser=0.854/top1=0.874/scene_err=0.116 LMMSE ser=0.607/top1=0.497/scene_err=0.008 BLMMSE ser=0.224/top1=0.340/scene_err=0.123 DR ser=0.236/top1=0.338/scene_err=0.158
+20dB calbin  d_c= 64 NOMA ser=0.854/top1=0.874/scene_err=0.116 LMMSE ser=0.607/top1=0.497/scene_err=0.008 BLMMSE ser=0.254/top1=0.335/scene_err=0.066 DR ser=0.265/top1=0.343/scene_err=0.086
+20dB calbin  d_c=128 NOMA ser=0.854/top1=0.874/scene_err=0.116 LMMSE ser=0.607/top1=0.497/scene_err=0.008 BLMMSE ser=0.343/top1=0.337/scene_err=0.037 DR ser=0.352/top1=0.352/scene_err=0.050
+20dB calbin  d_c=256 NOMA ser=0.854/top1=0.874/scene_err=0.116 LMMSE ser=0.607/top1=0.497/scene_err=0.008 BLMMSE ser=0.502/top1=0.371/scene_err=0.021 DR ser=0.514/top1=0.390/scene_err=0.031
+20dB static  d_c= 32 NOMA ser=0.854/top1=0.874/scene_err=0.116 LMMSE ser=0.590/top1=0.395/scene_err=0.007 BLMMSE ser=0.204/top1=0.304/scene_err=0.128 DR ser=0.226/top1=0.298/scene_err=0.174
+20dB static  d_c= 64 NOMA ser=0.854/top1=0.874/scene_err=0.116 LMMSE ser=0.590/top1=0.395/scene_err=0.007 BLMMSE ser=0.221/top1=0.304/scene_err=0.070 DR ser=0.237/top1=0.307/scene_err=0.095
+20dB static  d_c=128 NOMA ser=0.854/top1=0.874/scene_err=0.116 LMMSE ser=0.590/top1=0.395/scene_err=0.007 BLMMSE ser=0.281/top1=0.306/scene_err=0.040 DR ser=0.295/top1=0.314/scene_err=0.054
+20dB static  d_c=256 NOMA ser=0.854/top1=0.874/scene_err=0.116 LMMSE ser=0.590/top1=0.395/scene_err=0.007 BLMMSE ser=0.416/top1=0.326/scene_err=0.024 DR ser=0.436/top1=0.339/scene_err=0.036
+30dB evalbin d_c= 32 NOMA ser=0.176/top1=0.997/scene_err=0.000 LMMSE ser=0.057/top1=0.790/scene_err=0.002 BLMMSE ser=0.067/top1=0.696/scene_err=0.030 DR ser=0.073/top1=0.719/scene_err=0.047
+30dB evalbin d_c= 64 NOMA ser=0.176/top1=0.997/scene_err=0.000 LMMSE ser=0.057/top1=0.790/scene_err=0.002 BLMMSE ser=0.079/top1=0.637/scene_err=0.018 DR ser=0.084/top1=0.664/scene_err=0.026
+30dB evalbin d_c=128 NOMA ser=0.176/top1=0.997/scene_err=0.000 LMMSE ser=0.057/top1=0.790/scene_err=0.002 BLMMSE ser=0.096/top1=0.584/scene_err=0.012 DR ser=0.101/top1=0.611/scene_err=0.018
+30dB evalbin d_c=256 NOMA ser=0.176/top1=0.997/scene_err=0.000 LMMSE ser=0.057/top1=0.790/scene_err=0.002 BLMMSE ser=0.112/top1=0.588/scene_err=0.007 DR ser=0.117/top1=0.613/scene_err=0.012
+30dB calbin  d_c= 32 NOMA ser=0.176/top1=0.997/scene_err=0.000 LMMSE ser=0.058/top1=0.782/scene_err=0.002 BLMMSE ser=0.067/top1=0.694/scene_err=0.029 DR ser=0.074/top1=0.716/scene_err=0.047
+30dB calbin  d_c= 64 NOMA ser=0.176/top1=0.997/scene_err=0.000 LMMSE ser=0.058/top1=0.782/scene_err=0.002 BLMMSE ser=0.078/top1=0.631/scene_err=0.018 DR ser=0.083/top1=0.661/scene_err=0.027
+30dB calbin  d_c=128 NOMA ser=0.176/top1=0.997/scene_err=0.000 LMMSE ser=0.058/top1=0.782/scene_err=0.002 BLMMSE ser=0.095/top1=0.581/scene_err=0.012 DR ser=0.100/top1=0.608/scene_err=0.019
+30dB calbin  d_c=256 NOMA ser=0.176/top1=0.997/scene_err=0.000 LMMSE ser=0.058/top1=0.782/scene_err=0.002 BLMMSE ser=0.108/top1=0.583/scene_err=0.007 DR ser=0.114/top1=0.608/scene_err=0.012
+30dB static  d_c= 32 NOMA ser=0.176/top1=0.997/scene_err=0.000 LMMSE ser=0.063/top1=0.715/scene_err=0.002 BLMMSE ser=0.066/top1=0.648/scene_err=0.030 DR ser=0.077/top1=0.683/scene_err=0.058
+30dB static  d_c= 64 NOMA ser=0.176/top1=0.997/scene_err=0.000 LMMSE ser=0.063/top1=0.715/scene_err=0.002 BLMMSE ser=0.072/top1=0.589/scene_err=0.019 DR ser=0.082/top1=0.626/scene_err=0.033
+30dB static  d_c=128 NOMA ser=0.176/top1=0.997/scene_err=0.000 LMMSE ser=0.063/top1=0.715/scene_err=0.002 BLMMSE ser=0.082/top1=0.542/scene_err=0.012 DR ser=0.091/top1=0.578/scene_err=0.019
+30dB static  d_c=256 NOMA ser=0.176/top1=0.997/scene_err=0.000 LMMSE ser=0.063/top1=0.715/scene_err=0.002 BLMMSE ser=0.089/top1=0.539/scene_err=0.008 DR ser=0.100/top1=0.573/scene_err=0.014
+paired differences, mean +- standard error over decisions (positive LMMSE-DR means DR lower), rows give SER, top1 and scene_err
+20dB d_c= 32 evalbin ser LMMSE-DR +0.3696+-0.0045 LMMSE-BLMMSE +0.3812+-0.0045 | top1 LMMSE-DR +0.1645+-0.0042 LMMSE-BLMMSE +0.1635+-0.0041 | scene_err LMMSE-DR -0.1453+-0.0033 LMMSE-BLMMSE -0.1128+-0.0030
+20dB d_c= 32 calbin  ser LMMSE-DR +0.3711+-0.0045 LMMSE-BLMMSE +0.3829+-0.0045 | top1 LMMSE-DR +0.1584+-0.0042 LMMSE-BLMMSE +0.1563+-0.0041 | scene_err LMMSE-DR -0.1503+-0.0034 LMMSE-BLMMSE -0.1150+-0.0030
+20dB d_c= 32 SER calbin minus evalbin: DR -0.0037+-0.0009 BLMMSE -0.0039+-0.0009 LMMSE -0.0022+-0.0006
+20dB d_c= 32 static  ser LMMSE-DR +0.3636+-0.0045 LMMSE-BLMMSE +0.3854+-0.0045 | top1 LMMSE-DR +0.0972+-0.0040 LMMSE-BLMMSE +0.0907+-0.0039 | scene_err LMMSE-DR -0.1661+-0.0035 LMMSE-BLMMSE -0.1203+-0.0031
+20dB d_c= 32 SER static minus evalbin: DR -0.0136+-0.0014 BLMMSE -0.0237+-0.0014 LMMSE -0.0196+-0.0017
+20dB d_c= 64 evalbin ser LMMSE-DR +0.3374+-0.0044 LMMSE-BLMMSE +0.3472+-0.0044 | top1 LMMSE-DR +0.1601+-0.0040 LMMSE-BLMMSE +0.1681+-0.0039 | scene_err LMMSE-DR -0.0750+-0.0026 LMMSE-BLMMSE -0.0568+-0.0023
+20dB d_c= 64 calbin  ser LMMSE-DR +0.3425+-0.0044 LMMSE-BLMMSE +0.3527+-0.0044 | top1 LMMSE-DR +0.1537+-0.0039 LMMSE-BLMMSE +0.1619+-0.0039 | scene_err LMMSE-DR -0.0774+-0.0026 LMMSE-BLMMSE -0.0578+-0.0023
+20dB d_c= 64 SER calbin minus evalbin: DR -0.0073+-0.0011 BLMMSE -0.0076+-0.0011 LMMSE -0.0022+-0.0006
+20dB d_c= 64 static  ser LMMSE-DR +0.3528+-0.0044 LMMSE-BLMMSE +0.3685+-0.0044 | top1 LMMSE-DR +0.0878+-0.0037 LMMSE-BLMMSE +0.0912+-0.0035 | scene_err LMMSE-DR -0.0880+-0.0027 LMMSE-BLMMSE -0.0629+-0.0023
+20dB d_c= 64 SER static minus evalbin: DR -0.0351+-0.0017 BLMMSE -0.0409+-0.0018 LMMSE -0.0196+-0.0017
+20dB d_c=128 evalbin ser LMMSE-DR +0.2471+-0.0041 LMMSE-BLMMSE +0.2545+-0.0041 | top1 LMMSE-DR +0.1501+-0.0037 LMMSE-BLMMSE +0.1635+-0.0037 | scene_err LMMSE-DR -0.0391+-0.0020 LMMSE-BLMMSE -0.0290+-0.0017
+20dB d_c=128 calbin  ser LMMSE-DR +0.2550+-0.0041 LMMSE-BLMMSE +0.2643+-0.0041 | top1 LMMSE-DR +0.1451+-0.0036 LMMSE-BLMMSE +0.1599+-0.0036 | scene_err LMMSE-DR -0.0416+-0.0020 LMMSE-BLMMSE -0.0293+-0.0017
+20dB d_c=128 SER calbin minus evalbin: DR -0.0101+-0.0013 BLMMSE -0.0119+-0.0013 LMMSE -0.0022+-0.0006
+20dB d_c=128 static  ser LMMSE-DR +0.2942+-0.0042 LMMSE-BLMMSE +0.3086+-0.0043 | top1 LMMSE-DR +0.0808+-0.0032 LMMSE-BLMMSE +0.0892+-0.0031 | scene_err LMMSE-DR -0.0463+-0.0020 LMMSE-BLMMSE -0.0330+-0.0017
+20dB d_c=128 SER static minus evalbin: DR -0.0668+-0.0023 BLMMSE -0.0737+-0.0024 LMMSE -0.0196+-0.0017
+20dB d_c=256 evalbin ser LMMSE-DR +0.0847+-0.0036 LMMSE-BLMMSE +0.0943+-0.0035 | top1 LMMSE-DR +0.1094+-0.0033 LMMSE-BLMMSE +0.1280+-0.0033 | scene_err LMMSE-DR -0.0229+-0.0016 LMMSE-BLMMSE -0.0134+-0.0013
+20dB d_c=256 calbin  ser LMMSE-DR +0.0931+-0.0035 LMMSE-BLMMSE +0.1056+-0.0035 | top1 LMMSE-DR +0.1067+-0.0033 LMMSE-BLMMSE +0.1260+-0.0033 | scene_err LMMSE-DR -0.0230+-0.0016 LMMSE-BLMMSE -0.0130+-0.0013
+20dB d_c=256 SER calbin minus evalbin: DR -0.0106+-0.0013 BLMMSE -0.0135+-0.0013 LMMSE -0.0022+-0.0006
+20dB d_c=256 static  ser LMMSE-DR +0.1537+-0.0035 LMMSE-BLMMSE +0.1733+-0.0035 | top1 LMMSE-DR +0.0564+-0.0029 LMMSE-BLMMSE +0.0689+-0.0028 | scene_err LMMSE-DR -0.0282+-0.0016 LMMSE-BLMMSE -0.0166+-0.0013
+20dB d_c=256 SER static minus evalbin: DR -0.0886+-0.0027 BLMMSE -0.0987+-0.0028 LMMSE -0.0196+-0.0017
+30dB d_c= 32 evalbin ser LMMSE-DR -0.0159+-0.0019 LMMSE-BLMMSE -0.0092+-0.0018 | top1 LMMSE-DR +0.0714+-0.0031 LMMSE-BLMMSE +0.0938+-0.0031 | scene_err LMMSE-DR -0.0455+-0.0019 LMMSE-BLMMSE -0.0277+-0.0016
+30dB d_c= 32 calbin  ser LMMSE-DR -0.0164+-0.0018 LMMSE-BLMMSE -0.0092+-0.0017 | top1 LMMSE-DR +0.0658+-0.0031 LMMSE-BLMMSE +0.0876+-0.0030 | scene_err LMMSE-DR -0.0453+-0.0019 LMMSE-BLMMSE -0.0271+-0.0015
+30dB d_c= 32 SER calbin minus evalbin: DR +0.0006+-0.0006 BLMMSE +0.0002+-0.0006 LMMSE +0.0002+-0.0005
+30dB d_c= 32 static  ser LMMSE-DR -0.0144+-0.0018 LMMSE-BLMMSE -0.0035+-0.0016 | top1 LMMSE-DR +0.0322+-0.0030 LMMSE-BLMMSE +0.0668+-0.0029 | scene_err LMMSE-DR -0.0556+-0.0021 LMMSE-BLMMSE -0.0282+-0.0016
+30dB d_c= 32 SER static minus evalbin: DR +0.0036+-0.0010 BLMMSE -0.0006+-0.0008 LMMSE +0.0051+-0.0009
+30dB d_c= 64 evalbin ser LMMSE-DR -0.0261+-0.0020 LMMSE-BLMMSE -0.0213+-0.0019 | top1 LMMSE-DR +0.1262+-0.0033 LMMSE-BLMMSE +0.1534+-0.0034 | scene_err LMMSE-DR -0.0241+-0.0015 LMMSE-BLMMSE -0.0157+-0.0012
+30dB d_c= 64 calbin  ser LMMSE-DR -0.0257+-0.0019 LMMSE-BLMMSE -0.0202+-0.0019 | top1 LMMSE-DR +0.1202+-0.0033 LMMSE-BLMMSE +0.1505+-0.0034 | scene_err LMMSE-DR -0.0247+-0.0015 LMMSE-BLMMSE -0.0158+-0.0012
+30dB d_c= 64 SER calbin minus evalbin: DR -0.0002+-0.0006 BLMMSE -0.0009+-0.0006 LMMSE +0.0002+-0.0005
+30dB d_c= 64 static  ser LMMSE-DR -0.0194+-0.0018 LMMSE-BLMMSE -0.0098+-0.0017 | top1 LMMSE-DR +0.0891+-0.0031 LMMSE-BLMMSE +0.1255+-0.0032 | scene_err LMMSE-DR -0.0306+-0.0016 LMMSE-BLMMSE -0.0165+-0.0012
+30dB d_c= 64 SER static minus evalbin: DR -0.0016+-0.0010 BLMMSE -0.0064+-0.0009 LMMSE +0.0051+-0.0009
+30dB d_c=128 evalbin ser LMMSE-DR -0.0435+-0.0021 LMMSE-BLMMSE -0.0390+-0.0021 | top1 LMMSE-DR +0.1790+-0.0036 LMMSE-BLMMSE +0.2057+-0.0037 | scene_err LMMSE-DR -0.0159+-0.0012 LMMSE-BLMMSE -0.0101+-0.0010
+30dB d_c=128 calbin  ser LMMSE-DR -0.0421+-0.0021 LMMSE-BLMMSE -0.0377+-0.0021 | top1 LMMSE-DR +0.1739+-0.0036 LMMSE-BLMMSE +0.2004+-0.0037 | scene_err LMMSE-DR -0.0164+-0.0012 LMMSE-BLMMSE -0.0094+-0.0010
+30dB d_c=128 SER calbin minus evalbin: DR -0.0013+-0.0007 BLMMSE -0.0012+-0.0007 LMMSE +0.0002+-0.0005
+30dB d_c=128 static  ser LMMSE-DR -0.0282+-0.0019 LMMSE-BLMMSE -0.0196+-0.0017 | top1 LMMSE-DR +0.1372+-0.0033 LMMSE-BLMMSE +0.1728+-0.0035 | scene_err LMMSE-DR -0.0173+-0.0013 LMMSE-BLMMSE -0.0100+-0.0010
+30dB d_c=128 SER static minus evalbin: DR -0.0102+-0.0011 BLMMSE -0.0143+-0.0012 LMMSE +0.0051+-0.0009
+30dB d_c=256 evalbin ser LMMSE-DR -0.0593+-0.0023 LMMSE-BLMMSE -0.0542+-0.0022 | top1 LMMSE-DR +0.1768+-0.0036 LMMSE-BLMMSE +0.2018+-0.0037 | scene_err LMMSE-DR -0.0099+-0.0010 LMMSE-BLMMSE -0.0055+-0.0008
+30dB d_c=256 calbin  ser LMMSE-DR -0.0568+-0.0023 LMMSE-BLMMSE -0.0505+-0.0022 | top1 LMMSE-DR +0.1734+-0.0035 LMMSE-BLMMSE +0.1982+-0.0037 | scene_err LMMSE-DR -0.0096+-0.0010 LMMSE-BLMMSE -0.0053+-0.0008
+30dB d_c=256 SER calbin minus evalbin: DR -0.0023+-0.0009 BLMMSE -0.0035+-0.0009 LMMSE +0.0002+-0.0005
+30dB d_c=256 static  ser LMMSE-DR -0.0378+-0.0019 LMMSE-BLMMSE -0.0269+-0.0017 | top1 LMMSE-DR +0.1416+-0.0033 LMMSE-BLMMSE +0.1755+-0.0035 | scene_err LMMSE-DR -0.0119+-0.0011 LMMSE-BLMMSE -0.0058+-0.0008
+30dB d_c=256 SER static minus evalbin: DR -0.0164+-0.0013 BLMMSE -0.0221+-0.0014 LMMSE +0.0051+-0.0009

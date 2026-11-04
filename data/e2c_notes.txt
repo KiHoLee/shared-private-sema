@@ -1,0 +1,50 @@
+check A: adapter subspace error 0.47110759263293095 (e2_caliberr.txt adapter_err=0.47115266508068226), spectral 0.5066663187245027
+A  0 dB spec ser 1.00000 nmse 0.98645 | adapt ser 1.00000 nmse 0.98670 | e2_ladder spec 1.00000/0.98644 adapt 1.00000/0.98669
+A  4 dB spec ser 0.99987 nmse 0.96760 | adapt ser 0.99994 nmse 0.96821 | e2_ladder spec 0.99987/0.96753 adapt 0.99994/0.96814
+A  8 dB spec ser 0.99413 nmse 0.92589 | adapt ser 0.99706 nmse 0.92698 | e2_ladder spec 0.99425/0.92593 adapt 0.99675/0.92702
+A 12 dB spec ser 0.80756 nmse 0.85446 | adapt ser 0.82281 nmse 0.85567 | e2_ladder spec 0.80744/0.85449 adapt 0.82388/0.85571
+A 16 dB spec ser 0.28706 nmse 0.75968 | adapt ser 0.27863 nmse 0.76037 | e2_ladder spec 0.28644/0.75970 adapt 0.27813/0.76040
+A 20 dB spec ser 0.03325 nmse 0.65697 | adapt ser 0.02687 nmse 0.65475 | e2_ladder spec 0.03313/0.65701 adapt 0.02744/0.65482
+Part B, mean (SE) over 10 calibration seeds; ser_gain = SER(spectral) - SER(adapter), >0 means the adapter helps; d_nmse = NMSE(adapter) - NMSE(spectral), <0 helps
+B U0-20 lam=0.2  0 dB: ser_gain +0.0000 (0.0000) [shared +0.0000, private +0.0000] seeds better 0/10 | d_nmse +0.00018 (0.00002) [sh -0.00016, pr +0.00034] | d_cos -0.0007 | spec ser 1.0000 | sub err 0.5069->0.4716
+B U0-20 lam=0.2  4 dB: ser_gain +0.0000 (0.0000) [shared +0.0000, private -0.0000] seeds better 1/10 | d_nmse +0.00048 (0.00004) [sh -0.00035, pr +0.00083] | d_cos -0.0012 | spec ser 1.0000 | sub err 0.5069->0.4716
+B U0-20 lam=0.2  8 dB: ser_gain -0.0023 (0.0002) [shared +0.0005, private -0.0026] seeds better 0/10 | d_nmse +0.00087 (0.00008) [sh -0.00095, pr +0.00182] | d_cos -0.0015 | spec ser 0.9949 | sub err 0.5069->0.4716
+B U0-20 lam=0.2 12 dB: ser_gain -0.0144 (0.0011) [shared +0.0131, private -0.0278] seeds better 0/10 | d_nmse +0.00114 (0.00012) [sh -0.00231, pr +0.00345] | d_cos -0.0014 | spec ser 0.8066 | sub err 0.5069->0.4716
+B U0-20 lam=0.2 16 dB: ser_gain +0.0106 (0.0006) [shared +0.0190, private -0.0099] seeds better 10/10 | d_nmse +0.00039 (0.00020) [sh -0.00466, pr +0.00505] | d_cos -0.0004 | spec ser 0.2796 | sub err 0.5069->0.4716
+B U0-20 lam=0.2 20 dB: ser_gain +0.0054 (0.0003) [shared +0.0043, private +0.0018] seeds better 10/10 | d_nmse -0.00255 (0.00014) [sh -0.00712, pr +0.00457] | d_cos +0.0021 | spec ser 0.0315 | sub err 0.5069->0.4716
+B fix12 lam=0.2  0 dB: ser_gain +0.0000 (0.0000) [shared +0.0000, private +0.0000] seeds better 0/10 | d_nmse +0.00018 (0.00002) [sh -0.00015, pr +0.00034] | d_cos -0.0007 | spec ser 1.0000 | sub err 0.5069->0.4720
+B fix12 lam=0.2  4 dB: ser_gain +0.0000 (0.0000) [shared +0.0000, private -0.0000] seeds better 1/10 | d_nmse +0.00049 (0.00004) [sh -0.00034, pr +0.00083] | d_cos -0.0012 | spec ser 1.0000 | sub err 0.5069->0.4720
+B fix12 lam=0.2  8 dB: ser_gain -0.0023 (0.0002) [shared +0.0005, private -0.0026] seeds better 0/10 | d_nmse +0.00090 (0.00008) [sh -0.00092, pr +0.00182] | d_cos -0.0015 | spec ser 0.9949 | sub err 0.5069->0.4720
+B fix12 lam=0.2 12 dB: ser_gain -0.0145 (0.0010) [shared +0.0130, private -0.0275] seeds better 0/10 | d_nmse +0.00118 (0.00011) [sh -0.00227, pr +0.00345] | d_cos -0.0015 | spec ser 0.8066 | sub err 0.5069->0.4720
+B fix12 lam=0.2 16 dB: ser_gain +0.0102 (0.0006) [shared +0.0187, private -0.0101] seeds better 10/10 | d_nmse +0.00046 (0.00019) [sh -0.00460, pr +0.00506] | d_cos -0.0005 | spec ser 0.2796 | sub err 0.5069->0.4720
+B fix12 lam=0.2 20 dB: ser_gain +0.0054 (0.0003) [shared +0.0042, private +0.0017] seeds better 10/10 | d_nmse -0.00245 (0.00013) [sh -0.00704, pr +0.00459] | d_cos +0.0020 | spec ser 0.0315 | sub err 0.5069->0.4720
+B fix20 lam=0.2  0 dB: ser_gain +0.0000 (0.0000) [shared +0.0000, private +0.0000] seeds better 0/10 | d_nmse -0.00009 (0.00002) [sh -0.00029, pr +0.00020] | d_cos +0.0003 | spec ser 1.0000 | sub err 0.5069->0.4471
+B fix20 lam=0.2  4 dB: ser_gain +0.0000 (0.0000) [shared +0.0000, private -0.0000] seeds better 1/10 | d_nmse -0.00013 (0.00005) [sh -0.00065, pr +0.00052] | d_cos +0.0003 | spec ser 1.0000 | sub err 0.5069->0.4471
+B fix20 lam=0.2  8 dB: ser_gain -0.0023 (0.0001) [shared +0.0007, private -0.0027] seeds better 0/10 | d_nmse -0.00043 (0.00009) [sh -0.00163, pr +0.00120] | d_cos +0.0007 | spec ser 0.9949 | sub err 0.5069->0.4471
+B fix20 lam=0.2 12 dB: ser_gain -0.0043 (0.0010) [shared +0.0208, private -0.0254] seeds better 1/10 | d_nmse -0.00122 (0.00013) [sh -0.00369, pr +0.00247] | d_cos +0.0015 | spec ser 0.8066 | sub err 0.5069->0.4471
+B fix20 lam=0.2 16 dB: ser_gain +0.0281 (0.0005) [shared +0.0292, private -0.0021] seeds better 10/10 | d_nmse -0.00319 (0.00022) [sh -0.00704, pr +0.00385] | d_cos +0.0031 | spec ser 0.2796 | sub err 0.5069->0.4471
+B fix20 lam=0.2 20 dB: ser_gain +0.0086 (0.0002) [shared +0.0063, private +0.0037] seeds better 10/10 | d_nmse -0.00735 (0.00015) [sh -0.01044, pr +0.00309] | d_cos +0.0062 | spec ser 0.0315 | sub err 0.5069->0.4471
+B U0-20 lam=0.0  0 dB: ser_gain +0.0000 (0.0000) [shared +0.0000, private +0.0000] seeds better 0/10 | d_nmse +0.00022 (0.00001) [sh -0.00009, pr +0.00031] | d_cos -0.0008 | spec ser 1.0000 | sub err 0.5069->0.4873
+B U0-20 lam=0.0  4 dB: ser_gain +0.0000 (0.0000) [shared +0.0000, private -0.0000] seeds better 1/10 | d_nmse +0.00056 (0.00003) [sh -0.00020, pr +0.00076] | d_cos -0.0014 | spec ser 1.0000 | sub err 0.5069->0.4873
+B U0-20 lam=0.0  8 dB: ser_gain -0.0018 (0.0002) [shared +0.0003, private -0.0020] seeds better 0/10 | d_nmse +0.00108 (0.00006) [sh -0.00054, pr +0.00162] | d_cos -0.0018 | spec ser 0.9949 | sub err 0.5069->0.4873
+B U0-20 lam=0.0 12 dB: ser_gain -0.0139 (0.0008) [shared +0.0078, private -0.0220] seeds better 0/10 | d_nmse +0.00161 (0.00009) [sh -0.00137, pr +0.00299] | d_cos -0.0020 | spec ser 0.8066 | sub err 0.5069->0.4873
+B U0-20 lam=0.0 16 dB: ser_gain +0.0028 (0.0006) [shared +0.0116, private -0.0091] seeds better 9/10 | d_nmse +0.00140 (0.00014) [sh -0.00286, pr +0.00426] | d_cos -0.0014 | spec ser 0.2796 | sub err 0.5069->0.4873
+B U0-20 lam=0.0 20 dB: ser_gain +0.0036 (0.0002) [shared +0.0027, private +0.0011] seeds better 10/10 | d_nmse -0.00051 (0.00011) [sh -0.00442, pr +0.00391] | d_cos +0.0004 | spec ser 0.0315 | sub err 0.5069->0.4873
+B fix12 lam=0.0  0 dB: ser_gain +0.0000 (0.0000) [shared +0.0000, private +0.0000] seeds better 0/10 | d_nmse +0.00023 (0.00001) [sh -0.00008, pr +0.00032] | d_cos -0.0009 | spec ser 1.0000 | sub err 0.5069->0.4885
+B fix12 lam=0.0  4 dB: ser_gain +0.0000 (0.0000) [shared +0.0000, private -0.0000] seeds better 1/10 | d_nmse +0.00058 (0.00003) [sh -0.00018, pr +0.00077] | d_cos -0.0014 | spec ser 1.0000 | sub err 0.5069->0.4885
+B fix12 lam=0.0  8 dB: ser_gain -0.0019 (0.0002) [shared +0.0002, private -0.0020] seeds better 0/10 | d_nmse +0.00114 (0.00007) [sh -0.00050, pr +0.00164] | d_cos -0.0019 | spec ser 0.9949 | sub err 0.5069->0.4885
+B fix12 lam=0.0 12 dB: ser_gain -0.0143 (0.0007) [shared +0.0075, private -0.0218] seeds better 0/10 | d_nmse +0.00170 (0.00009) [sh -0.00131, pr +0.00301] | d_cos -0.0021 | spec ser 0.8066 | sub err 0.5069->0.4885
+B fix12 lam=0.0 16 dB: ser_gain +0.0022 (0.0006) [shared +0.0110, private -0.0096] seeds better 9/10 | d_nmse +0.00155 (0.00014) [sh -0.00274, pr +0.00429] | d_cos -0.0016 | spec ser 0.2796 | sub err 0.5069->0.4885
+B fix12 lam=0.0 20 dB: ser_gain +0.0035 (0.0003) [shared +0.0025, private +0.0010] seeds better 10/10 | d_nmse -0.00029 (0.00010) [sh -0.00424, pr +0.00395] | d_cos +0.0002 | spec ser 0.0315 | sub err 0.5069->0.4885
+B fix20 lam=0.0  0 dB: ser_gain +0.0000 (0.0000) [shared +0.0000, private +0.0000] seeds better 0/10 | d_nmse +0.00006 (0.00002) [sh -0.00021, pr +0.00027] | d_cos -0.0002 | spec ser 1.0000 | sub err 0.5069->0.4695
+B fix20 lam=0.0  4 dB: ser_gain +0.0000 (0.0000) [shared +0.0000, private -0.0000] seeds better 1/10 | d_nmse +0.00020 (0.00004) [sh -0.00048, pr +0.00068] | d_cos -0.0005 | spec ser 1.0000 | sub err 0.5069->0.4695
+B fix20 lam=0.0  8 dB: ser_gain -0.0021 (0.0001) [shared +0.0005, private -0.0023] seeds better 0/10 | d_nmse +0.00030 (0.00007) [sh -0.00118, pr +0.00148] | d_cos -0.0005 | spec ser 0.9949 | sub err 0.5069->0.4695
+B fix20 lam=0.0 12 dB: ser_gain -0.0087 (0.0007) [shared +0.0149, private -0.0239] seeds better 0/10 | d_nmse +0.00014 (0.00011) [sh -0.00266, pr +0.00280] | d_cos -0.0002 | spec ser 0.8066 | sub err 0.5069->0.4695
+B fix20 lam=0.0 16 dB: ser_gain +0.0158 (0.0004) [shared +0.0206, private -0.0063] seeds better 10/10 | d_nmse -0.00095 (0.00017) [sh -0.00502, pr +0.00406] | d_cos +0.0009 | spec ser 0.2796 | sub err 0.5069->0.4695
+B fix20 lam=0.0 20 dB: ser_gain +0.0063 (0.0003) [shared +0.0046, private +0.0023] seeds better 10/10 | d_nmse -0.00396 (0.00012) [sh -0.00738, pr +0.00342] | d_cos +0.0033 | spec ser 0.0315 | sub err 0.5069->0.4695
+A-decomp  0 dB: ser_gain +0.00000 (se 0.00000) shared +0.00000 private +0.00000 | d_nmse_sh -0.00009 d_nmse_pr +0.00034
+A-decomp  4 dB: ser_gain -0.00006 (se 0.00006) shared -0.00006 private -0.00006 | d_nmse_sh -0.00023 d_nmse_pr +0.00084
+A-decomp  8 dB: ser_gain -0.00294 (se 0.00046) shared +0.00038 private -0.00287 | d_nmse_sh -0.00084 d_nmse_pr +0.00192
+A-decomp 12 dB: ser_gain -0.01525 (se 0.00185) shared +0.01287 private -0.02775 | d_nmse_sh -0.00216 d_nmse_pr +0.00338
+A-decomp 16 dB: ser_gain +0.00844 (se 0.00197) shared +0.01887 private -0.01100 | d_nmse_sh -0.00433 d_nmse_pr +0.00502
+A-decomp 20 dB: ser_gain +0.00637 (se 0.00088) shared +0.00500 private +0.00256 | d_nmse_sh -0.00696 d_nmse_pr +0.00474

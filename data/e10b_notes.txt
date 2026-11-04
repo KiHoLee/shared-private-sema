@@ -1,0 +1,20 @@
+check: SER of every receiver and the advantage ratio of the published clip rows of e10_clip_sweep.csv reproduced exactly: True; largest deviation of the sample E[1/h^2] (float summation order): 8.9e-16
+synthetic h_min=0.0 beta=0.5: OMA 0.9396 NOMA 0.7475 SR 0.8655 SC 0.2999 LMMSE 0.2785 BLMMSE 0.0375 DR 0.0417 | best unstructured over DR 6.68x, E[1/h^2] sample 11.503 closed inf
+synthetic h_min=0.0 beta=0.7: OMA 0.8868 NOMA 0.7536 SR 0.9379 SC 0.0671 LMMSE 0.0656 BLMMSE 0.0037 DR 0.0037 | best unstructured over DR 17.80x, E[1/h^2] sample 11.503 closed inf
+synthetic h_min=0.01 beta=0.5: OMA 0.9423 NOMA 0.7481 SR 0.8655 SC 0.2999 LMMSE 0.2785 BLMMSE 0.0375 DR 0.0417 | best unstructured over DR 6.68x, E[1/h^2] sample 10.483 closed 9.633
+synthetic h_min=0.01 beta=0.7: OMA 0.8864 NOMA 0.7516 SR 0.9379 SC 0.0671 LMMSE 0.0656 BLMMSE 0.0037 DR 0.0037 | best unstructured over DR 17.80x, E[1/h^2] sample 10.483 closed 9.633
+synthetic h_min=0.05 beta=0.5: OMA 0.9417 NOMA 0.7456 SR 0.8655 SC 0.2999 LMMSE 0.2784 BLMMSE 0.0375 DR 0.0417 | best unstructured over DR 6.68x, E[1/h^2] sample 6.590 closed 6.415
+synthetic h_min=0.05 beta=0.7: OMA 0.8826 NOMA 0.7485 SR 0.9379 SC 0.0671 LMMSE 0.0656 BLMMSE 0.0037 DR 0.0037 | best unstructured over DR 17.80x, E[1/h^2] sample 6.590 closed 6.415
+synthetic h_min=0.1 beta=0.5: OMA 0.9407 NOMA 0.7528 SR 0.8655 SC 0.2998 LMMSE 0.2780 BLMMSE 0.0374 DR 0.0414 | best unstructured over DR 6.71x, E[1/h^2] sample 5.086 closed 5.033
+synthetic h_min=0.1 beta=0.7: OMA 0.8824 NOMA 0.7524 SR 0.9379 SC 0.0669 LMMSE 0.0654 BLMMSE 0.0036 DR 0.0036 | best unstructured over DR 18.37x, E[1/h^2] sample 5.086 closed 5.033
+synthetic h_min=0.2 beta=0.5: OMA 0.9417 NOMA 0.7537 SR 0.8655 SC 0.2975 LMMSE 0.2756 BLMMSE 0.0363 DR 0.0400 | best unstructured over DR 6.89x, E[1/h^2] sample 3.675 closed 3.662
+synthetic h_min=0.2 beta=0.7: OMA 0.8860 NOMA 0.7553 SR 0.9379 SC 0.0639 LMMSE 0.0623 BLMMSE 0.0036 DR 0.0035 | best unstructured over DR 17.80x, E[1/h^2] sample 3.675 closed 3.662
+synthetic h_min=0.3 beta=0.5: OMA 0.9433 NOMA 0.7508 SR 0.8654 SC 0.2903 LMMSE 0.2683 BLMMSE 0.0320 DR 0.0346 | best unstructured over DR 7.76x, E[1/h^2] sample 2.876 closed 2.875
+synthetic h_min=0.3 beta=0.7: OMA 0.8859 NOMA 0.7496 SR 0.9379 SC 0.0578 LMMSE 0.0559 BLMMSE 0.0022 DR 0.0021 | best unstructured over DR 26.29x, E[1/h^2] sample 2.876 closed 2.875
+check BERT 20 dB h_min=0.2: LMMSE ser 0.33975 nmse 0.7485044042119856 (e2_ladder 0.33825, 0.7485442569919676); DR-spec ser 0.03325 nmse 0.6569741549829098 (e2_ladder 0.033125, 0.6570088460516684)
+BERT 20 dB h_min=0.0: LMMSE ser 0.34281 cos 0.4913 nmse 0.7493 | DR-spec ser 0.03587 cos 0.5829 nmse 0.6577 | LMMSE/DR 9.56x | dSER vs h_min=0.2: LMMSE +0.00306 (se 0.00044), DR +0.00263 (se 0.00040) | clipped fraction 0.0000, E[1/h^2] sample 8.94, min h 1.40e-02
+BERT 20 dB h_min=0.01: LMMSE ser 0.34281 cos 0.4913 nmse 0.7493 | DR-spec ser 0.03587 cos 0.5829 nmse 0.6577 | LMMSE/DR 9.56x | dSER vs h_min=0.2: LMMSE +0.00306 (se 0.00044), DR +0.00263 (se 0.00040) | clipped fraction 0.0000, E[1/h^2] sample 8.94, min h 1.40e-02
+BERT 20 dB h_min=0.05: LMMSE ser 0.34269 cos 0.4913 nmse 0.7493 | DR-spec ser 0.03587 cos 0.5829 nmse 0.6577 | LMMSE/DR 9.55x | dSER vs h_min=0.2: LMMSE +0.00294 (se 0.00043), DR +0.00263 (se 0.00040) | clipped fraction 0.0028, E[1/h^2] sample 6.59, min h 5.00e-02
+BERT 20 dB h_min=0.1: LMMSE ser 0.34237 cos 0.4914 nmse 0.7492 | DR-spec ser 0.03537 cos 0.5830 nmse 0.6576 | LMMSE/DR 9.68x | dSER vs h_min=0.2: LMMSE +0.00263 (se 0.00040), DR +0.00213 (se 0.00036) | clipped fraction 0.0100, E[1/h^2] sample 5.12, min h 1.00e-01
+BERT 20 dB h_min=0.2: LMMSE ser 0.33975 cos 0.4923 nmse 0.7485 | DR-spec ser 0.03325 cos 0.5836 nmse 0.6570 | LMMSE/DR 10.22x | dSER vs h_min=0.2: LMMSE +0.00000 (se 0.00000), DR +0.00000 (se 0.00000) | clipped fraction 0.0412, E[1/h^2] sample 3.71, min h 2.00e-01
+BERT 20 dB h_min=0.3: LMMSE ser 0.33137 cos 0.4948 nmse 0.7465 | DR-spec ser 0.02719 cos 0.5853 nmse 0.6552 | LMMSE/DR 12.19x | dSER vs h_min=0.2: LMMSE -0.00838 (se 0.00072), DR -0.00606 (se 0.00061) | clipped fraction 0.0885, E[1/h^2] sample 2.89, min h 3.00e-01

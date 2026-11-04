@@ -1,0 +1,13 @@
+Device-side cost per embedding at d=768, U=4 (code/device_cost.py)
+mask application d^2 = 589824 MAC
+adapter rotation d^2 = 589824 MAC
+mask plus adapter = 1179648 MAC (1.18e+06)
+mask rebuild per affinity update, at most U d^2 = 2359296 MAC
+Haar bases stored, U d^2 float32 = 9437184 bytes = 9.44 MB
+
+BERT-base encoder MAC (lower bound) and device share:
+n=  7 tokens  encoder 5.954e+08 MAC  mask 0.0991%  mask+adapter 0.1981%
+n= 10 tokens  encoder 8.512e+08 MAC  mask 0.0693%  mask+adapter 0.1386%
+n= 16 tokens  encoder 1.364e+09 MAC  mask 0.0433%  mask+adapter 0.0865%
+n= 32 tokens  encoder 2.737e+09 MAC  mask 0.0216%  mask+adapter 0.0431%
+n= 64 tokens  encoder 5.511e+09 MAC  mask 0.0107%  mask+adapter 0.0214%

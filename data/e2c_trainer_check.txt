@@ -1,0 +1,3 @@
+check of the copied trainer (exp2c_adapter_snr.train_adapter_snr, 0-20 dB) against exp2_structure.train_adapter on the replayed E2 chain, u24
+max |W_copy - W_orig| = 0.0
+adapter subspace error orig 0.47110759263293095 copy 0.47110759263293095

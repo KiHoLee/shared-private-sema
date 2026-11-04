@@ -26,12 +26,13 @@ number in the paper is regenerated from the files here.
 | Figs. 4–6 | `exp2_structure.py` | `e2_spectrum_multi.csv`, `e2_subspace_multi.csv`, `e2_ladder.csv` |
 | Figs. 7–8 | `exp3_mobility.py` | `e3_timeseries.csv`, `e3_speed.csv` |
 | Fig. 9 | `exp4_mismatch.py`, `exp4_lmmse_ref.py` | `e4_mismatch.csv`, `e4_lmmse_ref.csv` |
-| Fig. 10 | `exp7_learned_sideinfo.py` | `e7_learned_sideinfo.csv` |
+| Fig. 10 | `exp7_learned_sideinfo.py`, `exp7b_learned_robustness.py` | `e7_learned_sideinfo.csv`, `e7b_learned_robustness.csv` (Learned + side info, fed before the division) |
 | Fig. 11 | `exp8_partial_sharing.py` | `e8_partial_sharing.csv` |
 | Fig. 12 | `exp12_corpus.py` | `e12_corpus.csv` |
 | Fig. 13 | `exp11_impairments.py` | `e11_imbalance.csv` |
 | Table V | `exp9_retrieval.py` | `e9_retrieval.csv` |
-| Table VI | `exp11_impairments.py` | `e11_phase.csv`, `e11_cest.csv` |
+| Table VI | `exp11b_sync.py` (symbol-level phase, CFO, timing, phase noise and gain errors) | `e11b_sync.csv`, `e11b_sync_perseed.csv` |
+| E11 static phase and channel-estimation errors (text) | `exp11_impairments.py` | `e11_phase.csv`, `e11_cest.csv` |
 | E10 (text), thresholds 0.35 to 0.65 | `exp10_eval_choices.py` | `e10_threshold_sweep.csv`, `e10_clip_sweep.csv` |
 | E17 (text) | `exp17_pilot_budget.py` | `e17_pilot_budget.csv` |
 | E17 per-run values (text) | `exp17_perrun.py` | `e17_perrun.txt` |
@@ -53,6 +54,18 @@ number in the paper is regenerated from the files here.
 | E3 speed sweep, per-seed SER and visited affinity (letter) | `exp3_speed_stats.py` | `e3_speed_seeds.csv`, `e3_speed_stats.txt` |
 | E20 covariance-aware DR and full-covariance LMMSE on BERT contents (text) | `exp20_covariance_receiver.py` | `e20_covariance_receiver.csv`, `e20_notes.txt` |
 | E21 PCA-ordered OMA, covariance-aware NOMA-SIC and retrieval-candidate statistics (text) | `exp21_conventional_references.py` | `e21_conventional_references.csv`, `e21_notes.txt` |
+| E20b full-covariance LMMSE variants, calibration sweep and receiver cost (text, Tables S2-S3) | `exp20b_fullcov_variants.py` | `e20b_fullcov_variants.csv`, `e20b_calib_sweep.csv`, `e20b_cost.csv`, `e20b_notes.txt` |
+| E19b causal and biased affinity estimates net of pilots (text, Tables S4-S5) | `exp19b_causal_average.py` | `e19b_causal_average.csv`, `e19b_perseed.csv`, `e19b_notes.txt` |
+| E8b sample-to-sample non-common fraction (Table S6) | `exp8b_varying_kappa.py` | `e8b_varying_kappa.csv`, `e8b_varying_kappa_summary.csv`, `e8b_notes.txt` |
+| E11b synchronization and gain errors at symbol level (text, Table VI, Table S7) | `exp11b_sync.py` | `e11b_sync.csv`, `e11b_sync_perseed.csv`, `e11b_notes.txt` |
+| E7b side-informed attention receivers (Fig. 10, Table S8) | `exp7b_learned_robustness.py`, `exp7b_summary.py` | `e7b_learned_robustness.csv`, `e7b_valcurve.csv`, `e7b_notes.txt`, `e7b_summary.txt` |
+| E12b three sources of the share coefficients (text, Table S9) | `exp12b_sideinfo.py` | `e12b_sideinfo.csv`, `e12b_notes.txt` |
+| E2b misspecified shared dimension (Table S10) | `exp2b_dc_misspec.py` | `e2b_dc_misspec.csv`, `e2b_notes.txt` |
+| E2c adapter gain versus SNR (Table S11) | `exp2c_adapter_snr.py` | `e2c_adapter_snr.csv`, `e2c_summary.csv`, `e2c_notes.txt`, `e2c_trainer_check.txt` |
+| E9b SER threshold per scheme and per block (Table S12) | `exp9b_threshold_by_scheme.py` | `e9b_threshold_by_scheme.csv`, `e9b_scheme_summary.csv`, `e9b_notes.txt` |
+| E10b gain clip (text, Table S13) | `exp10b_clip_reference.py` | `e10b_clip_reference.csv`, `e10b_notes.txt` |
+| E24 MS-COCO captions of one image as the users (Table S14) | `extract_coco_captions.py`, `exp24_coco_captions.py` | `e24_coco_captions.csv`, `e24_notes.txt`, `coco_pool_notes.txt` |
+| Small rev5 checks and device-side operation count (text) | `rev5_small_notes.py`, `device_cost.py` | `rev5_small_notes.txt`, `device_cost.txt` |
 | BERT embedding pool (input data) | `extract_bert_embeddings.py` | `bert_agnews_8000.pt`, `bert_pool_regen.txt` |
 
 ## Requirements and conventions
@@ -72,6 +85,13 @@ number in the paper is regenerated from the files here.
   the id `ag_news`, so pass a mirror, e.g. `--dataset wangrongsheng/ag_news`, which
   reproduced the shipped pool to 2.2e-5 per coordinate (`data/bert_pool_regen.txt`).
   The script writes `data/bert_agnews_8000_regen.pt` by default and leaves the shipped pool intact.
+
+- E24 uses the MS-COCO 2017 caption annotations (T.-Y. Lin et al., ECCV 2014, CC BY 4.0),
+  which are not redistributed here. `code/extract_coco_captions.py` downloads nothing; pass the
+  annotation folder with `--ann`. It writes the BERT caption embeddings that
+  `code/exp24_coco_captions.py --coco <folder>` reads.
+- The rev5 experiments (E2b, E2c, E7b, E8b, E9b, E10b, E11b, E12b, E19b, E20b and E24 above) ran in the GPU environment listed in
+  `data/environment.txt`.
 
 Run `python3 code/exp1_theory.py` ... `python3 code/exp17_pilot_budget.py` to regenerate
 `data/`, then `python3 code/replot_all.py` to regenerate `fig/`.

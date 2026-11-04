@@ -1,0 +1,17 @@
+scheme,device,block_len,mults_per_block,mults_per_sample,mults_per_1000,n_measured,seconds_per_1000
+DR,cpu-4threads,1,224,9.001e+05,9.003e+08,1000,0.02395
+DR,cpu-4threads,1000,224,9.001e+05,9.001e+08,1000,0.04401
+DR,NVIDIA RTX PRO 5000 Blackwell,1,224,9.001e+05,9.003e+08,1000,0.007021
+DR,NVIDIA RTX PRO 5000 Blackwell,1000,224,9.001e+05,9.001e+08,1000,0.003932
+DR-cov,cpu-4threads,1,2.294e+05,4.731e+06,4.96e+09,1000,0.6431
+DR-cov,cpu-4threads,1000,2.294e+05,4.731e+06,4.731e+09,1000,0.09382
+DR-cov,NVIDIA RTX PRO 5000 Blackwell,1,2.294e+05,4.731e+06,4.96e+09,1000,0.03428
+DR-cov,NVIDIA RTX PRO 5000 Blackwell,1000,2.294e+05,4.731e+06,4.731e+09,1000,0.01173
+LMMSE-fullcov (U d x U d Cholesky),cpu-4threads,1,9.664e+09,2.832e+07,9.692e+12,20,143.4
+LMMSE-fullcov (U d x U d Cholesky),cpu-4threads,1000,9.664e+09,2.832e+07,3.799e+10,1000,0.3491
+LMMSE-fullcov (U d x U d Cholesky),NVIDIA RTX PRO 5000 Blackwell,1,9.664e+09,2.832e+07,9.692e+12,100,14.1
+LMMSE-fullcov (U d x U d Cholesky),NVIDIA RTX PRO 5000 Blackwell,1000,9.664e+09,2.832e+07,3.799e+10,1000,0.14
+LMMSE-fullcov (symmetric reduction),cpu-4threads,1,3.026e+08,6.537e+06,3.091e+11,200,10.85
+LMMSE-fullcov (symmetric reduction),cpu-4threads,1000,3.026e+08,6.537e+06,6.84e+09,1000,0.2114
+LMMSE-fullcov (symmetric reduction),NVIDIA RTX PRO 5000 Blackwell,1,3.026e+08,6.537e+06,3.091e+11,1000,0.4293
+LMMSE-fullcov (symmetric reduction),NVIDIA RTX PRO 5000 Blackwell,1000,3.026e+08,6.537e+06,6.84e+09,1000,0.05623

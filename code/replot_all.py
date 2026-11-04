@@ -534,9 +534,24 @@ savefig(fig, "fig_e1_snr_r1.pdf")
 # ------------------------------- E6/E7 receiver comparison, matched side info
 rows = load("e7_learned_sideinfo.csv")
 bt = [float(r["beta"]) for r in rows]
+# Learned + side info is the network fed before the 1/h_u division
+# (E7b arm LearnedSI_prediv_base_3000, same E7 size, steps and seeds).
+# The E7 network fed after the division, the same front end as Learned,
+# stays as open markers so that the side-information comparison of the
+# text (Learned against the E7 network) is made on one front end.
+e7b = {round(float(r["beta"]), 3): float(r["ser_mean"])
+       for r in load("e7b_learned_robustness.csv")
+       if r["arm"] == "LearnedSI_prediv_base_3000"}
+for r in rows:
+    r["LearnedSIdiv_ser"] = r["LearnedSI_ser"]
+    r["LearnedSI_ser"] = str(e7b[round(float(r["beta"]), 3)])
 ORDER_SI = ["OMA", "NOMA", "LMMSE", "Learned", "LearnedSI", "BLMMSE", "DR"]
 fig, ax = new_fig()
-vals_si = [float(r[f"{n}_ser"]) for n in ORDER_SI for r in rows]
+vals_si = [float(r[f"{n}_ser"]) for n in ORDER_SI + ["LearnedSIdiv"]
+           for r in rows]
+c_si, _, mk_si = S["LearnedSI"]
+ax.semilogy(bt, [float(r["LearnedSIdiv_ser"]) for r in rows], ls="none",
+            marker=mk_si, mfc="none", mec=c_si, label="_nolegend_")
 for n in ORDER_SI:
     y = [float(r[f"{n}_ser"]) for r in rows]
     # DR-MMSE and the DR coincide almost everywhere, which is

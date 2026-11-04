@@ -1,0 +1,174 @@
+E20b notes (exp20b_fullcov_variants.py). Columns as in E20; ser +- is the binomial standard error over 16,000 user samples. Shrinkage intensities: Ledoit-Wolf and OAS from sklearn.covariance (assume_centered=True) on the N stacked U d vectors, applied as (1-delta) Sig + delta (1/d) I. shr<delta> rows use a fixed delta and the best of them is chosen in hindsight on the test tuples.
+[check] 32 E20 rows (4 SNRs x 8 receivers, every E20 receiver except DR-MMSE-true, which E20b does not rerun) reproduced, max abs diff 1.2e-08 over ('cos', 'nmse', 'ser', 'shared_top1', 'private_top1'); sweep N=200 vs the 20 dB rows of the variants run: max abs diff 0.0e+00
+[summary] snr=10 SER DR-cov-adapt=0.5984 fullcov raw=0.6316 LW=0.6182 best grid=0.6196 (delta=0.3) proj-adapt=0.6006 LW-proj-adapt=0.5925
+[summary] snr=16 SER DR-cov-adapt=0.0762 fullcov raw=0.1086 LW=0.0961 best grid=0.0976 (delta=0.6) proj-adapt=0.0794 LW-proj-adapt=0.0753
+[summary] snr=20 SER DR-cov-adapt=0.0072 fullcov raw=0.0154 LW=0.0103 best grid=0.0100 (delta=0.6) proj-adapt=0.0074 LW-proj-adapt=0.0068
+[summary] snr=30 SER DR-cov-adapt=0.0000 fullcov raw=0.0134 LW=0.0000 best grid=0.0000 (delta=0.6) proj-adapt=0.0000 LW-proj-adapt=0.0000
+[main] N=200 subspace error spec=0.5067 adapt=0.4711; Ledoit-Wolf delta=0.4264, OAS delta=0.4345 (stacked U d=3072, n=200)
+[main] PSD-clipped eigenvalues of the raw stacked prior: 560 of 3072; after LW: 0; proj-spec: 384; proj-adapt: 384
+[main] check of the symmetric prior against E20.fullcov_prior: max abs diff 3.69e-17
+[main] snr=10 structured vs E20 Ud x Ud Cholesky on 16 tuples: max abs diff 2.18e-15 (max |x_hat| 0.088)
+snr=10 LMMSE                        cos=0.1984 nmse=0.9579 ser=0.9999+-0.0001 shared_top1=0.9091 private_top1=0.1114
+snr=10 DR-true                      cos=0.3459 nmse=0.8758 ser=0.9077+-0.0023 shared_top1=0.9143 private_top1=0.0916
+snr=10 DR-cov-true                  cos=0.4319 nmse=0.8099 ser=0.5415+-0.0039 shared_top1=0.6683 private_top1=0.0426
+snr=10 DR-spec                      cos=0.3173 nmse=0.8957 ser=0.9574+-0.0016 shared_top1=0.8692 private_top1=0.0203
+snr=10 DR-cov-spec                  cos=0.4040 nmse=0.8397 ser=0.6603+-0.0037 shared_top1=0.6836 private_top1=0.0354
+snr=10 DR-adapt                     cos=0.3157 nmse=0.8969 ser=0.9672+-0.0014 shared_top1=0.8792 private_top1=0.0175
+snr=10 DR-cov-adapt                 cos=0.4194 nmse=0.8228 ser=0.5984+-0.0039 shared_top1=0.6784 private_top1=0.0377
+snr=10 LMMSE-fullcov                cos=0.4111 nmse=0.8306 ser=0.6316+-0.0038 shared_top1=0.6445 private_top1=0.0346
+snr=10 LMMSE-fullcov-LW             cos=0.4140 nmse=0.8264 ser=0.6182+-0.0038 shared_top1=0.6071 private_top1=0.0439
+snr=10 LMMSE-fullcov-OAS            cos=0.4139 nmse=0.8267 ser=0.6182+-0.0038 shared_top1=0.6058 private_top1=0.0443
+snr=10 LMMSE-fullcov-proj-spec      cos=0.4160 nmse=0.8261 ser=0.6096+-0.0039 shared_top1=0.6518 private_top1=0.0403
+snr=10 LMMSE-fullcov-proj-adapt     cos=0.4191 nmse=0.8227 ser=0.6006+-0.0039 shared_top1=0.6606 private_top1=0.0413
+snr=10 LMMSE-fullcov-proj-true      cos=0.4294 nmse=0.8124 ser=0.5528+-0.0039 shared_top1=0.6661 private_top1=0.0411
+snr=10 LMMSE-fullcov-LW-proj-adapt  cos=0.4203 nmse=0.8221 ser=0.5925+-0.0039 shared_top1=0.6201 private_top1=0.0510
+snr=10 LMMSE-fullcov-shr0.01        cos=0.4112 nmse=0.8302 ser=0.6307+-0.0038 shared_top1=0.6441 private_top1=0.0348
+snr=10 LMMSE-fullcov-shr0.03        cos=0.4114 nmse=0.8294 ser=0.6295+-0.0038 shared_top1=0.6421 private_top1=0.0354
+snr=10 LMMSE-fullcov-shr0.10        cos=0.4122 nmse=0.8270 ser=0.6261+-0.0038 shared_top1=0.6366 private_top1=0.0366
+snr=10 LMMSE-fullcov-shr0.30        cos=0.4138 nmse=0.8242 ser=0.6196+-0.0038 shared_top1=0.6203 private_top1=0.0406
+snr=10 LMMSE-fullcov-shr0.60        cos=0.4118 nmse=0.8376 ser=0.6274+-0.0038 shared_top1=0.5867 private_top1=0.0538
+[main] snr=16 structured vs E20 Ud x Ud Cholesky on 16 tuples: max abs diff 4.42e-15 (max |x_hat| 0.107)
+snr=16 LMMSE                        cos=0.3588 nmse=0.8645 ser=0.8431+-0.0029 shared_top1=0.9972 private_top1=0.2918
+snr=16 DR-true                      cos=0.5254 nmse=0.7198 ser=0.1432+-0.0028 shared_top1=0.9980 private_top1=0.4131
+snr=16 DR-cov-true                  cos=0.5907 nmse=0.6468 ser=0.0571+-0.0018 shared_top1=0.9772 private_top1=0.2376
+snr=16 DR-spec                      cos=0.4881 nmse=0.7582 ser=0.2825+-0.0036 shared_top1=0.9958 private_top1=0.1268
+snr=16 DR-cov-spec                  cos=0.5559 nmse=0.6902 ser=0.1055+-0.0024 shared_top1=0.9782 private_top1=0.2019
+snr=16 DR-adapt                     cos=0.4875 nmse=0.7587 ser=0.2750+-0.0035 shared_top1=0.9962 private_top1=0.1576
+snr=16 DR-cov-adapt                 cos=0.5739 nmse=0.6677 ser=0.0762+-0.0021 shared_top1=0.9779 private_top1=0.2111
+snr=16 LMMSE-fullcov                cos=0.5601 nmse=0.6840 ser=0.1086+-0.0025 shared_top1=0.9722 private_top1=0.1969
+snr=16 LMMSE-fullcov-LW             cos=0.5641 nmse=0.6789 ser=0.0961+-0.0023 shared_top1=0.9656 private_top1=0.2462
+snr=16 LMMSE-fullcov-OAS            cos=0.5640 nmse=0.6792 ser=0.0961+-0.0023 shared_top1=0.9654 private_top1=0.2479
+snr=16 LMMSE-fullcov-proj-spec      cos=0.5711 nmse=0.6706 ser=0.0880+-0.0022 shared_top1=0.9736 private_top1=0.2275
+snr=16 LMMSE-fullcov-proj-adapt     cos=0.5735 nmse=0.6679 ser=0.0794+-0.0021 shared_top1=0.9746 private_top1=0.2284
+snr=16 LMMSE-fullcov-proj-true      cos=0.5861 nmse=0.6527 ser=0.0607+-0.0019 shared_top1=0.9762 private_top1=0.2357
+snr=16 LMMSE-fullcov-LW-proj-adapt  cos=0.5732 nmse=0.6696 ser=0.0753+-0.0021 shared_top1=0.9680 private_top1=0.2713
+snr=16 LMMSE-fullcov-shr0.01        cos=0.5603 nmse=0.6835 ser=0.1082+-0.0025 shared_top1=0.9722 private_top1=0.1977
+snr=16 LMMSE-fullcov-shr0.03        cos=0.5609 nmse=0.6825 ser=0.1074+-0.0024 shared_top1=0.9722 private_top1=0.1998
+snr=16 LMMSE-fullcov-shr0.10        cos=0.5624 nmse=0.6797 ser=0.1039+-0.0024 shared_top1=0.9712 private_top1=0.2062
+snr=16 LMMSE-fullcov-shr0.30        cos=0.5647 nmse=0.6764 ser=0.0981+-0.0024 shared_top1=0.9689 private_top1=0.2307
+snr=16 LMMSE-fullcov-shr0.60        cos=0.5593 nmse=0.6908 ser=0.0976+-0.0023 shared_top1=0.9595 private_top1=0.2779
+[main] snr=20 structured vs E20 Ud x Ud Cholesky on 16 tuples: max abs diff 6.80e-15 (max |x_hat| 0.115)
+snr=20 LMMSE                        cos=0.4920 nmse=0.7489 ser=0.3359+-0.0037 shared_top1=0.9985 private_top1=0.3734
+snr=20 DR-true                      cos=0.6231 nmse=0.6093 ser=0.0116+-0.0008 shared_top1=0.9988 private_top1=0.6733
+snr=20 DR-cov-true                  cos=0.6849 nmse=0.5269 ser=0.0047+-0.0005 shared_top1=0.9978 private_top1=0.4782
+snr=20 DR-spec                      cos=0.5834 nmse=0.6572 ser=0.0330+-0.0014 shared_top1=0.9985 private_top1=0.3122
+snr=20 DR-cov-spec                  cos=0.6447 nmse=0.5815 ser=0.0120+-0.0009 shared_top1=0.9978 private_top1=0.4178
+snr=20 DR-adapt                     cos=0.5852 nmse=0.6549 ser=0.0278+-0.0013 shared_top1=0.9985 private_top1=0.3949
+snr=20 DR-cov-adapt                 cos=0.6648 nmse=0.5542 ser=0.0072+-0.0007 shared_top1=0.9977 private_top1=0.4402
+snr=20 LMMSE-fullcov                cos=0.6455 nmse=0.5801 ser=0.0154+-0.0010 shared_top1=0.9978 private_top1=0.4033
+snr=20 LMMSE-fullcov-LW             cos=0.6536 nmse=0.5690 ser=0.0103+-0.0008 shared_top1=0.9971 private_top1=0.4829
+snr=20 LMMSE-fullcov-OAS            cos=0.6535 nmse=0.5693 ser=0.0103+-0.0008 shared_top1=0.9969 private_top1=0.4851
+snr=20 LMMSE-fullcov-proj-spec      cos=0.6638 nmse=0.5552 ser=0.0083+-0.0007 shared_top1=0.9978 private_top1=0.4642
+snr=20 LMMSE-fullcov-proj-adapt     cos=0.6649 nmse=0.5539 ser=0.0074+-0.0007 shared_top1=0.9976 private_top1=0.4641
+snr=20 LMMSE-fullcov-proj-true      cos=0.6780 nmse=0.5366 ser=0.0051+-0.0006 shared_top1=0.9978 private_top1=0.4743
+snr=20 LMMSE-fullcov-LW-proj-adapt  cos=0.6645 nmse=0.5560 ser=0.0068+-0.0007 shared_top1=0.9968 private_top1=0.5209
+snr=20 LMMSE-fullcov-shr0.01        cos=0.6460 nmse=0.5793 ser=0.0152+-0.0010 shared_top1=0.9978 private_top1=0.4055
+snr=20 LMMSE-fullcov-shr0.03        cos=0.6471 nmse=0.5776 ser=0.0150+-0.0010 shared_top1=0.9978 private_top1=0.4088
+snr=20 LMMSE-fullcov-shr0.10        cos=0.6501 nmse=0.5728 ser=0.0137+-0.0009 shared_top1=0.9974 private_top1=0.4221
+snr=20 LMMSE-fullcov-shr0.30        cos=0.6544 nmse=0.5668 ser=0.0109+-0.0008 shared_top1=0.9971 private_top1=0.4573
+snr=20 LMMSE-fullcov-shr0.60        cos=0.6474 nmse=0.5810 ser=0.0100+-0.0008 shared_top1=0.9954 private_top1=0.5201
+[main] snr=30 structured vs E20 Ud x Ud Cholesky on 16 tuples: max abs diff 3.26e-14 (max |x_hat| 0.136)
+snr=30 LMMSE                        cos=0.7602 nmse=0.4137 ser=0.0006+-0.0002 shared_top1=0.9988 private_top1=0.6868
+snr=30 DR-true                      cos=0.7838 nmse=0.3823 ser=0.0000+-0.0000 shared_top1=0.9988 private_top1=0.9683
+snr=30 DR-cov-true                  cos=0.8541 nmse=0.2676 ser=0.0000+-0.0000 shared_top1=0.9988 private_top1=0.9068
+snr=30 DR-spec                      cos=0.7409 nmse=0.4466 ser=0.0000+-0.0000 shared_top1=0.9988 private_top1=0.7918
+snr=30 DR-cov-spec                  cos=0.7998 nmse=0.3563 ser=0.0000+-0.0000 shared_top1=0.9988 private_top1=0.8572
+snr=30 DR-adapt                     cos=0.7548 nmse=0.4255 ser=0.0000+-0.0000 shared_top1=0.9988 private_top1=0.8762
+snr=30 DR-cov-adapt                 cos=0.8263 nmse=0.3137 ser=0.0000+-0.0000 shared_top1=0.9988 private_top1=0.8847
+snr=30 LMMSE-fullcov                cos=0.7828 nmse=0.3945 ser=0.0134+-0.0009 shared_top1=0.9988 private_top1=0.7804
+snr=30 LMMSE-fullcov-LW             cos=0.8215 nmse=0.3199 ser=0.0000+-0.0000 shared_top1=0.9988 private_top1=0.8766
+snr=30 LMMSE-fullcov-OAS            cos=0.8213 nmse=0.3203 ser=0.0000+-0.0000 shared_top1=0.9988 private_top1=0.8777
+snr=30 LMMSE-fullcov-proj-spec      cos=0.8336 nmse=0.3015 ser=0.0000+-0.0000 shared_top1=0.9988 private_top1=0.8952
+snr=30 LMMSE-fullcov-proj-adapt     cos=0.8313 nmse=0.3052 ser=0.0000+-0.0000 shared_top1=0.9988 private_top1=0.8969
+snr=30 LMMSE-fullcov-proj-true      cos=0.8422 nmse=0.2879 ser=0.0000+-0.0000 shared_top1=0.9988 private_top1=0.9059
+snr=30 LMMSE-fullcov-LW-proj-adapt  cos=0.8325 nmse=0.3040 ser=0.0000+-0.0000 shared_top1=0.9988 private_top1=0.9166
+snr=30 LMMSE-fullcov-shr0.01        cos=0.7866 nmse=0.3868 ser=0.0123+-0.0009 shared_top1=0.9988 private_top1=0.7846
+snr=30 LMMSE-fullcov-shr0.03        cos=0.7931 nmse=0.3738 ser=0.0092+-0.0008 shared_top1=0.9988 private_top1=0.7916
+snr=30 LMMSE-fullcov-shr0.10        cos=0.8083 nmse=0.3440 ser=0.0037+-0.0005 shared_top1=0.9988 private_top1=0.8162
+snr=30 LMMSE-fullcov-shr0.30        cos=0.8223 nmse=0.3179 ser=0.0004+-0.0002 shared_top1=0.9988 private_top1=0.8590
+snr=30 LMMSE-fullcov-shr0.60        cos=0.8140 nmse=0.3340 ser=0.0000+-0.0000 shared_top1=0.9988 private_top1=0.8976
+[sweep] N=  any LMMSE                        cos=0.4920 nmse=0.7489 ser=0.3359+-0.0037 shared_top1=0.9985 private_top1=0.3734
+[sweep] N=100 subspace error spec=0.6655 adapt=0.6425 LW delta=0.5814 OAS delta=0.5958
+[sweep] N=  100 DR-spec                      cos=0.5341 nmse=0.7128 ser=0.1218+-0.0026 shared_top1=0.9985 private_top1=0.3030
+[sweep] N=  100 DR-adapt                     cos=0.5377 nmse=0.7086 ser=0.1011+-0.0024 shared_top1=0.9985 private_top1=0.3771
+[sweep] N=  100 DR-cov-spec                  cos=0.5988 nmse=0.6397 ser=0.0401+-0.0016 shared_top1=0.9961 private_top1=0.3984
+[sweep] N=  100 DR-cov-adapt                 cos=0.6187 nmse=0.6143 ser=0.0249+-0.0012 shared_top1=0.9960 private_top1=0.4224
+[sweep] N=  100 DR-cov-true                  cos=0.6478 nmse=0.5763 ser=0.0133+-0.0009 shared_top1=0.9968 private_top1=0.4693
+[sweep] N=  100 LMMSE-fullcov                cos=0.5814 nmse=0.6637 ser=0.1035+-0.0024 shared_top1=0.9930 private_top1=0.3512
+[sweep] N=  100 LMMSE-fullcov-LW             cos=0.6127 nmse=0.6203 ser=0.0432+-0.0016 shared_top1=0.9927 private_top1=0.4861
+[sweep] N=  100 LMMSE-fullcov-OAS            cos=0.6125 nmse=0.6208 ser=0.0427+-0.0016 shared_top1=0.9926 private_top1=0.4911
+[sweep] N=  100 LMMSE-fullcov-proj-spec      cos=0.6166 nmse=0.6164 ser=0.0307+-0.0014 shared_top1=0.9950 private_top1=0.4372
+[sweep] N=  100 LMMSE-fullcov-proj-adapt     cos=0.6178 nmse=0.6155 ser=0.0276+-0.0013 shared_top1=0.9953 private_top1=0.4432
+[sweep] N=  100 LMMSE-fullcov-proj-true      cos=0.6362 nmse=0.5923 ser=0.0169+-0.0010 shared_top1=0.9959 private_top1=0.4620
+[sweep] N=  100 LMMSE-fullcov-LW-proj-adapt  cos=0.6291 nmse=0.6022 ser=0.0205+-0.0011 shared_top1=0.9936 private_top1=0.5334
+[sweep] N=200 subspace error spec=0.5067 adapt=0.4711 LW delta=0.4264 OAS delta=0.4345
+[sweep] N=  200 DR-spec                      cos=0.5834 nmse=0.6572 ser=0.0330+-0.0014 shared_top1=0.9985 private_top1=0.3122
+[sweep] N=  200 DR-adapt                     cos=0.5852 nmse=0.6549 ser=0.0278+-0.0013 shared_top1=0.9985 private_top1=0.3949
+[sweep] N=  200 DR-cov-spec                  cos=0.6447 nmse=0.5815 ser=0.0120+-0.0009 shared_top1=0.9978 private_top1=0.4178
+[sweep] N=  200 DR-cov-adapt                 cos=0.6648 nmse=0.5542 ser=0.0072+-0.0007 shared_top1=0.9977 private_top1=0.4402
+[sweep] N=  200 DR-cov-true                  cos=0.6849 nmse=0.5269 ser=0.0047+-0.0005 shared_top1=0.9978 private_top1=0.4782
+[sweep] N=  200 LMMSE-fullcov                cos=0.6455 nmse=0.5801 ser=0.0154+-0.0010 shared_top1=0.9978 private_top1=0.4033
+[sweep] N=  200 LMMSE-fullcov-LW             cos=0.6536 nmse=0.5690 ser=0.0103+-0.0008 shared_top1=0.9971 private_top1=0.4829
+[sweep] N=  200 LMMSE-fullcov-OAS            cos=0.6535 nmse=0.5693 ser=0.0103+-0.0008 shared_top1=0.9969 private_top1=0.4851
+[sweep] N=  200 LMMSE-fullcov-proj-spec      cos=0.6638 nmse=0.5552 ser=0.0083+-0.0007 shared_top1=0.9978 private_top1=0.4642
+[sweep] N=  200 LMMSE-fullcov-proj-adapt     cos=0.6649 nmse=0.5539 ser=0.0074+-0.0007 shared_top1=0.9976 private_top1=0.4641
+[sweep] N=  200 LMMSE-fullcov-proj-true      cos=0.6780 nmse=0.5366 ser=0.0051+-0.0006 shared_top1=0.9978 private_top1=0.4743
+[sweep] N=  200 LMMSE-fullcov-LW-proj-adapt  cos=0.6645 nmse=0.5560 ser=0.0068+-0.0007 shared_top1=0.9968 private_top1=0.5209
+[sweep] N=400 subspace error spec=0.3854 adapt=0.3382 LW delta=0.2733 OAS delta=0.2778
+[sweep] N=  400 DR-spec                      cos=0.6048 nmse=0.6317 ser=0.0182+-0.0011 shared_top1=0.9988 private_top1=0.3059
+[sweep] N=  400 DR-adapt                     cos=0.6051 nmse=0.6312 ser=0.0168+-0.0010 shared_top1=0.9986 private_top1=0.4228
+[sweep] N=  400 DR-cov-spec                  cos=0.6671 nmse=0.5517 ser=0.0056+-0.0006 shared_top1=0.9980 private_top1=0.4382
+[sweep] N=  400 DR-cov-adapt                 cos=0.6870 nmse=0.5242 ser=0.0032+-0.0004 shared_top1=0.9980 private_top1=0.4599
+[sweep] N=  400 DR-cov-true                  cos=0.6986 nmse=0.5081 ser=0.0026+-0.0004 shared_top1=0.9978 private_top1=0.4832
+[sweep] N=  400 LMMSE-fullcov                cos=0.6796 nmse=0.5339 ser=0.0042+-0.0005 shared_top1=0.9980 private_top1=0.4476
+[sweep] N=  400 LMMSE-fullcov-LW             cos=0.6805 nmse=0.5331 ser=0.0040+-0.0005 shared_top1=0.9979 private_top1=0.4814
+[sweep] N=  400 LMMSE-fullcov-OAS            cos=0.6805 nmse=0.5332 ser=0.0040+-0.0005 shared_top1=0.9979 private_top1=0.4821
+[sweep] N=  400 LMMSE-fullcov-proj-spec      cos=0.6863 nmse=0.5248 ser=0.0037+-0.0005 shared_top1=0.9978 private_top1=0.4744
+[sweep] N=  400 LMMSE-fullcov-proj-adapt     cos=0.6871 nmse=0.5239 ser=0.0036+-0.0005 shared_top1=0.9979 private_top1=0.4769
+[sweep] N=  400 LMMSE-fullcov-proj-true      cos=0.6948 nmse=0.5136 ser=0.0027+-0.0004 shared_top1=0.9980 private_top1=0.4805
+[sweep] N=  400 LMMSE-fullcov-LW-proj-adapt  cos=0.6858 nmse=0.5265 ser=0.0035+-0.0005 shared_top1=0.9978 private_top1=0.5072
+[sweep] N=800 subspace error spec=0.2798 adapt=0.2297 LW delta=0.1574 OAS delta=0.1598
+[sweep] N=  800 DR-spec                      cos=0.6148 nmse=0.6194 ser=0.0136+-0.0009 shared_top1=0.9988 private_top1=0.3397
+[sweep] N=  800 DR-adapt                     cos=0.6147 nmse=0.6196 ser=0.0139+-0.0009 shared_top1=0.9985 private_top1=0.4723
+[sweep] N=  800 DR-cov-spec                  cos=0.6849 nmse=0.5273 ser=0.0029+-0.0004 shared_top1=0.9981 private_top1=0.4693
+[sweep] N=  800 DR-cov-adapt                 cos=0.6985 nmse=0.5083 ser=0.0021+-0.0004 shared_top1=0.9980 private_top1=0.4798
+[sweep] N=  800 DR-cov-true                  cos=0.7046 nmse=0.4998 ser=0.0022+-0.0004 shared_top1=0.9980 private_top1=0.4928
+[sweep] N=  800 LMMSE-fullcov                cos=0.6955 nmse=0.5122 ser=0.0024+-0.0004 shared_top1=0.9980 private_top1=0.4726
+[sweep] N=  800 LMMSE-fullcov-LW             cos=0.6956 nmse=0.5124 ser=0.0023+-0.0004 shared_top1=0.9981 private_top1=0.4901
+[sweep] N=  800 LMMSE-fullcov-OAS            cos=0.6955 nmse=0.5125 ser=0.0023+-0.0004 shared_top1=0.9981 private_top1=0.4903
+[sweep] N=  800 LMMSE-fullcov-proj-spec      cos=0.6985 nmse=0.5082 ser=0.0024+-0.0004 shared_top1=0.9980 private_top1=0.4874
+[sweep] N=  800 LMMSE-fullcov-proj-adapt     cos=0.6983 nmse=0.5085 ser=0.0022+-0.0004 shared_top1=0.9981 private_top1=0.4879
+[sweep] N=  800 LMMSE-fullcov-proj-true      cos=0.7025 nmse=0.5028 ser=0.0021+-0.0004 shared_top1=0.9981 private_top1=0.4911
+[sweep] N=  800 LMMSE-fullcov-LW-proj-adapt  cos=0.6978 nmse=0.5096 ser=0.0023+-0.0004 shared_top1=0.9981 private_top1=0.5016
+[sweep] N=1600 subspace error spec=0.2005 adapt=0.1546 LW delta=0.0844 OAS delta=0.0856
+[sweep] N= 1600 DR-spec                      cos=0.6193 nmse=0.6139 ser=0.0116+-0.0008 shared_top1=0.9988 private_top1=0.3929
+[sweep] N= 1600 DR-adapt                     cos=0.6188 nmse=0.6146 ser=0.0124+-0.0009 shared_top1=0.9988 private_top1=0.5253
+[sweep] N= 1600 DR-cov-spec                  cos=0.6952 nmse=0.5131 ser=0.0019+-0.0003 shared_top1=0.9978 private_top1=0.4856
+[sweep] N= 1600 DR-cov-adapt                 cos=0.7036 nmse=0.5012 ser=0.0018+-0.0003 shared_top1=0.9978 private_top1=0.4860
+[sweep] N= 1600 DR-cov-true                  cos=0.7069 nmse=0.4965 ser=0.0018+-0.0003 shared_top1=0.9980 private_top1=0.4920
+[sweep] N= 1600 LMMSE-fullcov                cos=0.7026 nmse=0.5025 ser=0.0021+-0.0004 shared_top1=0.9980 private_top1=0.4809
+[sweep] N= 1600 LMMSE-fullcov-LW             cos=0.7026 nmse=0.5025 ser=0.0021+-0.0004 shared_top1=0.9978 private_top1=0.4918
+[sweep] N= 1600 LMMSE-fullcov-OAS            cos=0.7026 nmse=0.5025 ser=0.0021+-0.0004 shared_top1=0.9978 private_top1=0.4918
+[sweep] N= 1600 LMMSE-fullcov-proj-spec      cos=0.7040 nmse=0.5006 ser=0.0021+-0.0004 shared_top1=0.9980 private_top1=0.4895
+[sweep] N= 1600 LMMSE-fullcov-proj-adapt     cos=0.7033 nmse=0.5016 ser=0.0020+-0.0004 shared_top1=0.9979 private_top1=0.4885
+[sweep] N= 1600 LMMSE-fullcov-proj-true      cos=0.7058 nmse=0.4981 ser=0.0019+-0.0003 shared_top1=0.9980 private_top1=0.4909
+[sweep] N= 1600 LMMSE-fullcov-LW-proj-adapt  cos=0.7032 nmse=0.5019 ser=0.0020+-0.0004 shared_top1=0.9978 private_top1=0.4964
+[cost] torch port check DR: max abs diff 1.04e-16 on 50 tuples
+[cost] torch port check DR-cov: max abs diff 1.87e-16 on 50 tuples
+[cost] torch port check LMMSE-fullcov sym: max abs diff 6.36e-15 on 4 tuples
+[cost] DR                                   cpu-4threads                   L=   1 mults/block=224 mults/sample=9e+05 mults/1000=9e+08 s/1000=0.02395 (timed 1000)
+[cost] DR                                   cpu-4threads                   L=1000 mults/block=224 mults/sample=9e+05 mults/1000=9e+08 s/1000=0.04401 (timed 1000)
+[cost] DR                                   NVIDIA RTX PRO 5000 Blackwell  L=   1 mults/block=224 mults/sample=9e+05 mults/1000=9e+08 s/1000=0.007021 (timed 1000)
+[cost] DR                                   NVIDIA RTX PRO 5000 Blackwell  L=1000 mults/block=224 mults/sample=9e+05 mults/1000=9e+08 s/1000=0.003932 (timed 1000)
+[cost] DR-cov                               cpu-4threads                   L=   1 mults/block=2.29e+05 mults/sample=4.73e+06 mults/1000=4.96e+09 s/1000=0.6431 (timed 1000)
+[cost] DR-cov                               cpu-4threads                   L=1000 mults/block=2.29e+05 mults/sample=4.73e+06 mults/1000=4.73e+09 s/1000=0.09382 (timed 1000)
+[cost] DR-cov                               NVIDIA RTX PRO 5000 Blackwell  L=   1 mults/block=2.29e+05 mults/sample=4.73e+06 mults/1000=4.96e+09 s/1000=0.03428 (timed 1000)
+[cost] DR-cov                               NVIDIA RTX PRO 5000 Blackwell  L=1000 mults/block=2.29e+05 mults/sample=4.73e+06 mults/1000=4.73e+09 s/1000=0.01173 (timed 1000)
+[cost] LMMSE-fullcov (U d x U d Cholesky)   cpu-4threads                   L=   1 mults/block=9.66e+09 mults/sample=2.83e+07 mults/1000=9.69e+12 s/1000=143.4 (timed 20)
+[cost] LMMSE-fullcov (U d x U d Cholesky)   cpu-4threads                   L=1000 mults/block=9.66e+09 mults/sample=2.83e+07 mults/1000=3.8e+10 s/1000=0.3491 (timed 1000)
+[cost] LMMSE-fullcov (U d x U d Cholesky)   NVIDIA RTX PRO 5000 Blackwell  L=   1 mults/block=9.66e+09 mults/sample=2.83e+07 mults/1000=9.69e+12 s/1000=14.1 (timed 100)
+[cost] LMMSE-fullcov (U d x U d Cholesky)   NVIDIA RTX PRO 5000 Blackwell  L=1000 mults/block=9.66e+09 mults/sample=2.83e+07 mults/1000=3.8e+10 s/1000=0.14 (timed 1000)
+[cost] LMMSE-fullcov (symmetric reduction)  cpu-4threads                   L=   1 mults/block=3.03e+08 mults/sample=6.54e+06 mults/1000=3.09e+11 s/1000=10.85 (timed 200)
+[cost] LMMSE-fullcov (symmetric reduction)  cpu-4threads                   L=1000 mults/block=3.03e+08 mults/sample=6.54e+06 mults/1000=6.84e+09 s/1000=0.2114 (timed 1000)
+[cost] LMMSE-fullcov (symmetric reduction)  NVIDIA RTX PRO 5000 Blackwell  L=   1 mults/block=3.03e+08 mults/sample=6.54e+06 mults/1000=3.09e+11 s/1000=0.4293 (timed 1000)
+[cost] LMMSE-fullcov (symmetric reduction)  NVIDIA RTX PRO 5000 Blackwell  L=1000 mults/block=3.03e+08 mults/sample=6.54e+06 mults/1000=6.84e+09 s/1000=0.05623 (timed 1000)

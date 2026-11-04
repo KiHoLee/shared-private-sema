@@ -1,0 +1,166 @@
+E19b: causal estimates of the time average (code/exp19b_causal_average.py)
+gain[v] rows of the CSV: good_mean = DR/LMMSE ratio of mean correct embeddings per slot, good_se = SE of the paired difference over the LMMSE mean, ser_mean = DR minus LMMSE SER.
+
+Reproduction check: the five E19 methods at n_p=64 match data/e19_static_masks.csv on all 6 traces, max |diff| = 4.6e-06 (CSV rounded to 5 decimals).
+Paired comparisons use the same fading, noise and content draws for every method of a run.
+
+Key lines (DR/LMMSE = ratio of mean correct embeddings per slot, both fixed designs using the same estimate)
+  traversal       warm-up             DR/LMMSE from 1.032 to 1.084
+  traversal       offline calibration DR/LMMSE from 1.076 to 1.157
+  traversal       biased              DR/LMMSE from 0.905 to 1.106
+  traversal       oracle              DR/LMMSE from 1.158 to 1.158
+  traversal       DR-tracked (16% pilots) minus DR[cal200-common] correct/slot from -0.0274 to -0.0274
+  traversal       |DR-tracked minus DR-tracked-cal| correct/slot at most 0.0016
+  random waypoint warm-up             DR/LMMSE from 1.088 to 1.175
+  random waypoint offline calibration DR/LMMSE from 1.120 to 1.153
+  random waypoint biased              DR/LMMSE from 1.003 to 1.281
+  random waypoint oracle              DR/LMMSE from 1.136 to 1.167
+  random waypoint DR-tracked (16% pilots) minus DR[cal200-common] correct/slot from -0.1222 to -0.0830
+  random waypoint |DR-tracked minus DR-tracked-cal| correct/slot at most 0.0003
+  traversal       best tested constant per receiver: DR oracle 0.5259, LMMSE bias+0.2 0.4809, ratio 1.094
+  speed_0.5       best tested constant per receiver: DR oracle 0.7466, LMMSE bias+0.2 0.6752, ratio 1.106
+  speed_1.0       best tested constant per receiver: DR bias-0.1 0.8097, LMMSE bias+0.2 0.7492, ratio 1.081
+  speed_2.0       best tested constant per receiver: DR bias-0.1 0.7710, LMMSE bias+0.2 0.7063, ratio 1.092
+  speed_4.0       best tested constant per receiver: DR bias-0.1 0.7796, LMMSE bias+0.2 0.7134, ratio 1.093
+  speed_8.0       best tested constant per receiver: DR bias-0.1 0.7938, LMMSE bias+0.2 0.7301, ratio 1.087
+
+== traversal (n=5, mean a=0.366, a_bar per user averaged over runs 0.358 0.367 0.369 0.369)
+  oracle              pilots= 0.00% SER DR=0.4741+-0.0003 LMMSE=0.5457+-0.0006 | correct/slot DR=0.5259 LMMSE=0.4543 DR/LMMSE=1.158 (diff 0.0716+-0.0004) DR-oracleDR=+0.0000+-0.0000
+  warm10-np16         pilots= 0.67% SER DR=0.5389+-0.0190 LMMSE=0.5691+-0.0061 | correct/slot DR=0.4580 LMMSE=0.4280 DR/LMMSE=1.070 (diff 0.0300+-0.0129) DR-oracleDR=-0.0679+-0.0187 a(frozen)=0.271 0.266 0.284 0.361
+  warm10-np64         pilots= 2.67% SER DR=0.5675+-0.0115 LMMSE=0.5809+-0.0028 | correct/slot DR=0.4210 LMMSE=0.4079 DR/LMMSE=1.032 (diff 0.0131+-0.0085) DR-oracleDR=-0.1049+-0.0113 a(frozen)=0.188 0.232 0.249 0.295
+  warm20-np16         pilots= 1.33% SER DR=0.5294+-0.0231 LMMSE=0.5657+-0.0080 | correct/slot DR=0.4644 LMMSE=0.4285 DR/LMMSE=1.084 (diff 0.0358+-0.0151) DR-oracleDR=-0.0615+-0.0226 a(frozen)=0.258 0.252 0.311 0.388
+  warm20-np64         pilots= 5.33% SER DR=0.5570+-0.0096 LMMSE=0.5777+-0.0023 | correct/slot DR=0.4194 LMMSE=0.3998 DR/LMMSE=1.049 (diff 0.0196+-0.0069) DR-oracleDR=-0.1065+-0.0093 a(frozen)=0.221 0.247 0.249 0.299
+  cal20-common        pilots= 0.00% SER DR=0.4803+-0.0033 LMMSE=0.5259+-0.0026 | correct/slot DR=0.5197 LMMSE=0.4741 DR/LMMSE=1.096 (diff 0.0456+-0.0058) DR-oracleDR=-0.0062+-0.0031 a=0.475 0.475 0.475 0.475
+  cal20-peruser       pilots= 0.00% SER DR=0.4894+-0.0038 LMMSE=0.5254+-0.0025 | correct/slot DR=0.5106 LMMSE=0.4746 DR/LMMSE=1.076 (diff 0.0360+-0.0054) DR-oracleDR=-0.0153+-0.0037 a=0.484 0.516 0.476 0.463
+  cal200-common       pilots= 0.00% SER DR=0.4773+-0.0012 LMMSE=0.5253+-0.0006 | correct/slot DR=0.5227 LMMSE=0.4747 DR/LMMSE=1.101 (diff 0.0481+-0.0015) DR-oracleDR=-0.0032+-0.0011 a=0.471 0.471 0.471 0.471
+  cal200-peruser      pilots= 0.00% SER DR=0.4783+-0.0017 LMMSE=0.5250+-0.0003 | correct/slot DR=0.5217 LMMSE=0.4750 DR/LMMSE=1.098 (diff 0.0467+-0.0020) DR-oracleDR=-0.0042+-0.0015 a=0.475 0.475 0.479 0.467
+  cal200-common-mean  pilots= 0.00% SER DR=0.4746+-0.0016 LMMSE=0.5459+-0.0016 | correct/slot DR=0.5254 LMMSE=0.4541 DR/LMMSE=1.157 (diff 0.0713+-0.0004) DR-oracleDR=-0.0005+-0.0018 a=0.366 0.366 0.366 0.366
+  bias-0.2            pilots= 0.00% SER DR=0.6342+-0.0003 LMMSE=0.5959+-0.0004 | correct/slot DR=0.3658 LMMSE=0.4041 DR/LMMSE=0.905 (diff -0.0383+-0.0003) DR-oracleDR=-0.1601+-0.0002 a=0.158 0.167 0.169 0.169
+  bias-0.1            pilots= 0.00% SER DR=0.5366+-0.0004 LMMSE=0.5732+-0.0005 | correct/slot DR=0.4634 LMMSE=0.4268 DR/LMMSE=1.086 (diff 0.0366+-0.0002) DR-oracleDR=-0.0625+-0.0002 a=0.258 0.267 0.269 0.269
+  bias+0.1            pilots= 0.00% SER DR=0.4759+-0.0002 LMMSE=0.5260+-0.0006 | correct/slot DR=0.5241 LMMSE=0.4740 DR/LMMSE=1.106 (diff 0.0501+-0.0004) DR-oracleDR=-0.0018+-0.0001 a=0.458 0.467 0.469 0.469
+  bias+0.2            pilots= 0.00% SER DR=0.5093+-0.0003 LMMSE=0.5191+-0.0005 | correct/slot DR=0.4907 LMMSE=0.4809 DR/LMMSE=1.020 (diff 0.0098+-0.0003) DR-oracleDR=-0.0352+-0.0001 a=0.558 0.567 0.569 0.569
+  DR-genie            pilots= 0.00% SER=0.3702+-0.0002 correct/slot=0.6298+-0.0002
+  DR-tracked          pilots=16.00% SER=0.4103+-0.0039 correct/slot=0.4953+-0.0033
+  DR-tracked-cal      pilots=16.00% SER=0.4122+-0.0039 correct/slot=0.4938+-0.0033
+  DR-static-rx        pilots= 0.00% SER=0.4324+-0.0002 correct/slot=0.5676+-0.0002
+  paired SER gap to DR-genie: tracked 0.0402+-0.0040, DR-static(oracle) 0.1039+-0.0001, DR[cal200-common] 0.1071+-0.0012; correct/slot tracked minus DR[cal200-common] -0.0274+-0.0044
+
+== speed_0.5 (n=8, mean a=0.583, a_bar per user averaged over runs 0.652 0.582 0.574 0.526)
+  oracle              pilots= 0.00% SER DR=0.2534+-0.0230 LMMSE=0.3603+-0.0233 | correct/slot DR=0.7466 LMMSE=0.6397 DR/LMMSE=1.167 (diff 0.1069+-0.0071) DR-oracleDR=+0.0000+-0.0000
+  warm10-np16         pilots= 0.67% SER DR=0.3423+-0.0411 LMMSE=0.3956+-0.0281 | correct/slot DR=0.6534 LMMSE=0.6004 DR/LMMSE=1.088 (diff 0.0530+-0.0229) DR-oracleDR=-0.0933+-0.0277 a(frozen)=0.553 0.555 0.532 0.612
+  warm10-np64         pilots= 2.67% SER DR=0.3239+-0.0318 LMMSE=0.3958+-0.0290 | correct/slot DR=0.6580 LMMSE=0.5881 DR/LMMSE=1.119 (diff 0.0700+-0.0167) DR-oracleDR=-0.0886+-0.0120 a(frozen)=0.480 0.606 0.540 0.569
+  warm20-np16         pilots= 1.33% SER DR=0.3109+-0.0311 LMMSE=0.3823+-0.0270 | correct/slot DR=0.6799 LMMSE=0.6095 DR/LMMSE=1.115 (diff 0.0704+-0.0189) DR-oracleDR=-0.0668+-0.0147 a(frozen)=0.545 0.597 0.551 0.627
+  warm20-np64         pilots= 5.33% SER DR=0.3107+-0.0298 LMMSE=0.3856+-0.0274 | correct/slot DR=0.6525 LMMSE=0.5816 DR/LMMSE=1.122 (diff 0.0709+-0.0192) DR-oracleDR=-0.0941+-0.0112 a(frozen)=0.530 0.601 0.564 0.578
+  cal20-common        pilots= 0.00% SER DR=0.2736+-0.0293 LMMSE=0.3548+-0.0195 | correct/slot DR=0.7264 LMMSE=0.6452 DR/LMMSE=1.126 (diff 0.0812+-0.0129) DR-oracleDR=-0.0203+-0.0075 a=0.634 0.634 0.634 0.634
+  cal20-peruser       pilots= 0.00% SER DR=0.2743+-0.0268 LMMSE=0.3528+-0.0209 | correct/slot DR=0.7257 LMMSE=0.6472 DR/LMMSE=1.121 (diff 0.0785+-0.0104) DR-oracleDR=-0.0210+-0.0051 a=0.648 0.600 0.649 0.659
+  cal200-common       pilots= 0.00% SER DR=0.2733+-0.0273 LMMSE=0.3515+-0.0205 | correct/slot DR=0.7267 LMMSE=0.6485 DR/LMMSE=1.120 (diff 0.0781+-0.0101) DR-oracleDR=-0.0200+-0.0053 a=0.643 0.643 0.643 0.643
+  cal200-peruser      pilots= 0.00% SER DR=0.2741+-0.0278 LMMSE=0.3517+-0.0207 | correct/slot DR=0.7259 LMMSE=0.6483 DR/LMMSE=1.120 (diff 0.0777+-0.0102) DR-oracleDR=-0.0207+-0.0058 a=0.646 0.643 0.645 0.638
+  cal200-common-mean  pilots= 0.00% SER DR=0.2663+-0.0265 LMMSE=0.3597+-0.0195 | correct/slot DR=0.7337 LMMSE=0.6403 DR/LMMSE=1.146 (diff 0.0934+-0.0097) DR-oracleDR=-0.0129+-0.0049 a=0.607 0.607 0.607 0.607
+  bias-0.2            pilots= 0.00% SER DR=0.2992+-0.0295 LMMSE=0.4470+-0.0218 | correct/slot DR=0.7008 LMMSE=0.5530 DR/LMMSE=1.267 (diff 0.1477+-0.0091) DR-oracleDR=-0.0458+-0.0085 a=0.452 0.382 0.374 0.326
+  bias-0.1            pilots= 0.00% SER DR=0.2568+-0.0245 LMMSE=0.3947+-0.0231 | correct/slot DR=0.7432 LMMSE=0.6053 DR/LMMSE=1.228 (diff 0.1379+-0.0057) DR-oracleDR=-0.0034+-0.0031 a=0.552 0.482 0.474 0.426
+  bias+0.1            pilots= 0.00% SER DR=0.2712+-0.0234 LMMSE=0.3390+-0.0238 | correct/slot DR=0.7288 LMMSE=0.6610 DR/LMMSE=1.103 (diff 0.0678+-0.0089) DR-oracleDR=-0.0178+-0.0024 a=0.752 0.682 0.674 0.626
+  bias+0.2            pilots= 0.00% SER DR=0.3079+-0.0253 LMMSE=0.3248+-0.0245 | correct/slot DR=0.6921 LMMSE=0.6752 DR/LMMSE=1.025 (diff 0.0169+-0.0107) DR-oracleDR=-0.0545+-0.0051 a=0.844 0.782 0.774 0.726
+  DR-genie            pilots= 0.00% SER=0.2198+-0.0225 correct/slot=0.7802+-0.0225
+  DR-tracked          pilots=16.00% SER=0.2337+-0.0234 correct/slot=0.6437+-0.0197
+  DR-tracked-cal      pilots=16.00% SER=0.2339+-0.0235 correct/slot=0.6435+-0.0198
+  DR-static-rx        pilots= 0.00% SER=0.2489+-0.0224 correct/slot=0.7511+-0.0224
+  paired SER gap to DR-genie: tracked 0.0139+-0.0015, DR-static(oracle) 0.0336+-0.0026, DR[cal200-common] 0.0536+-0.0057; correct/slot tracked minus DR[cal200-common] -0.0830+-0.0082
+
+== speed_1.0 (n=8, mean a=0.633, a_bar per user averaged over runs 0.636 0.642 0.645 0.610)
+  oracle              pilots= 0.00% SER DR=0.1933+-0.0198 LMMSE=0.2896+-0.0220 | correct/slot DR=0.8067 LMMSE=0.7104 DR/LMMSE=1.136 (diff 0.0963+-0.0033) DR-oracleDR=+0.0000+-0.0000
+  warm10-np16         pilots= 0.67% SER DR=0.2351+-0.0296 LMMSE=0.3397+-0.0293 | correct/slot DR=0.7598 LMMSE=0.6559 DR/LMMSE=1.158 (diff 0.1039+-0.0104) DR-oracleDR=-0.0469+-0.0189 a(frozen)=0.470 0.604 0.620 0.465
+  warm10-np64         pilots= 2.67% SER DR=0.2422+-0.0309 LMMSE=0.3480+-0.0329 | correct/slot DR=0.7376 LMMSE=0.6346 DR/LMMSE=1.162 (diff 0.1029+-0.0091) DR-oracleDR=-0.0691+-0.0127 a(frozen)=0.480 0.581 0.585 0.452
+  warm20-np16         pilots= 1.33% SER DR=0.2139+-0.0228 LMMSE=0.3183+-0.0280 | correct/slot DR=0.7757 LMMSE=0.6726 DR/LMMSE=1.153 (diff 0.1030+-0.0088) DR-oracleDR=-0.0310+-0.0085 a(frozen)=0.515 0.626 0.633 0.543
+  warm20-np64         pilots= 5.33% SER DR=0.2204+-0.0259 LMMSE=0.3289+-0.0320 | correct/slot DR=0.7380 LMMSE=0.6353 DR/LMMSE=1.162 (diff 0.1027+-0.0088) DR-oracleDR=-0.0687+-0.0075 a(frozen)=0.518 0.600 0.612 0.507
+  cal20-common        pilots= 0.00% SER DR=0.1995+-0.0216 LMMSE=0.2896+-0.0202 | correct/slot DR=0.8005 LMMSE=0.7104 DR/LMMSE=1.127 (diff 0.0901+-0.0055) DR-oracleDR=-0.0063+-0.0025 a=0.642 0.642 0.642 0.642
+  cal20-peruser       pilots= 0.00% SER DR=0.2000+-0.0216 LMMSE=0.2880+-0.0187 | correct/slot DR=0.8000 LMMSE=0.7120 DR/LMMSE=1.124 (diff 0.0880+-0.0047) DR-oracleDR=-0.0067+-0.0025 a=0.640 0.624 0.679 0.645
+  cal200-common       pilots= 0.00% SER DR=0.1998+-0.0219 LMMSE=0.2891+-0.0189 | correct/slot DR=0.8002 LMMSE=0.7109 DR/LMMSE=1.126 (diff 0.0893+-0.0038) DR-oracleDR=-0.0065+-0.0023 a=0.643 0.643 0.643 0.643
+  cal200-peruser      pilots= 0.00% SER DR=0.2004+-0.0221 LMMSE=0.2904+-0.0187 | correct/slot DR=0.7996 LMMSE=0.7096 DR/LMMSE=1.127 (diff 0.0900+-0.0047) DR-oracleDR=-0.0071+-0.0028 a=0.643 0.634 0.645 0.638
+  cal200-common-mean  pilots= 0.00% SER DR=0.1960+-0.0215 LMMSE=0.2975+-0.0183 | correct/slot DR=0.8040 LMMSE=0.7025 DR/LMMSE=1.144 (diff 0.1015+-0.0045) DR-oracleDR=-0.0027+-0.0021 a=0.613 0.613 0.613 0.613
+  bias-0.2            pilots= 0.00% SER DR=0.2163+-0.0250 LMMSE=0.3782+-0.0236 | correct/slot DR=0.7837 LMMSE=0.6218 DR/LMMSE=1.260 (diff 0.1618+-0.0044) DR-oracleDR=-0.0230+-0.0054 a=0.436 0.442 0.445 0.410
+  bias-0.1            pilots= 0.00% SER DR=0.1903+-0.0205 LMMSE=0.3240+-0.0228 | correct/slot DR=0.8097 LMMSE=0.6760 DR/LMMSE=1.198 (diff 0.1336+-0.0038) DR-oracleDR=+0.0030+-0.0009 a=0.536 0.542 0.545 0.510
+  bias+0.1            pilots= 0.00% SER DR=0.2130+-0.0206 LMMSE=0.2675+-0.0220 | correct/slot DR=0.7870 LMMSE=0.7325 DR/LMMSE=1.075 (diff 0.0546+-0.0025) DR-oracleDR=-0.0197+-0.0009 a=0.736 0.742 0.745 0.710
+  bias+0.2            pilots= 0.00% SER DR=0.2473+-0.0227 LMMSE=0.2508+-0.0224 | correct/slot DR=0.7527 LMMSE=0.7492 DR/LMMSE=1.005 (diff 0.0034+-0.0021) DR-oracleDR=-0.0540+-0.0032 a=0.835 0.839 0.845 0.810
+  DR-genie            pilots= 0.00% SER=0.1570+-0.0172 correct/slot=0.8430+-0.0172
+  DR-tracked          pilots=16.00% SER=0.1742+-0.0190 correct/slot=0.6937+-0.0160
+  DR-tracked-cal      pilots=16.00% SER=0.1743+-0.0191 correct/slot=0.6936+-0.0161
+  DR-static-rx        pilots= 0.00% SER=0.1885+-0.0194 correct/slot=0.8115+-0.0194
+  paired SER gap to DR-genie: tracked 0.0172+-0.0020, DR-static(oracle) 0.0363+-0.0029, DR[cal200-common] 0.0429+-0.0051; correct/slot tracked minus DR[cal200-common] -0.1065+-0.0061
+
+== speed_2.0 (n=8, mean a=0.606, a_bar per user averaged over runs 0.606 0.591 0.627 0.599)
+  oracle              pilots= 0.00% SER DR=0.2311+-0.0118 LMMSE=0.3316+-0.0128 | correct/slot DR=0.7689 LMMSE=0.6684 DR/LMMSE=1.150 (diff 0.1005+-0.0040) DR-oracleDR=+0.0000+-0.0000
+  warm10-np16         pilots= 0.67% SER DR=0.2685+-0.0179 LMMSE=0.3774+-0.0214 | correct/slot DR=0.7266 LMMSE=0.6184 DR/LMMSE=1.175 (diff 0.1082+-0.0064) DR-oracleDR=-0.0422+-0.0090 a(frozen)=0.520 0.494 0.555 0.505
+  warm10-np64         pilots= 2.67% SER DR=0.2917+-0.0211 LMMSE=0.3866+-0.0242 | correct/slot DR=0.6894 LMMSE=0.5970 DR/LMMSE=1.155 (diff 0.0923+-0.0051) DR-oracleDR=-0.0795+-0.0110 a(frozen)=0.511 0.513 0.562 0.466
+  warm20-np16         pilots= 1.33% SER DR=0.2471+-0.0115 LMMSE=0.3488+-0.0182 | correct/slot DR=0.7428 LMMSE=0.6425 DR/LMMSE=1.156 (diff 0.1003+-0.0095) DR-oracleDR=-0.0260+-0.0037 a(frozen)=0.593 0.583 0.604 0.534
+  warm20-np64         pilots= 5.33% SER DR=0.2559+-0.0121 LMMSE=0.3544+-0.0196 | correct/slot DR=0.7045 LMMSE=0.6111 DR/LMMSE=1.153 (diff 0.0933+-0.0087) DR-oracleDR=-0.0644+-0.0049 a(frozen)=0.584 0.562 0.610 0.532
+  cal20-common        pilots= 0.00% SER DR=0.2399+-0.0131 LMMSE=0.3241+-0.0111 | correct/slot DR=0.7601 LMMSE=0.6759 DR/LMMSE=1.125 (diff 0.0842+-0.0042) DR-oracleDR=-0.0088+-0.0014 a=0.641 0.641 0.641 0.641
+  cal20-peruser       pilots= 0.00% SER DR=0.2417+-0.0147 LMMSE=0.3266+-0.0105 | correct/slot DR=0.7583 LMMSE=0.6734 DR/LMMSE=1.126 (diff 0.0849+-0.0071) DR-oracleDR=-0.0106+-0.0043 a=0.670 0.615 0.629 0.630
+  cal200-common       pilots= 0.00% SER DR=0.2403+-0.0135 LMMSE=0.3242+-0.0107 | correct/slot DR=0.7597 LMMSE=0.6758 DR/LMMSE=1.124 (diff 0.0840+-0.0043) DR-oracleDR=-0.0091+-0.0022 a=0.641 0.641 0.641 0.641
+  cal200-peruser      pilots= 0.00% SER DR=0.2408+-0.0135 LMMSE=0.3237+-0.0108 | correct/slot DR=0.7592 LMMSE=0.6763 DR/LMMSE=1.123 (diff 0.0829+-0.0049) DR-oracleDR=-0.0097+-0.0018 a=0.642 0.638 0.654 0.640
+  cal200-common-mean  pilots= 0.00% SER DR=0.2344+-0.0127 LMMSE=0.3322+-0.0108 | correct/slot DR=0.7656 LMMSE=0.6678 DR/LMMSE=1.146 (diff 0.0978+-0.0037) DR-oracleDR=-0.0033+-0.0013 a=0.609 0.609 0.609 0.609
+  bias-0.2            pilots= 0.00% SER DR=0.2626+-0.0158 LMMSE=0.4222+-0.0127 | correct/slot DR=0.7374 LMMSE=0.5778 DR/LMMSE=1.276 (diff 0.1596+-0.0037) DR-oracleDR=-0.0315+-0.0051 a=0.406 0.391 0.427 0.399
+  bias-0.1            pilots= 0.00% SER DR=0.2290+-0.0124 LMMSE=0.3669+-0.0130 | correct/slot DR=0.7710 LMMSE=0.6331 DR/LMMSE=1.218 (diff 0.1379+-0.0033) DR-oracleDR=+0.0022+-0.0014 a=0.506 0.491 0.527 0.499
+  bias+0.1            pilots= 0.00% SER DR=0.2526+-0.0122 LMMSE=0.3095+-0.0128 | correct/slot DR=0.7474 LMMSE=0.6905 DR/LMMSE=1.082 (diff 0.0569+-0.0041) DR-oracleDR=-0.0215+-0.0009 a=0.706 0.691 0.727 0.699
+  bias+0.2            pilots= 0.00% SER DR=0.2910+-0.0134 LMMSE=0.2937+-0.0132 | correct/slot DR=0.7090 LMMSE=0.7063 DR/LMMSE=1.004 (diff 0.0027+-0.0041) DR-oracleDR=-0.0598+-0.0021 a=0.806 0.791 0.827 0.799
+  DR-genie            pilots= 0.00% SER=0.1884+-0.0106 correct/slot=0.8116+-0.0106
+  DR-tracked          pilots=16.00% SER=0.2189+-0.0115 correct/slot=0.6561+-0.0097
+  DR-tracked-cal      pilots=16.00% SER=0.2191+-0.0116 correct/slot=0.6560+-0.0098
+  DR-static-rx        pilots= 0.00% SER=0.2245+-0.0112 correct/slot=0.7755+-0.0112
+  paired SER gap to DR-genie: tracked 0.0305+-0.0015, DR-static(oracle) 0.0428+-0.0017, DR[cal200-common] 0.0519+-0.0031; correct/slot tracked minus DR[cal200-common] -0.1036+-0.0043
+
+== speed_4.0 (n=8, mean a=0.612, a_bar per user averaged over runs 0.609 0.614 0.616 0.608)
+  oracle              pilots= 0.00% SER DR=0.2227+-0.0076 LMMSE=0.3249+-0.0094 | correct/slot DR=0.7773 LMMSE=0.6751 DR/LMMSE=1.151 (diff 0.1022+-0.0032) DR-oracleDR=+0.0000+-0.0000
+  warm10-np16         pilots= 0.67% SER DR=0.2386+-0.0085 LMMSE=0.3381+-0.0125 | correct/slot DR=0.7563 LMMSE=0.6574 DR/LMMSE=1.150 (diff 0.0989+-0.0111) DR-oracleDR=-0.0210+-0.0046 a(frozen)=0.542 0.636 0.614 0.588
+  warm10-np64         pilots= 2.67% SER DR=0.2396+-0.0083 LMMSE=0.3397+-0.0126 | correct/slot DR=0.7401 LMMSE=0.6426 DR/LMMSE=1.152 (diff 0.0974+-0.0080) DR-oracleDR=-0.0372+-0.0036 a(frozen)=0.509 0.617 0.669 0.558
+  warm20-np16         pilots= 1.33% SER DR=0.2325+-0.0103 LMMSE=0.3265+-0.0086 | correct/slot DR=0.7573 LMMSE=0.6645 DR/LMMSE=1.140 (diff 0.0927+-0.0074) DR-oracleDR=-0.0200+-0.0034 a(frozen)=0.572 0.666 0.630 0.619
+  warm20-np64         pilots= 5.33% SER DR=0.2320+-0.0102 LMMSE=0.3258+-0.0084 | correct/slot DR=0.7271 LMMSE=0.6382 DR/LMMSE=1.139 (diff 0.0889+-0.0067) DR-oracleDR=-0.0502+-0.0029 a(frozen)=0.573 0.660 0.654 0.605
+  cal20-common        pilots= 0.00% SER DR=0.2286+-0.0092 LMMSE=0.3187+-0.0080 | correct/slot DR=0.7714 LMMSE=0.6813 DR/LMMSE=1.132 (diff 0.0901+-0.0043) DR-oracleDR=-0.0059+-0.0018 a=0.639 0.639 0.639 0.639
+  cal20-peruser       pilots= 0.00% SER DR=0.2322+-0.0096 LMMSE=0.3169+-0.0084 | correct/slot DR=0.7678 LMMSE=0.6831 DR/LMMSE=1.124 (diff 0.0848+-0.0040) DR-oracleDR=-0.0095+-0.0028 a=0.663 0.650 0.656 0.630
+  cal200-common       pilots= 0.00% SER DR=0.2286+-0.0092 LMMSE=0.3181+-0.0078 | correct/slot DR=0.7714 LMMSE=0.6819 DR/LMMSE=1.131 (diff 0.0895+-0.0023) DR-oracleDR=-0.0059+-0.0018 a=0.641 0.641 0.641 0.641
+  cal200-peruser      pilots= 0.00% SER DR=0.2289+-0.0087 LMMSE=0.3182+-0.0084 | correct/slot DR=0.7711 LMMSE=0.6818 DR/LMMSE=1.131 (diff 0.0893+-0.0023) DR-oracleDR=-0.0062+-0.0012 a=0.638 0.642 0.640 0.644
+  cal200-common-mean  pilots= 0.00% SER DR=0.2235+-0.0088 LMMSE=0.3266+-0.0079 | correct/slot DR=0.7765 LMMSE=0.6734 DR/LMMSE=1.153 (diff 0.1031+-0.0025) DR-oracleDR=-0.0008+-0.0014 a=0.608 0.608 0.608 0.608
+  bias-0.2            pilots= 0.00% SER DR=0.2513+-0.0107 LMMSE=0.4156+-0.0096 | correct/slot DR=0.7487 LMMSE=0.5844 DR/LMMSE=1.281 (diff 0.1644+-0.0025) DR-oracleDR=-0.0286+-0.0038 a=0.409 0.414 0.416 0.408
+  bias-0.1            pilots= 0.00% SER DR=0.2204+-0.0082 LMMSE=0.3600+-0.0097 | correct/slot DR=0.7796 LMMSE=0.6400 DR/LMMSE=1.218 (diff 0.1396+-0.0027) DR-oracleDR=+0.0023+-0.0011 a=0.509 0.514 0.516 0.508
+  bias+0.1            pilots= 0.00% SER DR=0.2433+-0.0077 LMMSE=0.3029+-0.0094 | correct/slot DR=0.7567 LMMSE=0.6971 DR/LMMSE=1.085 (diff 0.0596+-0.0033) DR-oracleDR=-0.0206+-0.0007 a=0.709 0.714 0.716 0.708
+  bias+0.2            pilots= 0.00% SER DR=0.2804+-0.0085 LMMSE=0.2866+-0.0095 | correct/slot DR=0.7196 LMMSE=0.7134 DR/LMMSE=1.009 (diff 0.0062+-0.0034) DR-oracleDR=-0.0577+-0.0014 a=0.809 0.814 0.816 0.808
+  DR-genie            pilots= 0.00% SER=0.1803+-0.0074 correct/slot=0.8197+-0.0074
+  DR-tracked          pilots=16.00% SER=0.2197+-0.0078 correct/slot=0.6554+-0.0066
+  DR-tracked-cal      pilots=16.00% SER=0.2199+-0.0078 correct/slot=0.6553+-0.0066
+  DR-static-rx        pilots= 0.00% SER=0.2171+-0.0076 correct/slot=0.7829+-0.0076
+  paired SER gap to DR-genie: tracked 0.0394+-0.0011, DR-static(oracle) 0.0424+-0.0011, DR[cal200-common] 0.0482+-0.0019; correct/slot tracked minus DR[cal200-common] -0.1160+-0.0028
+
+== speed_8.0 (n=8, mean a=0.622, a_bar per user averaged over runs 0.617 0.631 0.621 0.619)
+  oracle              pilots= 0.00% SER DR=0.2101+-0.0049 LMMSE=0.3082+-0.0057 | correct/slot DR=0.7899 LMMSE=0.6918 DR/LMMSE=1.142 (diff 0.0981+-0.0010) DR-oracleDR=+0.0000+-0.0000
+  warm10-np16         pilots= 0.67% SER DR=0.2360+-0.0092 LMMSE=0.3127+-0.0096 | correct/slot DR=0.7589 LMMSE=0.6827 DR/LMMSE=1.112 (diff 0.0762+-0.0094) DR-oracleDR=-0.0309+-0.0056 a(frozen)=0.563 0.608 0.654 0.738
+  warm10-np64         pilots= 2.67% SER DR=0.2363+-0.0082 LMMSE=0.3073+-0.0083 | correct/slot DR=0.7433 LMMSE=0.6742 DR/LMMSE=1.102 (diff 0.0691+-0.0097) DR-oracleDR=-0.0465+-0.0054 a(frozen)=0.601 0.640 0.668 0.719
+  warm20-np16         pilots= 1.33% SER DR=0.2212+-0.0069 LMMSE=0.3065+-0.0076 | correct/slot DR=0.7684 LMMSE=0.6843 DR/LMMSE=1.123 (diff 0.0841+-0.0089) DR-oracleDR=-0.0215+-0.0044 a(frozen)=0.613 0.644 0.642 0.671
+  warm20-np64         pilots= 5.33% SER DR=0.2228+-0.0057 LMMSE=0.3032+-0.0073 | correct/slot DR=0.7357 LMMSE=0.6596 DR/LMMSE=1.115 (diff 0.0761+-0.0076) DR-oracleDR=-0.0541+-0.0034 a(frozen)=0.629 0.654 0.667 0.670
+  cal20-common        pilots= 0.00% SER DR=0.2150+-0.0046 LMMSE=0.3025+-0.0066 | correct/slot DR=0.7850 LMMSE=0.6975 DR/LMMSE=1.126 (diff 0.0876+-0.0037) DR-oracleDR=-0.0048+-0.0012 a=0.647 0.647 0.647 0.647
+  cal20-peruser       pilots= 0.00% SER DR=0.2159+-0.0061 LMMSE=0.3033+-0.0046 | correct/slot DR=0.7841 LMMSE=0.6967 DR/LMMSE=1.126 (diff 0.0874+-0.0033) DR-oracleDR=-0.0058+-0.0015 a=0.609 0.674 0.657 0.639
+  cal200-common       pilots= 0.00% SER DR=0.2137+-0.0055 LMMSE=0.3038+-0.0047 | correct/slot DR=0.7863 LMMSE=0.6962 DR/LMMSE=1.129 (diff 0.0901+-0.0014) DR-oracleDR=-0.0035+-0.0008 a=0.641 0.641 0.641 0.641
+  cal200-peruser      pilots= 0.00% SER DR=0.2146+-0.0052 LMMSE=0.3026+-0.0054 | correct/slot DR=0.7854 LMMSE=0.6974 DR/LMMSE=1.126 (diff 0.0881+-0.0012) DR-oracleDR=-0.0044+-0.0005 a=0.644 0.644 0.645 0.649
+  cal200-common-mean  pilots= 0.00% SER DR=0.2090+-0.0052 LMMSE=0.3129+-0.0048 | correct/slot DR=0.7910 LMMSE=0.6871 DR/LMMSE=1.151 (diff 0.1039+-0.0009) DR-oracleDR=+0.0012+-0.0004 a=0.606 0.606 0.606 0.606
+  bias-0.2            pilots= 0.00% SER DR=0.2321+-0.0065 LMMSE=0.3988+-0.0055 | correct/slot DR=0.7679 LMMSE=0.6012 DR/LMMSE=1.277 (diff 0.1667+-0.0012) DR-oracleDR=-0.0220+-0.0017 a=0.417 0.431 0.421 0.419
+  bias-0.1            pilots= 0.00% SER DR=0.2062+-0.0052 LMMSE=0.3429+-0.0056 | correct/slot DR=0.7938 LMMSE=0.6571 DR/LMMSE=1.208 (diff 0.1367+-0.0006) DR-oracleDR=+0.0039+-0.0004 a=0.517 0.531 0.521 0.519
+  bias+0.1            pilots= 0.00% SER DR=0.2311+-0.0050 LMMSE=0.2863+-0.0057 | correct/slot DR=0.7689 LMMSE=0.7137 DR/LMMSE=1.077 (diff 0.0552+-0.0011) DR-oracleDR=-0.0210+-0.0002 a=0.717 0.731 0.721 0.719
+  bias+0.2            pilots= 0.00% SER DR=0.2679+-0.0053 LMMSE=0.2699+-0.0059 | correct/slot DR=0.7321 LMMSE=0.7301 DR/LMMSE=1.003 (diff 0.0020+-0.0013) DR-oracleDR=-0.0578+-0.0007 a=0.817 0.831 0.821 0.819
+  DR-genie            pilots= 0.00% SER=0.1691+-0.0044 correct/slot=0.8309+-0.0044
+  DR-tracked          pilots=16.00% SER=0.2093+-0.0048 correct/slot=0.6642+-0.0040
+  DR-tracked-cal      pilots=16.00% SER=0.2094+-0.0048 correct/slot=0.6641+-0.0040
+  DR-static-rx        pilots= 0.00% SER=0.2044+-0.0048 correct/slot=0.7956+-0.0048
+  paired SER gap to DR-genie: tracked 0.0403+-0.0008, DR-static(oracle) 0.0411+-0.0009, DR[cal200-common] 0.0446+-0.0012; correct/slot tracked minus DR[cal200-common] -0.1222+-0.0015
+
+Physical time scale (from L_d, d, K, lambda of the code)
+  a slot carries L_d = 320 embeddings per user; each embedding occupies d real channel uses, all U = 4 users superposed on the same uses
+  synthetic d=64: 20480 real channel uses per slot (10240 complex); a pilot slot adds U n_p d = 16384 real uses on orthogonal resources
+  BERT d=768: 245760 real channel uses per slot (122880 complex); a pilot slot adds U n_p d = 196608 real uses on orthogonal resources
+  tracker time constant K/lambda = 16.7 slots; pilot period K = 5 slots; trace T = 300 slots
+  embedding rate r per user -> slot = L_d / r seconds; speed in m/s = (m/slot) * r / L_d
+  r =   10/s: slot = 32 s, T = 9600 s, K/lambda = 533.3 s, real symbol rate 640/s (d=64) or 7680/s (d=768); 0.5 m/slot = 0.0156 m/s, 1 m/slot = 0.0312 m/s, 2 m/slot = 0.0625 m/s, 4 m/slot = 0.125 m/s, 8 m/slot = 0.25 m/s
+  r =   30/s: slot = 10.67 s, T = 3200 s, K/lambda = 177.8 s, real symbol rate 1920/s (d=64) or 2.304e+04/s (d=768); 0.5 m/slot = 0.0469 m/s, 1 m/slot = 0.0938 m/s, 2 m/slot = 0.188 m/s, 4 m/slot = 0.375 m/s, 8 m/slot = 0.75 m/s
+  r =  640/s: slot = 0.5 s, T = 150 s, K/lambda = 8.333 s, real symbol rate 4.096e+04/s (d=64) or 4.915e+05/s (d=768); 0.5 m/slot = 1 m/s, 1 m/slot = 2 m/s, 2 m/slot = 4 m/s, 4 m/slot = 8 m/s, 8 m/slot = 16 m/s
+  symbol rate 1e+06 real/s, d = 64: r = 1.562e+04 embeddings/s per user, slot = 20.48 ms, 0.5 to 8 m/slot = 24.41 to 390.6 m/s
+  symbol rate 1e+06 real/s, d = 768: r = 1302 embeddings/s per user, slot = 245.8 ms, 0.5 to 8 m/slot = 2.035 to 32.55 m/s
+  symbol rate 1e+07 real/s, d = 64: r = 1.562e+05 embeddings/s per user, slot = 2.048 ms, 0.5 to 8 m/slot = 244.1 to 3906 m/s
+  symbol rate 1e+07 real/s, d = 768: r = 1.302e+04 embeddings/s per user, slot = 24.58 ms, 0.5 to 8 m/slot = 20.35 to 325.5 m/s
+  conversely, a speed v in m/s maps to v L_d / r m/slot; 1.5 m/s (pedestrian) is 0.75 m/slot at r = 640/s and 16 m/slot at r = 30/s

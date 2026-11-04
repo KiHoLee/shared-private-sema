@@ -1,0 +1,82 @@
+Reproduction check: E8 replayed (rng 11, 16 points) through the per-sample code path with constant kappa; max |diff| over all cos/nmse/ser entries vs data/e8_partial_sharing.csv = 1.421e-14
+  E8 beta=0.5 kappa=0.0: DR 0.0369, DR-MMSE 0.0342, LMMSE 0.2795
+  E8 beta=0.5 kappa=0.3: DR 0.2757, DR-MMSE 0.2639, LMMSE 0.5225
+  E8 beta=0.8 kappa=0.0: DR 0.0005, DR-MMSE 0.0004, LMMSE 0.0199
+  E8 beta=0.8 kappa=0.3: DR 0.0261, DR-MMSE 0.0259, LMMSE 0.1872
+
+E8b: rho=10 dB, U=4, d=64, d_c=16, batch 4000, 5 seeds; SER mean +- SE over seeds.
+Columns: law, setting (masks and receivers at a^2(1-E[kappa]) = mean, or at a^2 = calib; mMrC masks mean, receivers calib; mCrM masks calib, receivers mean), DR, DR-MMSE, LMMSE, best unstructured, ratio best-unstructured/DR (mean +- SE of per-seed ratios), DR/matched-fixed reference, DR wins on all seeds
+  beta=0.5 fixed0   mean  DR 0.0406+-0.0013  DR-MMSE 0.0376+-0.0013  LMMSE 0.2761+-0.0022  bestUn(LMMSE) 0.2761  NOMA 0.7554  ratio 6.83+-0.22  DR/ref 1.00+-0.00  wins=1
+  beta=0.5 fixed0   calib DR 0.0406+-0.0013  DR-MMSE 0.0376+-0.0013  LMMSE 0.2761+-0.0022  bestUn(LMMSE) 0.2761  NOMA 0.7554  ratio 6.83+-0.22  DR/ref 1.00+-0.00  wins=1
+  beta=0.5 fixed0   mMrC  DR 0.0406+-0.0013  DR-MMSE 0.0376+-0.0013  LMMSE 0.2761+-0.0022  bestUn(LMMSE) 0.2761  NOMA 0.7554  ratio 6.83+-0.22  DR/ref 1.00+-0.00  wins=1
+  beta=0.5 fixed0   mCrM  DR 0.0406+-0.0013  DR-MMSE 0.0376+-0.0013  LMMSE 0.2761+-0.0022  bestUn(LMMSE) 0.2761  NOMA 0.7554  ratio 6.83+-0.22  DR/ref 1.00+-0.00  wins=1
+  beta=0.5 fixed01  mean  DR 0.0794+-0.0020  DR-MMSE 0.0754+-0.0018  LMMSE 0.3584+-0.0018  bestUn(LMMSE) 0.3584  NOMA 0.7554  ratio 4.53+-0.11  DR/ref 1.00+-0.00  wins=1
+  beta=0.5 fixed01  calib DR 0.0718+-0.0020  DR-MMSE 0.0666+-0.0017  LMMSE 0.3395+-0.0026  bestUn(LMMSE) 0.3395  NOMA 0.7554  ratio 4.74+-0.12  DR/ref 0.90+-0.01  wins=1
+  beta=0.5 fixed01  mMrC  DR 0.0788+-0.0019  DR-MMSE 0.0741+-0.0018  LMMSE 0.3582+-0.0020  bestUn(LMMSE) 0.3582  NOMA 0.7554  ratio 4.56+-0.11  DR/ref 0.99+-0.00  wins=1
+  beta=0.5 fixed01  mCrM  DR 0.0727+-0.0019  DR-MMSE 0.0674+-0.0017  LMMSE 0.3391+-0.0027  bestUn(LMMSE) 0.3391  NOMA 0.7554  ratio 4.68+-0.12  DR/ref 0.92+-0.01  wins=1
+  beta=0.5 fixed03  mean  DR 0.2710+-0.0011  DR-MMSE 0.2600+-0.0012  LMMSE 0.5223+-0.0029  bestUn(LMMSE) 0.5223  NOMA 0.7548  ratio 1.93+-0.01  DR/ref 1.00+-0.00  wins=1
+  beta=0.5 fixed03  calib DR 0.2217+-0.0013  DR-MMSE 0.2058+-0.0014  LMMSE 0.4792+-0.0028  bestUn(LMMSE) 0.4792  NOMA 0.7548  ratio 2.16+-0.02  DR/ref 0.82+-0.00  wins=1
+  beta=0.5 fixed03  mMrC  DR 0.2603+-0.0013  DR-MMSE 0.2498+-0.0014  LMMSE 0.5294+-0.0027  bestUn(LMMSE) 0.5294  NOMA 0.7548  ratio 2.03+-0.02  DR/ref 0.96+-0.00  wins=1
+  beta=0.5 fixed03  mCrM  DR 0.2298+-0.0012  DR-MMSE 0.2145+-0.0015  LMMSE 0.4744+-0.0029  bestUn(LMMSE) 0.4744  NOMA 0.7548  ratio 2.06+-0.01  DR/ref 0.85+-0.00  wins=1
+  beta=0.5 unif06   mean  DR 0.2907+-0.0013  DR-MMSE 0.2799+-0.0011  LMMSE 0.5171+-0.0020  bestUn(LMMSE) 0.5171  NOMA 0.7548  ratio 1.78+-0.01  DR/ref 1.07+-0.00  wins=1
+  beta=0.5 unif06   calib DR 0.2532+-0.0013  DR-MMSE 0.2356+-0.0013  LMMSE 0.4753+-0.0018  bestUn(LMMSE) 0.4753  NOMA 0.7548  ratio 1.88+-0.01  DR/ref 0.93+-0.00  wins=1
+  beta=0.5 unif06   mMrC  DR 0.2832+-0.0011  DR-MMSE 0.2726+-0.0009  LMMSE 0.5240+-0.0019  bestUn(LMMSE) 0.5240  NOMA 0.7548  ratio 1.85+-0.01  DR/ref 1.04+-0.00  wins=1
+  beta=0.5 unif06   mCrM  DR 0.2587+-0.0014  DR-MMSE 0.2415+-0.0014  LMMSE 0.4710+-0.0020  bestUn(LMMSE) 0.4710  NOMA 0.7548  ratio 1.82+-0.01  DR/ref 0.95+-0.00  wins=1
+  beta=0.5 mix03    mean  DR 0.2976+-0.0024  DR-MMSE 0.2914+-0.0025  LMMSE 0.4839+-0.0023  bestUn(LMMSE) 0.4839  NOMA 0.7545  ratio 1.63+-0.01  DR/ref 1.10+-0.01  wins=1
+  beta=0.5 mix03    calib DR 0.2820+-0.0021  DR-MMSE 0.2712+-0.0019  LMMSE 0.4414+-0.0030  bestUn(LMMSE) 0.4414  NOMA 0.7545  ratio 1.57+-0.01  DR/ref 1.04+-0.00  wins=1
+  beta=0.5 mix03    mMrC  DR 0.2934+-0.0022  DR-MMSE 0.2870+-0.0023  LMMSE 0.4861+-0.0021  bestUn(LMMSE) 0.4861  NOMA 0.7545  ratio 1.66+-0.01  DR/ref 1.08+-0.01  wins=1
+  beta=0.5 mix03    mCrM  DR 0.2851+-0.0025  DR-MMSE 0.2738+-0.0023  LMMSE 0.4392+-0.0026  bestUn(LMMSE) 0.4392  NOMA 0.7545  ratio 1.54+-0.01  DR/ref 1.05+-0.01  wins=1
+  beta=0.5 mix01    mean  DR 0.1253+-0.0019  DR-MMSE 0.1208+-0.0020  LMMSE 0.3475+-0.0023  bestUn(LMMSE) 0.3475  NOMA 0.7550  ratio 2.77+-0.03  DR/ref 1.58+-0.02  wins=1
+  beta=0.5 mix01    calib DR 0.1201+-0.0019  DR-MMSE 0.1149+-0.0021  LMMSE 0.3304+-0.0030  bestUn(LMMSE) 0.3304  NOMA 0.7550  ratio 2.75+-0.03  DR/ref 1.52+-0.03  wins=1
+  beta=0.5 mix01    mMrC  DR 0.1246+-0.0019  DR-MMSE 0.1197+-0.0020  LMMSE 0.3477+-0.0025  bestUn(LMMSE) 0.3477  NOMA 0.7550  ratio 2.79+-0.03  DR/ref 1.57+-0.03  wins=1
+  beta=0.5 mix01    mCrM  DR 0.1203+-0.0020  DR-MMSE 0.1151+-0.0021  LMMSE 0.3303+-0.0027  bestUn(LMMSE) 0.3303  NOMA 0.7550  ratio 2.75+-0.03  DR/ref 1.52+-0.02  wins=1
+  beta=0.8 fixed0   mean  DR 0.0012+-0.0003  DR-MMSE 0.0012+-0.0003  LMMSE 0.0240+-0.0004  bestUn(LMMSE/SC) 0.0239  NOMA 0.7515  ratio 26.26+-6.91  DR/ref 1.00+-0.00  wins=1
+  beta=0.8 fixed0   calib DR 0.0012+-0.0003  DR-MMSE 0.0012+-0.0003  LMMSE 0.0240+-0.0004  bestUn(LMMSE/SC) 0.0239  NOMA 0.7515  ratio 26.26+-6.91  DR/ref 1.00+-0.00  wins=1
+  beta=0.8 fixed0   mMrC  DR 0.0012+-0.0003  DR-MMSE 0.0012+-0.0003  LMMSE 0.0240+-0.0004  bestUn(LMMSE/SC) 0.0239  NOMA 0.7515  ratio 26.26+-6.91  DR/ref 1.00+-0.00  wins=1
+  beta=0.8 fixed0   mCrM  DR 0.0012+-0.0003  DR-MMSE 0.0012+-0.0003  LMMSE 0.0240+-0.0004  bestUn(LMMSE/SC) 0.0239  NOMA 0.7515  ratio 26.26+-6.91  DR/ref 1.00+-0.00  wins=1
+  beta=0.8 fixed01  mean  DR 0.0029+-0.0003  DR-MMSE 0.0029+-0.0003  LMMSE 0.0482+-0.0011  bestUn(LMMSE/SC) 0.0482  NOMA 0.7520  ratio 17.01+-1.41  DR/ref 1.00+-0.00  wins=1
+  beta=0.8 fixed01  calib DR 0.0023+-0.0002  DR-MMSE 0.0023+-0.0002  LMMSE 0.0406+-0.0008  bestUn(LMMSE) 0.0406  NOMA 0.7520  ratio 18.25+-1.62  DR/ref 0.79+-0.01  wins=1
+  beta=0.8 fixed01  mMrC  DR 0.0029+-0.0003  DR-MMSE 0.0029+-0.0003  LMMSE 0.0482+-0.0011  bestUn(LMMSE/SC) 0.0481  NOMA 0.7520  ratio 17.05+-1.41  DR/ref 1.00+-0.01  wins=1
+  beta=0.8 fixed01  mCrM  DR 0.0023+-0.0002  DR-MMSE 0.0022+-0.0002  LMMSE 0.0405+-0.0008  bestUn(LMMSE/SC) 0.0405  NOMA 0.7520  ratio 18.22+-1.61  DR/ref 0.79+-0.01  wins=1
+  beta=0.8 fixed03  mean  DR 0.0278+-0.0007  DR-MMSE 0.0278+-0.0008  LMMSE 0.1874+-0.0025  bestUn(LMMSE) 0.1874  NOMA 0.7529  ratio 6.76+-0.15  DR/ref 1.00+-0.00  wins=1
+  beta=0.8 fixed03  calib DR 0.0163+-0.0005  DR-MMSE 0.0159+-0.0005  LMMSE 0.1312+-0.0016  bestUn(LMMSE) 0.1312  NOMA 0.7529  ratio 8.05+-0.26  DR/ref 0.59+-0.01  wins=1
+  beta=0.8 fixed03  mMrC  DR 0.0275+-0.0007  DR-MMSE 0.0271+-0.0008  LMMSE 0.1911+-0.0023  bestUn(LMMSE) 0.1911  NOMA 0.7529  ratio 6.96+-0.17  DR/ref 0.99+-0.00  wins=1
+  beta=0.8 fixed03  mCrM  DR 0.0164+-0.0005  DR-MMSE 0.0163+-0.0005  LMMSE 0.1300+-0.0017  bestUn(LMMSE) 0.1300  NOMA 0.7529  ratio 7.93+-0.25  DR/ref 0.59+-0.01  wins=1
+  beta=0.8 unif06   mean  DR 0.0664+-0.0006  DR-MMSE 0.0656+-0.0008  LMMSE 0.2204+-0.0012  bestUn(LMMSE) 0.2204  NOMA 0.7526  ratio 3.32+-0.03  DR/ref 2.39+-0.03  wins=1
+  beta=0.8 unif06   calib DR 0.0494+-0.0009  DR-MMSE 0.0485+-0.0009  LMMSE 0.1739+-0.0014  bestUn(LMMSE) 0.1739  NOMA 0.7526  ratio 3.52+-0.07  DR/ref 1.78+-0.02  wins=1
+  beta=0.8 unif06   mMrC  DR 0.0652+-0.0008  DR-MMSE 0.0642+-0.0008  LMMSE 0.2268+-0.0010  bestUn(LMMSE) 0.2268  NOMA 0.7526  ratio 3.48+-0.04  DR/ref 2.35+-0.03  wins=1
+  beta=0.8 unif06   mCrM  DR 0.0499+-0.0010  DR-MMSE 0.0495+-0.0009  LMMSE 0.1714+-0.0015  bestUn(LMMSE) 0.1714  NOMA 0.7526  ratio 3.44+-0.07  DR/ref 1.80+-0.02  wins=1
+  beta=0.8 mix03    mean  DR 0.2162+-0.0019  DR-MMSE 0.2151+-0.0019  LMMSE 0.2793+-0.0027  bestUn(LMMSE) 0.2793  NOMA 0.7523  ratio 1.29+-0.00  DR/ref 7.80+-0.16  wins=1
+  beta=0.8 mix03    calib DR 0.2074+-0.0023  DR-MMSE 0.2041+-0.0023  LMMSE 0.2684+-0.0028  bestUn(LMMSE) 0.2684  NOMA 0.7523  ratio 1.29+-0.01  DR/ref 7.48+-0.16  wins=1
+  beta=0.8 mix03    mMrC  DR 0.2134+-0.0019  DR-MMSE 0.2119+-0.0019  LMMSE 0.2862+-0.0028  bestUn(LMMSE) 0.2862  NOMA 0.7523  ratio 1.34+-0.01  DR/ref 7.70+-0.15  wins=1
+  beta=0.8 mix03    mCrM  DR 0.2090+-0.0023  DR-MMSE 0.2070+-0.0023  LMMSE 0.2650+-0.0027  bestUn(LMMSE) 0.2650  NOMA 0.7523  ratio 1.27+-0.01  DR/ref 7.54+-0.15  wins=1
+  beta=0.8 mix01    mean  DR 0.0716+-0.0021  DR-MMSE 0.0707+-0.0021  LMMSE 0.1109+-0.0025  bestUn(LMMSE) 0.1109  NOMA 0.7521  ratio 1.55+-0.01  DR/ref 25.26+-2.05  wins=1
+  beta=0.8 mix01    calib DR 0.0709+-0.0021  DR-MMSE 0.0697+-0.0021  LMMSE 0.1067+-0.0022  bestUn(LMMSE) 0.1067  NOMA 0.7521  ratio 1.51+-0.01  DR/ref 25.01+-2.02  wins=1
+  beta=0.8 mix01    mMrC  DR 0.0716+-0.0020  DR-MMSE 0.0706+-0.0021  LMMSE 0.1117+-0.0025  bestUn(LMMSE) 0.1117  NOMA 0.7521  ratio 1.56+-0.01  DR/ref 25.27+-2.05  wins=1
+  beta=0.8 mix01    mCrM  DR 0.0709+-0.0021  DR-MMSE 0.0697+-0.0021  LMMSE 0.1064+-0.0023  bestUn(LMMSE) 0.1064  NOMA 0.7521  ratio 1.50+-0.01  DR/ref 25.02+-2.04  wins=1
+Mixture subsets (SER on kappa=0 samples | kappa=1 samples):
+  beta=0.5 mix03 mean  DR 0.0648 | 0.8271   DR-MMSE 0.0628 | 0.8114   LMMSE 0.3460 | 0.7975
+  beta=0.5 mix03 calib DR 0.0402 | 0.8319   DR-MMSE 0.0375 | 0.8029   LMMSE 0.2757 | 0.8185
+  beta=0.5 mix03 mMrC  DR 0.0589 | 0.8271   DR-MMSE 0.0565 | 0.8115   LMMSE 0.3397 | 0.8190
+  beta=0.5 mix03 mCrM  DR 0.0443 | 0.8329   DR-MMSE 0.0419 | 0.8013   LMMSE 0.2806 | 0.7999
+  beta=0.5 mix01 mean  DR 0.0470 | 0.8256   DR-MMSE 0.0444 | 0.8035   LMMSE 0.2959 | 0.8095
+  beta=0.5 mix01 calib DR 0.0409 | 0.8287   DR-MMSE 0.0380 | 0.8019   LMMSE 0.2759 | 0.8175
+  beta=0.5 mix01 mMrC  DR 0.0462 | 0.8257   DR-MMSE 0.0432 | 0.8041   LMMSE 0.2954 | 0.8154
+  beta=0.5 mix01 mCrM  DR 0.0413 | 0.8266   DR-MMSE 0.0385 | 0.7997   LMMSE 0.2766 | 0.8100
+  beta=0.8 mix03 mean  DR 0.0025 | 0.7069   DR-MMSE 0.0025 | 0.7034   LMMSE 0.0462 | 0.8148
+  beta=0.8 mix03 calib DR 0.0012 | 0.6808   DR-MMSE 0.0012 | 0.6702   LMMSE 0.0245 | 0.8287
+  beta=0.8 mix03 mMrC  DR 0.0025 | 0.6979   DR-MMSE 0.0025 | 0.6930   LMMSE 0.0449 | 0.8405
+  beta=0.8 mix03 mCrM  DR 0.0013 | 0.6861   DR-MMSE 0.0012 | 0.6795   LMMSE 0.0247 | 0.8168
+  beta=0.8 mix01 mean  DR 0.0015 | 0.6874   DR-MMSE 0.0014 | 0.6788   LMMSE 0.0294 | 0.8268
+  beta=0.8 mix01 calib DR 0.0012 | 0.6835   DR-MMSE 0.0012 | 0.6719   LMMSE 0.0243 | 0.8313
+  beta=0.8 mix01 mMrC  DR 0.0015 | 0.6876   DR-MMSE 0.0014 | 0.6782   LMMSE 0.0295 | 0.8337
+  beta=0.8 mix01 mCrM  DR 0.0012 | 0.6835   DR-MMSE 0.0012 | 0.6721   LMMSE 0.0244 | 0.8264
+Uniform law subsets (SER on kappa<=0.3 | kappa>0.3):
+  beta=0.5 unif06 mean  DR 0.1459 | 0.4396   LMMSE 0.4327 | 0.6037
+  beta=0.5 unif06 calib DR 0.1081 | 0.4025   LMMSE 0.3753 | 0.5782
+  beta=0.5 unif06 mMrC  DR 0.1377 | 0.4327   LMMSE 0.4332 | 0.6174
+  beta=0.5 unif06 mCrM  DR 0.1131 | 0.4084   LMMSE 0.3755 | 0.5692
+  beta=0.8 unif06 mean  DR 0.0086 | 0.1251   LMMSE 0.0971 | 0.3457
+  beta=0.8 unif06 calib DR 0.0043 | 0.0953   LMMSE 0.0597 | 0.2900
+  beta=0.8 unif06 mMrC  DR 0.0085 | 0.1230   LMMSE 0.0975 | 0.3584
+  beta=0.8 unif06 mCrM  DR 0.0044 | 0.0962   LMMSE 0.0596 | 0.2850

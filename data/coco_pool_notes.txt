@@ -1,0 +1,6 @@
+MS-COCO 2017 captions (CC BY 4.0), bert-base-uncased, last layer, mean pooling, truncation 64, torch seed 0
+device cuda
+val2017: 5000 images with captions (json lists 5000), 25014 captions embedded (json lists 25014), captions per image histogram 5:4987, 6:12, 7:1, emb (25014, 768)
+train2017: 118287 images with captions (json lists 118287, 591753 captions), 21600 kept by default_rng(2024).permutation of the sorted ids (first 1600 calibration, next 20000 evaluation), 108054 captions embedded, captions per image histogram 5:21546, 6:54, emb (108054, 768)
+dimension 768; raw pooled vectors saved as float32; exp24 centers with the mean of the calibration captions and normalizes to unit norm
+files on u24: ~/tmc_rev/data_ext/coco/coco_bert_val2017.pt, ~/tmc_rev/data_ext/coco/coco_bert_train21600.pt

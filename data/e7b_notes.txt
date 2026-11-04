@@ -1,0 +1,172 @@
+E7b learned-receiver robustness, device=cuda, seeds [0, 1, 2, 3, 4], eval 40000 draws x 4 users per beta
+parameters: base=14787, wide=29443, deep=29574
+
+Reproduction check (arm a = div/base/3000 vs published LearnedSI; references vs published DR, BLMMSE, LMMSE)
+  beta=0.05 published 0.94980 (sd 0.00343) rerun 0.94980 (sd 0.00343) diff +0.00000 = +0.00 sd
+  beta=0.10 published 0.90603 (sd 0.00483) rerun 0.90603 (sd 0.00483) diff +0.00000 = +0.00 sd
+  beta=0.20 published 0.72740 (sd 0.00428) rerun 0.72740 (sd 0.00428) diff +0.00000 = +0.00 sd
+  beta=0.30 published 0.45786 (sd 0.00025) rerun 0.45786 (sd 0.00025) diff +0.00000 = +0.00 sd
+  beta=0.40 published 0.22276 (sd 0.00198) rerun 0.22276 (sd 0.00198) diff +0.00000 = +0.00 sd
+  beta=0.50 published 0.08408 (sd 0.00078) rerun 0.08408 (sd 0.00078) diff +0.00000 = +0.00 sd
+  beta=0.60 published 0.02582 (sd 0.00048) rerun 0.02582 (sd 0.00048) diff +0.00000 = +0.00 sd
+  beta=0.70 published 0.00639 (sd 0.00011) rerun 0.00639 (sd 0.00011) diff +0.00000 = +0.00 sd
+  beta=0.80 published 0.00203 (sd 0.00004) rerun 0.00203 (sd 0.00004) diff +0.00000 = +0.00 sd
+  beta=0.90 published 0.00048 (sd 0.00003) rerun 0.00048 (sd 0.00003) diff +0.00000 = +0.00 sd
+  max |reference SER - published| over beta and DR, DR-MMSE, LMMSE = 0.00e+00
+
+SER mean (sd over seeds) and ratio to DR / to DR-MMSE
+beta=0.05  DR 0.68244  DR-MMSE 0.68094  LMMSE 0.74803
+    div    base  3000  0.94980 (0.00343)  x1.392 DR  x1.395 DR-MMSE
+    div    base  6000  0.95139 (0.00409)  x1.394 DR  x1.397 DR-MMSE
+    div    wide  3000  0.95041 (0.00283)  x1.393 DR  x1.396 DR-MMSE
+    div    wide  6000  0.95241 (0.00405)  x1.396 DR  x1.399 DR-MMSE
+    div    deep  3000  0.87559 (0.00267)  x1.283 DR  x1.286 DR-MMSE
+    div    deep  6000  0.85974 (0.00411)  x1.260 DR  x1.263 DR-MMSE
+    prediv base  3000  0.87089 (0.00229)  x1.276 DR  x1.279 DR-MMSE
+    prediv base  6000  0.85285 (0.00320)  x1.250 DR  x1.252 DR-MMSE
+    prediv wide  3000  0.87135 (0.00239)  x1.277 DR  x1.280 DR-MMSE
+    prediv wide  6000  0.85372 (0.00377)  x1.251 DR  x1.254 DR-MMSE
+    prediv deep  3000  0.88857 (0.00280)  x1.302 DR  x1.305 DR-MMSE
+    prediv deep  6000  0.87118 (0.00476)  x1.277 DR  x1.279 DR-MMSE
+    best arm prediv/base/6000: 0.85285, x1.250 DR, x1.252 DR-MMSE
+beta=0.10  DR 0.68760  DR-MMSE 0.68151  LMMSE 0.73420
+    div    base  3000  0.90603 (0.00483)  x1.318 DR  x1.329 DR-MMSE
+    div    base  6000  0.90745 (0.00568)  x1.320 DR  x1.332 DR-MMSE
+    div    wide  3000  0.90643 (0.00373)  x1.318 DR  x1.330 DR-MMSE
+    div    wide  6000  0.90902 (0.00547)  x1.322 DR  x1.334 DR-MMSE
+    div    deep  3000  0.82189 (0.00247)  x1.195 DR  x1.206 DR-MMSE
+    div    deep  6000  0.81393 (0.00373)  x1.184 DR  x1.194 DR-MMSE
+    prediv base  3000  0.81790 (0.00218)  x1.190 DR  x1.200 DR-MMSE
+    prediv base  6000  0.80801 (0.00285)  x1.175 DR  x1.186 DR-MMSE
+    prediv wide  3000  0.81816 (0.00215)  x1.190 DR  x1.201 DR-MMSE
+    prediv wide  6000  0.80896 (0.00334)  x1.177 DR  x1.187 DR-MMSE
+    prediv deep  3000  0.83552 (0.00268)  x1.215 DR  x1.226 DR-MMSE
+    prediv deep  6000  0.82177 (0.00434)  x1.195 DR  x1.206 DR-MMSE
+    best arm prediv/base/6000: 0.80801, x1.175 DR, x1.186 DR-MMSE
+beta=0.20  DR 0.62969  DR-MMSE 0.61065  LMMSE 0.68576
+    div    base  3000  0.72740 (0.00428)  x1.155 DR  x1.191 DR-MMSE
+    div    base  6000  0.72796 (0.00521)  x1.156 DR  x1.192 DR-MMSE
+    div    wide  3000  0.72756 (0.00316)  x1.155 DR  x1.191 DR-MMSE
+    div    wide  6000  0.72942 (0.00505)  x1.158 DR  x1.194 DR-MMSE
+    div    deep  3000  0.66467 (0.00134)  x1.056 DR  x1.088 DR-MMSE
+    div    deep  6000  0.66333 (0.00239)  x1.053 DR  x1.086 DR-MMSE
+    prediv base  3000  0.66239 (0.00138)  x1.052 DR  x1.085 DR-MMSE
+    prediv base  6000  0.66094 (0.00198)  x1.050 DR  x1.082 DR-MMSE
+    prediv wide  3000  0.66324 (0.00139)  x1.053 DR  x1.086 DR-MMSE
+    prediv wide  6000  0.66244 (0.00222)  x1.052 DR  x1.085 DR-MMSE
+    prediv deep  3000  0.67333 (0.00153)  x1.069 DR  x1.103 DR-MMSE
+    prediv deep  6000  0.66939 (0.00290)  x1.063 DR  x1.096 DR-MMSE
+    best arm prediv/base/6000: 0.66094, x1.050 DR, x1.082 DR-MMSE
+beta=0.30  DR 0.41625  DR-MMSE 0.38976  LMMSE 0.59218
+    div    base  3000  0.45786 (0.00025)  x1.100 DR  x1.175 DR-MMSE
+    div    base  6000  0.45692 (0.00027)  x1.098 DR  x1.172 DR-MMSE
+    div    wide  3000  0.45747 (0.00023)  x1.099 DR  x1.174 DR-MMSE
+    div    wide  6000  0.45676 (0.00033)  x1.097 DR  x1.172 DR-MMSE
+    div    deep  3000  0.41455 (0.00046)  x0.996 DR  x1.064 DR-MMSE
+    div    deep  6000  0.41311 (0.00065)  x0.992 DR  x1.060 DR-MMSE
+    prediv base  3000  0.40687 (0.00053)  x0.977 DR  x1.044 DR-MMSE
+    prediv base  6000  0.40781 (0.00052)  x0.980 DR  x1.046 DR-MMSE
+    prediv wide  3000  0.40862 (0.00062)  x0.982 DR  x1.048 DR-MMSE
+    prediv wide  6000  0.40921 (0.00066)  x0.983 DR  x1.050 DR-MMSE
+    prediv deep  3000  0.41593 (0.00039)  x0.999 DR  x1.067 DR-MMSE
+    prediv deep  6000  0.41429 (0.00076)  x0.995 DR  x1.063 DR-MMSE
+    best arm prediv/base/3000: 0.40687, x0.977 DR, x1.044 DR-MMSE
+beta=0.40  DR 0.14652  DR-MMSE 0.13514  LMMSE 0.44219
+    div    base  3000  0.22276 (0.00198)  x1.520 DR  x1.648 DR-MMSE
+    div    base  6000  0.22003 (0.00216)  x1.502 DR  x1.628 DR-MMSE
+    div    wide  3000  0.22083 (0.00136)  x1.507 DR  x1.634 DR-MMSE
+    div    wide  6000  0.21813 (0.00229)  x1.489 DR  x1.614 DR-MMSE
+    div    deep  3000  0.17119 (0.00080)  x1.168 DR  x1.267 DR-MMSE
+    div    deep  6000  0.16947 (0.00151)  x1.157 DR  x1.254 DR-MMSE
+    prediv base  3000  0.16399 (0.00082)  x1.119 DR  x1.214 DR-MMSE
+    prediv base  6000  0.16455 (0.00112)  x1.123 DR  x1.218 DR-MMSE
+    prediv wide  3000  0.16496 (0.00084)  x1.126 DR  x1.221 DR-MMSE
+    prediv wide  6000  0.16544 (0.00138)  x1.129 DR  x1.224 DR-MMSE
+    prediv deep  3000  0.16942 (0.00104)  x1.156 DR  x1.254 DR-MMSE
+    prediv deep  6000  0.16780 (0.00197)  x1.145 DR  x1.242 DR-MMSE
+    best arm prediv/base/3000: 0.16399, x1.119 DR, x1.214 DR-MMSE
+beta=0.50  DR 0.03983  DR-MMSE 0.03723  LMMSE 0.27442
+    div    base  3000  0.08408 (0.00078)  x2.111 DR  x2.258 DR-MMSE
+    div    base  6000  0.08082 (0.00152)  x2.029 DR  x2.171 DR-MMSE
+    div    wide  3000  0.08127 (0.00091)  x2.040 DR  x2.183 DR-MMSE
+    div    wide  6000  0.07881 (0.00152)  x1.979 DR  x2.117 DR-MMSE
+    div    deep  3000  0.05379 (0.00054)  x1.350 DR  x1.445 DR-MMSE
+    div    deep  6000  0.05302 (0.00076)  x1.331 DR  x1.424 DR-MMSE
+    prediv base  3000  0.05161 (0.00040)  x1.296 DR  x1.386 DR-MMSE
+    prediv base  6000  0.05174 (0.00065)  x1.299 DR  x1.390 DR-MMSE
+    prediv wide  3000  0.05184 (0.00046)  x1.302 DR  x1.393 DR-MMSE
+    prediv wide  6000  0.05190 (0.00086)  x1.303 DR  x1.394 DR-MMSE
+    prediv deep  3000  0.05311 (0.00053)  x1.333 DR  x1.426 DR-MMSE
+    prediv deep  6000  0.05242 (0.00105)  x1.316 DR  x1.408 DR-MMSE
+    best arm prediv/base/3000: 0.05161, x1.296 DR, x1.386 DR-MMSE
+beta=0.60  DR 0.01123  DR-MMSE 0.01073  LMMSE 0.13839
+    div    base  3000  0.02582 (0.00048)  x2.300 DR  x2.406 DR-MMSE
+    div    base  6000  0.02449 (0.00046)  x2.182 DR  x2.282 DR-MMSE
+    div    wide  3000  0.02449 (0.00039)  x2.182 DR  x2.282 DR-MMSE
+    div    wide  6000  0.02368 (0.00039)  x2.110 DR  x2.207 DR-MMSE
+    div    deep  3000  0.01641 (0.00018)  x1.462 DR  x1.529 DR-MMSE
+    div    deep  6000  0.01605 (0.00031)  x1.430 DR  x1.496 DR-MMSE
+    prediv base  3000  0.01594 (0.00014)  x1.420 DR  x1.486 DR-MMSE
+    prediv base  6000  0.01589 (0.00022)  x1.415 DR  x1.480 DR-MMSE
+    prediv wide  3000  0.01600 (0.00014)  x1.426 DR  x1.491 DR-MMSE
+    prediv wide  6000  0.01593 (0.00029)  x1.419 DR  x1.485 DR-MMSE
+    prediv deep  3000  0.01633 (0.00017)  x1.455 DR  x1.522 DR-MMSE
+    prediv deep  6000  0.01599 (0.00038)  x1.424 DR  x1.490 DR-MMSE
+    best arm prediv/base/6000: 0.01589, x1.415 DR, x1.480 DR-MMSE
+beta=0.70  DR 0.00257  DR-MMSE 0.00253  LMMSE 0.05794
+    div    base  3000  0.00639 (0.00011)  x2.486 DR  x2.523 DR-MMSE
+    div    base  6000  0.00600 (0.00012)  x2.335 DR  x2.369 DR-MMSE
+    div    wide  3000  0.00604 (0.00014)  x2.353 DR  x2.388 DR-MMSE
+    div    wide  6000  0.00582 (0.00011)  x2.264 DR  x2.298 DR-MMSE
+    div    deep  3000  0.00428 (0.00010)  x1.667 DR  x1.691 DR-MMSE
+    div    deep  6000  0.00420 (0.00006)  x1.635 DR  x1.659 DR-MMSE
+    prediv base  3000  0.00416 (0.00008)  x1.620 DR  x1.644 DR-MMSE
+    prediv base  6000  0.00414 (0.00003)  x1.611 DR  x1.635 DR-MMSE
+    prediv wide  3000  0.00417 (0.00009)  x1.623 DR  x1.647 DR-MMSE
+    prediv wide  6000  0.00416 (0.00005)  x1.621 DR  x1.645 DR-MMSE
+    prediv deep  3000  0.00424 (0.00014)  x1.651 DR  x1.676 DR-MMSE
+    prediv deep  6000  0.00416 (0.00002)  x1.621 DR  x1.645 DR-MMSE
+    best arm prediv/base/6000: 0.00414, x1.611 DR, x1.635 DR-MMSE
+beta=0.80  DR 0.00109  DR-MMSE 0.00109  LMMSE 0.02356
+    div    base  3000  0.00203 (0.00004)  x1.861 DR  x1.871 DR-MMSE
+    div    base  6000  0.00191 (0.00008)  x1.750 DR  x1.760 DR-MMSE
+    div    wide  3000  0.00188 (0.00005)  x1.722 DR  x1.732 DR-MMSE
+    div    wide  6000  0.00184 (0.00006)  x1.682 DR  x1.692 DR-MMSE
+    div    deep  3000  0.00161 (0.00005)  x1.477 DR  x1.485 DR-MMSE
+    div    deep  6000  0.00155 (0.00003)  x1.419 DR  x1.428 DR-MMSE
+    prediv base  3000  0.00155 (0.00004)  x1.418 DR  x1.426 DR-MMSE
+    prediv base  6000  0.00154 (0.00003)  x1.407 DR  x1.415 DR-MMSE
+    prediv wide  3000  0.00157 (0.00004)  x1.433 DR  x1.441 DR-MMSE
+    prediv wide  6000  0.00155 (0.00003)  x1.418 DR  x1.426 DR-MMSE
+    prediv deep  3000  0.00160 (0.00004)  x1.465 DR  x1.474 DR-MMSE
+    prediv deep  6000  0.00157 (0.00004)  x1.432 DR  x1.440 DR-MMSE
+    best arm prediv/base/6000: 0.00154, x1.407 DR, x1.415 DR-MMSE
+beta=0.90  DR 0.00032  DR-MMSE 0.00032  LMMSE 0.00882
+    div    base  3000  0.00048 (0.00003)  x1.485 DR  x1.485 DR-MMSE
+    div    base  6000  0.00044 (0.00003)  x1.358 DR  x1.358 DR-MMSE
+    div    wide  3000  0.00049 (0.00003)  x1.496 DR  x1.496 DR-MMSE
+    div    wide  6000  0.00044 (0.00003)  x1.365 DR  x1.365 DR-MMSE
+    div    deep  3000  0.00044 (0.00001)  x1.358 DR  x1.358 DR-MMSE
+    div    deep  6000  0.00041 (0.00003)  x1.273 DR  x1.273 DR-MMSE
+    prediv base  3000  0.00043 (0.00002)  x1.312 DR  x1.312 DR-MMSE
+    prediv base  6000  0.00041 (0.00002)  x1.250 DR  x1.250 DR-MMSE
+    prediv wide  3000  0.00043 (0.00002)  x1.319 DR  x1.319 DR-MMSE
+    prediv wide  6000  0.00041 (0.00002)  x1.254 DR  x1.254 DR-MMSE
+    prediv deep  3000  0.00044 (0.00002)  x1.354 DR  x1.354 DR-MMSE
+    prediv deep  6000  0.00041 (0.00004)  x1.254 DR  x1.254 DR-MMSE
+    best arm prediv/base/6000: 0.00041, x1.250 DR, x1.250 DR-MMSE
+
+Held-out objective (mean over seeds) at 3000 and 6000 steps
+  div    base step  3000 val_all 0.44647
+  div    base step  6000 val_all 0.44554
+  div    wide step  3000 val_all 0.44584
+  div    wide step  6000 val_all 0.44531
+  div    deep step  3000 val_all 0.43030
+  div    deep step  6000 val_all 0.42887
+  prediv base step  3000 val_all 0.42867
+  prediv base step  6000 val_all 0.42760
+  prediv wide step  3000 val_all 0.42899
+  prediv wide step  6000 val_all 0.42797
+  prediv deep step  3000 val_all 0.43135
+  prediv deep step  6000 val_all 0.42980
+runtime 2216 s

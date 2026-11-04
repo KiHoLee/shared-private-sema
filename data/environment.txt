@@ -20,3 +20,21 @@ e20_covariance_receiver.csv (one 3072 x 3072 Cholesky solve per sample) ran
 in float64 on one RTX PRO 5000 GPU of the same environment (rerun
 2026-11-03); the other E20 rows reproduce the earlier CPU run of E20 to the
 printed digits.
+
+Rev5 experiments (2026-11-04), u24 server, ~/sse_rev/venv/bin/python
+(python 3.12.3 numpy 2.5.4 torch 2.11.0+cu128):
+  CPU: exp8b_varying_kappa.py (E8b), exp11b_sync.py (E11b),
+  exp12b_sideinfo.py (E12b, with NPY_DISABLE_CPU_FEATURES="X86_V3 X86_V4
+  AVX512_ICL AVX512_SPR" so that build_tuples reproduces the E12 tuples),
+  exp19b_causal_average.py (E19b), exp2b_dc_misspec.py (E2b),
+  exp2c_adapter_snr.py (E2c), exp9b_threshold_by_scheme.py (E9b),
+  exp10b_clip_reference.py (E10b), rev5_small_notes.py, device_cost.py
+  (operation count only).
+  GPU (one NVIDIA RTX PRO 5000 Blackwell): exp7b_learned_robustness.py (E7b,
+  device=cuda), exp20b_fullcov_variants.py (E20b; the cost rows time the
+  receivers on 4 CPU threads and on the GPU), extract_coco_captions.py
+  (BERT caption embeddings for E24, cuda when available). exp24_coco_captions.py
+  (E24) runs in the same environment.
+The BERT-pool reruns (E2b, E2c, E9b) agree with the Mac E2 and E9 files
+within Monte Carlo error (largest gap 0.0019), and the u24 environment
+reproduces its own E21 rows exactly; see data/rev5_small_notes.txt.

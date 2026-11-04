@@ -1,0 +1,35 @@
+E7b summary (from data/e7b_learned_robustness.csv)
+
+tokens=div vs LearnedSI_div_base_3000, all beta: largest decrease -37.8% (LearnedSI_div_deep_6000, beta=0.6), largest increase +0.8% (LearnedSI_div_wide_3000, beta=0.9)
+tokens=div vs LearnedSI_div_base_3000, 0.5<=beta<=0.7: largest decrease -37.8% (LearnedSI_div_deep_6000, beta=0.6), largest increase -3.3% (LearnedSI_div_wide_3000, beta=0.5)
+tokens=prediv vs LearnedSI_prediv_base_3000, all beta: largest decrease -4.7% (LearnedSI_prediv_base_6000, beta=0.9), largest increase +3.3% (LearnedSI_prediv_deep_3000, beta=0.4)
+tokens=prediv vs LearnedSI_prediv_base_3000, 0.5<=beta<=0.7: largest decrease -0.5% (LearnedSI_prediv_base_6000, beta=0.7), largest increase +2.9% (LearnedSI_prediv_deep_3000, beta=0.5)
+
+smallest ratio to DR-MMSE over all arms and beta: 1.0439 (LearnedSI_prediv_base_3000, beta=0.3)
+arms with SER below the DR: LearnedSI_div_deep_3000 beta=0.3 ratio 0.9959; LearnedSI_div_deep_6000 beta=0.3 ratio 0.9925; LearnedSI_prediv_base_3000 beta=0.3 ratio 0.9775; LearnedSI_prediv_base_6000 beta=0.3 ratio 0.9797; LearnedSI_prediv_deep_3000 beta=0.3 ratio 0.9992; LearnedSI_prediv_deep_6000 beta=0.3 ratio 0.9953; LearnedSI_prediv_wide_3000 beta=0.3 ratio 0.9817; LearnedSI_prediv_wide_6000 beta=0.3 ratio 0.9831
+
+best arm per beta (ratio to DR / to DR-MMSE) and published arm
+  beta=0.05: best LearnedSI_prediv_base_6000 0.85285 x1.250 / x1.252; published 0.94980 x1.392 / x1.395; LMMSE 0.74803
+  beta=0.1: best LearnedSI_prediv_base_6000 0.80801 x1.175 / x1.186; published 0.90603 x1.318 / x1.329; LMMSE 0.73420
+  beta=0.2: best LearnedSI_prediv_base_6000 0.66094 x1.050 / x1.082; published 0.72740 x1.155 / x1.191; LMMSE 0.68576
+  beta=0.3: best LearnedSI_prediv_base_3000 0.40687 x0.977 / x1.044; published 0.45786 x1.100 / x1.175; LMMSE 0.59218
+  beta=0.4: best LearnedSI_prediv_base_3000 0.16399 x1.119 / x1.214; published 0.22276 x1.520 / x1.648; LMMSE 0.44219
+  beta=0.5: best LearnedSI_prediv_base_3000 0.05161 x1.296 / x1.386; published 0.08408 x2.111 / x2.258; LMMSE 0.27442
+  beta=0.6: best LearnedSI_prediv_base_6000 0.01589 x1.415 / x1.480; published 0.02582 x2.300 / x2.406; LMMSE 0.13839
+  beta=0.7: best LearnedSI_prediv_base_6000 0.00414 x1.611 / x1.635; published 0.00639 x2.486 / x2.523; LMMSE 0.05794
+  beta=0.8: best LearnedSI_prediv_base_6000 0.00154 x1.407 / x1.415; published 0.00203 x1.861 / x1.871; LMMSE 0.02356
+  beta=0.9: best LearnedSI_prediv_base_6000 0.00041 x1.250 / x1.250; published 0.00048 x1.485 / x1.485; LMMSE 0.00882
+
+booktabs rows (beta = 0.3, 0.5, 0.7; SER mean +- SD over five seeds; ratio to DR / to DR-MMSE)
+after & E7 size & 3000 & $0.4579\pm0.0002$ & 1.10/1.17 & $0.0841\pm0.0008$ & 2.11/2.26 & $0.00639\pm0.00011$ & 2.49/2.52 \\
+after & E7 size & 6000 & $0.4569\pm0.0003$ & 1.10/1.17 & $0.0808\pm0.0015$ & 2.03/2.17 & $0.00600\pm0.00012$ & 2.33/2.37 \\
+after & twice the width & 3000 & $0.4575\pm0.0002$ & 1.10/1.17 & $0.0813\pm0.0009$ & 2.04/2.18 & $0.00604\pm0.00014$ & 2.35/2.39 \\
+after & twice the width & 6000 & $0.4568\pm0.0003$ & 1.10/1.17 & $0.0788\pm0.0015$ & 1.98/2.12 & $0.00582\pm0.00011$ & 2.26/2.30 \\
+after & two layers & 3000 & $0.4145\pm0.0005$ & 1.00/1.06 & $0.0538\pm0.0005$ & 1.35/1.44 & $0.00428\pm0.00010$ & 1.67/1.69 \\
+after & two layers & 6000 & $0.4131\pm0.0007$ & 0.99/1.06 & $0.0530\pm0.0008$ & 1.33/1.42 & $0.00420\pm0.00006$ & 1.64/1.66 \\
+before & E7 size & 3000 & $0.4069\pm0.0005$ & 0.98/1.04 & $0.0516\pm0.0004$ & 1.30/1.39 & $0.00416\pm0.00008$ & 1.62/1.64 \\
+before & E7 size & 6000 & $0.4078\pm0.0005$ & 0.98/1.05 & $0.0517\pm0.0006$ & 1.30/1.39 & $0.00414\pm0.00003$ & 1.61/1.64 \\
+before & twice the width & 3000 & $0.4086\pm0.0006$ & 0.98/1.05 & $0.0518\pm0.0005$ & 1.30/1.39 & $0.00417\pm0.00009$ & 1.62/1.65 \\
+before & twice the width & 6000 & $0.4092\pm0.0007$ & 0.98/1.05 & $0.0519\pm0.0009$ & 1.30/1.39 & $0.00416\pm0.00005$ & 1.62/1.64 \\
+before & two layers & 3000 & $0.4159\pm0.0004$ & 1.00/1.07 & $0.0531\pm0.0005$ & 1.33/1.43 & $0.00424\pm0.00014$ & 1.65/1.68 \\
+before & two layers & 6000 & $0.4143\pm0.0008$ & 1.00/1.06 & $0.0524\pm0.0011$ & 1.32/1.41 & $0.00416\pm0.00002$ & 1.62/1.64 \\

@@ -1,0 +1,37 @@
+E24 MS-COCO captions, U=4, D=768, calibration images 1600 (N in [200, 1600]), centering mean from the 8007 calibration captions
+pool val: 5000 tuples (20000 transmitted captions), bank 25014 captions, duplicate caption texts in bank 0.99%
+pool tr20k: 20000 tuples (80000 transmitted captions), bank 100047 captions, duplicate caption texts in bank 1.91%
+[affinity calib] pairwise caption cosine, same image: mean 0.3886 sd 0.1930 p5=0.068 p10=0.137 p25=0.253 p50=0.390 p75=0.523 p90=0.640 p95=0.706
+[affinity calib] tuple-mean affinity beta: mean 0.3886 sd 0.1250 p5=0.198 p10=0.231 p25=0.297 p50=0.384 p75=0.473 p90=0.555 p95=0.600
+[affinity calib] reference, captions of different images: mean 0.0030 sd 0.1552 p5=-0.223 p10=-0.182 p25=-0.107 p50=-0.012 p75=0.096 p90=0.209 p95=0.282
+[affinity calib] histogram of beta, bins of 0.05 from -0.10: 0 0 2 4 28 51 130 200 227 243 225 180 140 89 46 22 12 1 0 0 0 0
+[affinity val] pairwise caption cosine, same image: mean 0.3906 sd 0.1946 p5=0.073 p10=0.138 p25=0.255 p50=0.389 p75=0.526 p90=0.647 p95=0.713
+[affinity val] tuple-mean affinity beta: mean 0.3906 sd 0.1276 p5=0.191 p10=0.230 p25=0.299 p50=0.386 p75=0.476 p90=0.561 p95=0.608
+[affinity val] reference, captions of different images: mean 0.0025 sd 0.1545 p5=-0.221 p10=-0.180 p25=-0.106 p50=-0.014 p75=0.094 p90=0.205 p95=0.282
+[affinity val] histogram of beta, bins of 0.05 from -0.10: 0 0 6 23 62 212 391 566 706 737 738 568 407 306 152 76 27 19 3 1 0 0
+[affinity tr20k] pairwise caption cosine, same image: mean 0.3928 sd 0.1941 p5=0.076 p10=0.142 p25=0.257 p50=0.390 p75=0.529 p90=0.649 p95=0.716
+[affinity tr20k] tuple-mean affinity beta: mean 0.3928 sd 0.1250 p5=0.199 p10=0.236 p25=0.304 p50=0.386 p75=0.475 p90=0.558 p95=0.611
+[affinity tr20k] reference, captions of different images: mean 0.0005 sd 0.1554 p5=-0.223 p10=-0.182 p25=-0.109 p50=-0.017 p75=0.092 p90=0.207 p95=0.283
+[affinity tr20k] histogram of beta, bins of 0.05 from -0.10: 0 2 10 67 241 701 1466 2315 2872 3183 2870 2353 1702 1052 617 326 157 48 17 1 0 0
+[share coef] static rank-one fit, N=200: a = 0.6113 0.6019 0.6366 0.5885, implied B_uv mean 0.3715, calibration Gram off-diagonal mean 0.3715
+[share coef] static rank-one fit, N=1600: a = 0.6220 0.6231 0.6323 0.6162, implied B_uv mean 0.3886, calibration Gram off-diagonal mean 0.3886
+[spectrum calib N=200] trace 0.3715, positive eigenvalues 200, top-10 0.0670 0.0351 0.0300 0.0225 0.0218 0.0191 0.0154 0.0142 0.0114 0.0101
+[spectrum calib N=200] fraction of positive mass in top k: k=8:0.524 k=16:0.687 k=32:0.830 k=64:0.930 k=128:0.986 k=256:1.000; k for 50/80/90/95%: 50%:8 80%:28 90%:51 95%:78; eigenvalues above 10/5/1% of the largest: 10%:16 5%:25 1%:68
+[spectrum calib N=200] eigenvalues at k=1,2,4,8,16,32,64,128,256,512: 0.06702 0.03512 0.02251 0.01422 0.00672 0.00252 0.00076 0.00018 -0.00000 -0.00003
+[spectrum calib N=1600] trace 0.3886, positive eigenvalues 445, top-10 0.0694 0.0348 0.0285 0.0212 0.0201 0.0165 0.0131 0.0124 0.0108 0.0104
+[spectrum calib N=1600] fraction of positive mass in top k: k=8:0.538 k=16:0.696 k=32:0.829 k=64:0.920 k=128:0.969 k=256:0.994; k for 50/80/90/95%: 50%:7 80%:27 90%:54 95%:93; eigenvalues above 10/5/1% of the largest: 10%:13 5%:23 1%:60
+[spectrum calib N=1600] eigenvalues at k=1,2,4,8,16,32,64,128,256,512: 0.06945 0.03478 0.02118 0.01241 0.00558 0.00210 0.00064 0.00016 0.00003 -0.00001
+[spectrum tr20k (diagnostic only)] trace 0.3928, positive eigenvalues 621, top-10 0.0716 0.0347 0.0291 0.0216 0.0198 0.0165 0.0124 0.0118 0.0105 0.0103
+[spectrum tr20k (diagnostic only)] fraction of positive mass in top k: k=8:0.552 k=16:0.711 k=32:0.842 k=64:0.928 k=128:0.971 k=256:0.991; k for 50/80/90/95%: 50%:7 80%:25 90%:49 95%:86; eigenvalues above 10/5/1% of the largest: 10%:12 5%:22 1%:57
+[spectrum tr20k (diagnostic only)] eigenvalues at k=1,2,4,8,16,32,64,128,256,512: 0.07164 0.03470 0.02163 0.01183 0.00540 0.00210 0.00055 0.00013 0.00003 0.00000
+[model fit N=200 d_c=32] val: shared-block energy 0.4967 (model a^2 = 0.3719), cosine between users' shared blocks 0.5890 (model 1), cross inner product inside 0.2983 / outside 0.0923 (model outside 0), adapter 14 s
+[model fit N=200 d_c=64] val: shared-block energy 0.5858 (model a^2 = 0.3719), cosine between users' shared blocks 0.5451 (model 1), cross inner product inside 0.3246 / outside 0.0660 (model outside 0), adapter 11 s
+[model fit N=200 d_c=128] val: shared-block energy 0.6445 (model a^2 = 0.3719), cosine between users' shared blocks 0.5164 (model 1), cross inner product inside 0.3377 / outside 0.0529 (model outside 0), adapter 11 s
+[model fit N=200 d_c=256] val: shared-block energy 0.6754 (model a^2 = 0.3719), cosine between users' shared blocks 0.5011 (model 1), cross inner product inside 0.3430 / outside 0.0475 (model outside 0), adapter 12 s
+[model fit N=1600 d_c=32] val: shared-block energy 0.5432 (model a^2 = 0.3887), cosine between users' shared blocks 0.5864 (model 1), cross inner product inside 0.3239 / outside 0.0667 (model outside 0), adapter 12 s
+[model fit N=1600 d_c=64] val: shared-block energy 0.6679 (model a^2 = 0.3887), cosine between users' shared blocks 0.5251 (model 1), cross inner product inside 0.3555 / outside 0.0351 (model outside 0), adapter 10 s
+[model fit N=1600 d_c=128] val: shared-block energy 0.7559 (model a^2 = 0.3887), cosine between users' shared blocks 0.4848 (model 1), cross inner product inside 0.3704 / outside 0.0202 (model outside 0), adapter 10 s
+[model fit N=1600 d_c=256] val: shared-block energy 0.8109 (model a^2 = 0.3887), cosine between users' shared blocks 0.4613 (model 1), cross inner product inside 0.3772 / outside 0.0133 (model outside 0), adapter 10 s
+[oracle bins val] 0.10:50:a=0.299 0.15:128:a=0.391 0.20:277:a=0.450 0.25:495:a=0.501 0.30:661:a=0.548 0.35:718:a=0.592 0.40:746:a=0.632 0.45:666:a=0.670 0.50:504:a=0.707 0.55:353:a=0.742 0.60:213:a=0.773 0.65:103:a=0.804 0.70:86:a=0.849
+[oracle bins tr20k] 0.05:36:a=0.225 0.10:130:a=0.325 0.15:425:a=0.393 0.20:1055:a=0.451 0.25:1879:a=0.502 0.30:2654:a=0.548 0.35:3093:a=0.592 0.40:3090:a=0.632 0.45:2643:a=0.670 0.50:2025:a=0.706 0.55:1381:a=0.741 0.60:772:a=0.774 0.65:473:a=0.805 0.70:209:a=0.835 0.75:103:a=0.863 0.80:32:a=0.898
+total run time 108.5 min

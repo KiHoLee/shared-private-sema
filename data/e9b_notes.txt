@@ -1,0 +1,54 @@
+check OMA       cos 0.1468303465410926 ser 1.0 shared 0.36225 private 0.383375 exact=False
+check NOMA      cos 0.2943016272819883 ser 0.853625 shared 0.7639375 private 0.7735625 exact=False
+check LMMSE     cos 0.49198491266315686 ser 0.3359375 shared 0.9985 private 0.373375 exact=False
+check DRspec    cos 0.5834065757954225 ser 0.033 shared 0.9985 private 0.3121875 exact=False
+check DRadapt   cos 0.5851986794075044 ser 0.0278125 shared 0.9985 private 0.394875 exact=False
+check BLMMSE    cos 0.6308536263764488 ser 0.011125 shared 0.99875 private 0.6375625 exact=False
+check DRoracle  cos 0.6231131483808003 ser 0.0115625 shared 0.99875 private 0.67325 exact=False
+check SR        cos 0.2395993595973374 ser 0.9530625 shared 0.655375 private 0.67325 exact=False
+per-scheme means reproduce e9_retrieval.csv exactly: False
+largest absolute difference to e9_retrieval.csv over the 8 schemes and 4 columns: 0.00188
+check vs E21 20 dB row OMA: ser, top-1 exact and cos within 1e-12: True (cos difference 0.0e+00)
+check vs E21 20 dB row NOMA-SIC: ser, top-1 exact and cos within 1e-12: True (cos difference 0.0e+00)
+check vs E21 20 dB row LMMSE: ser, top-1 exact and cos within 1e-12: True (cos difference 5.6e-17)
+check vs E21 20 dB row DR-spectral: ser, top-1 exact and cos within 1e-12: True (cos difference 0.0e+00)
+OMA, NOMA-SIC, LMMSE, DR-spectral reproduce the 20 dB rows of e21_conventional_references.csv: True
+pooled4_full reproduces e9_threshold.csv exactly: False
+pooled4 bin 0.20: n 128 (e9 133), private top-1 0.0000 (e9 0.0000)
+pooled4 bin 0.25: n 339 (e9 329), private top-1 0.0383 (e9 0.0426)
+pooled4 bin 0.30: n 902 (e9 899), private top-1 0.0488 (e9 0.0445)
+pooled4 bin 0.35: n 1941 (e9 1929), private top-1 0.0860 (e9 0.0886)
+pooled4 bin 0.40: n 3183 (e9 3185), private top-1 0.1354 (e9 0.1325)
+pooled4 bin 0.45: n 5246 (e9 5280), private top-1 0.1702 (e9 0.1705)
+pooled4 bin 0.50: n 9237 (e9 9209), private top-1 0.1997 (e9 0.1963)
+pooled4 bin 0.55: n 14888 (e9 14929), private top-1 0.2971 (e9 0.2995)
+pooled4 bin 0.60: n 16649 (e9 16659), private top-1 0.5619 (e9 0.5640)
+pooled4 bin 0.65: n 9168 (e9 9147), private top-1 0.8770 (e9 0.8792)
+pooled4 bin 0.70: n 2096 (e9 2079), private top-1 0.9957 (e9 0.9957)
+pooled4 bin 0.75: n 188 (e9 186), private top-1 1.0000 (e9 1.0000)
+scheme    full_cos  ser     shared_top1 private_top1 shared_blk_cos private_blk_cos miss->other_user miss->shared_sentence
+OMA       0.1468   1.0000  0.3623      0.3834       0.2454         0.1147          0.0035           0.0008
+NOMA      0.2943   0.8536  0.7639      0.7736       0.4531         0.2347          0.0033           0.0017
+LMMSE     0.4920   0.3359  0.9985      0.3734       0.8505         0.2069          0.9393           0.0000
+DRspec    0.5834   0.0330  0.9985      0.3122       0.8306         0.1774          0.1752           0.0003
+DRadapt   0.5852   0.0278  0.9985      0.3949       0.8386         0.1465          0.0715           0.0001
+BLMMSE    0.6309   0.0111  0.9988      0.6376       0.8565         0.2295          0.6696           0.0000
+DRoracle  0.6231   0.0116  0.9988      0.6733       0.8565         0.1893          0.0031           0.0017
+SR        0.2396   0.9531  0.6554      0.6733       0.3813         0.1893          0.0031           0.0017
+OMA       private top-1 first >= 50% in full-cos bin 0.15, shared top-1 in bin 0.20
+NOMA      private top-1 first >= 50% in full-cos bin 0.15, shared top-1 in bin 0.15
+LMMSE     private top-1 first >= 50% in full-cos bin 0.55, shared top-1 in bin 0.20
+DRspec    private top-1 first >= 50% in full-cos bin 0.65, shared top-1 in bin 0.30
+DRadapt   private top-1 first >= 50% in full-cos bin 0.60, shared top-1 in bin 0.35
+BLMMSE    private top-1 first >= 50% in full-cos bin 0.60, shared top-1 in bin 0.40
+DRoracle  private top-1 first >= 50% in full-cos bin 0.60, shared top-1 in bin 0.40
+SR        private top-1 first >= 50% in full-cos bin 0.15, shared top-1 in bin 0.15
+pooled8 private top-1 first >= 50% in private-block-cos bin 0.15
+pooled8 shared top-1 first >= 50% in shared-block-cos bin 0.30
+pooled8_private: [0.00:0.000,n=9751] [0.05:0.001,n=17713] [0.10:0.238,n=21709] [0.15:0.650,n=21091] [0.20:0.815,n=18080] [0.25:0.911,n=13904] [0.30:0.963,n=9909] [0.35:0.985,n=6289] [0.40:0.993,n=3265] [0.45:0.995,n=1606] [0.50:1.000,n=505] [0.55:1.000,n=149]
+pooled8_shared: [0.00:0.000,n=1121] [0.05:0.000,n=1912] [0.10:0.000,n=2975] [0.15:0.001,n=3685] [0.20:0.052,n=4267] [0.25:0.363,n=4561] [0.30:0.719,n=4631] [0.35:0.899,n=4583] [0.40:0.962,n=4056] [0.45:0.987,n=3644] [0.50:0.995,n=3257] [0.55:0.994,n=3174] [0.60:0.998,n=3011] [0.65:0.998,n=3222] [0.70:0.998,n=5177] [0.75:0.999,n=9499] [0.80:0.998,n=18567] [0.85:0.999,n=29318] [0.90:0.999,n=16078] [0.95:0.976,n=424]
+private-block bin 0.30: NOMA:0.998(n=1850) LMMSE:0.850(n=1556) DRspec:0.914(n=1345) DRadapt:0.996(n=810) BLMMSE:0.995(n=1762) DRoracle:0.998(n=1282) SR:0.998(n=1282)
+private-block bin 0.35: NOMA:0.998(n=1265) LMMSE:0.943(n=1096) DRspec:0.975(n=836) DRadapt:0.998(n=400) BLMMSE:0.996(n=1359) DRoracle:0.997(n=666) SR:0.997(n=666)
+private-block bin 0.40: NOMA:0.995(n=839) LMMSE:0.979(n=584) DRspec:0.988(n=409) DRadapt:1.000(n=173) BLMMSE:0.996(n=712) DRoracle:1.000(n=274) SR:1.000(n=274)
+private-block bin 0.45: NOMA:0.998(n=477) LMMSE:0.981(n=319) DRspec:1.000(n=172) DRadapt:1.000(n=51) BLMMSE:0.998(n=411) DRoracle:1.000(n=88) SR:1.000(n=88)
+private-block bin 0.50: NOMA:1.000(n=167) LMMSE:1.000(n=121) DRspec:1.000(n=42) BLMMSE:1.000(n=141)

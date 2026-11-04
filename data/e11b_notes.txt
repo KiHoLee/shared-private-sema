@@ -1,0 +1,58 @@
+Reference check
+  EG zero level, 16 seeds (900000+s): LMMSE SER mean 0.2772 sd 0.0053, DR mean 0.0407 sd 0.0019 (data/e11_seedvar.txt: 0.2772 sd 0.0053, 0.0407 sd 0.0019)
+  E11 construction seed 101, phi=0: LMMSE 0.280625, DR 0.038375 (data/e11_phase.csv: 0.280625, 0.038375)
+Setting: U=4, d=64, d_c=16, beta=0.5, SNR=10 dB, batch=4000, seeds 0..15, RC roll-off 0.25, +-4 taps, mapping at 10 Msym/s and 5.9 GHz
+
+Front end EG: mean +- SE over 16 seeds; dSER = paired increase over the zero level of the same seed
+  none       0       () g=1.000 SDR=inf dB | DR SER 0.0407+-0.0005 dSER +0.0000+-0.0000 NMSE 0.623 | LMMSE SER 0.2772+-0.0013 dSER +0.0000+-0.0000 NMSE 0.721 | ratio 6.82 DR better in 16/16
+  cfo        0.01    (1.56 kHz = 0.26 ppm at 5.9 GHz) g=0.999 SDR=64.7 dB | DR SER 0.0408+-0.0005 dSER +0.0001+-0.0000 NMSE 0.624 | LMMSE SER 0.2776+-0.0013 dSER +0.0004+-0.0000 NMSE 0.722 | ratio 6.80 DR better in 16/16
+  cfo        0.05    (7.81 kHz = 1.32 ppm at 5.9 GHz) g=0.984 SDR=36.7 dB | DR SER 0.0443+-0.0005 dSER +0.0036+-0.0001 NMSE 0.628 | LMMSE SER 0.2891+-0.0013 dSER +0.0119+-0.0002 NMSE 0.726 | ratio 6.53 DR better in 16/16
+  cfo        0.1     (15.62 kHz = 2.65 ppm at 5.9 GHz) g=0.937 SDR=24.4 dB | DR SER 0.0572+-0.0005 dSER +0.0165+-0.0003 NMSE 0.641 | LMMSE SER 0.3295+-0.0014 dSER +0.0523+-0.0007 NMSE 0.742 | ratio 5.76 DR better in 16/16
+  cfo        0.25    (39.06 kHz = 6.62 ppm at 5.9 GHz) g=0.645 SDR=6.5 dB | DR SER 0.3297+-0.0067 dSER +0.2890+-0.0069 NMSE 0.766 | LMMSE SER 0.7276+-0.0046 dSER +0.4505+-0.0049 NMSE 0.871 | ratio 2.21 DR better in 16/16
+  timing     0.05    (5 ns at 10 Msym/s) g=0.996 SDR=22.6 dB | DR SER 0.0419+-0.0005 dSER +0.0012+-0.0001 NMSE 0.625 | LMMSE SER 0.2815+-0.0013 dSER +0.0043+-0.0001 NMSE 0.723 | ratio 6.73 DR better in 16/16
+  timing     0.1     (10 ns at 10 Msym/s) g=0.983 SDR=16.5 dB | DR SER 0.0452+-0.0005 dSER +0.0046+-0.0002 NMSE 0.629 | LMMSE SER 0.2940+-0.0012 dSER +0.0168+-0.0003 NMSE 0.729 | ratio 6.50 DR better in 16/16
+  timing     0.2     (20 ns at 10 Msym/s) g=0.933 SDR=10.1 dB | DR SER 0.0622+-0.0006 dSER +0.0215+-0.0006 NMSE 0.648 | LMMSE SER 0.3504+-0.0017 dSER +0.0732+-0.0013 NMSE 0.751 | ratio 5.63 DR better in 16/16
+  timing     0.3     (30 ns at 10 Msym/s) g=0.854 SDR=5.9 dB | DR SER 0.1059+-0.0016 dSER +0.0653+-0.0018 NMSE 0.682 | LMMSE SER 0.4593+-0.0033 dSER +0.1822+-0.0032 NMSE 0.789 | ratio 4.34 DR better in 16/16
+  pn         0.0001  (linewidth 1 kHz, end-of-embedding phase sd 11 deg) g=0.990 SDR=35.3 dB | DR SER 0.0429+-0.0005 dSER +0.0022+-0.0001 NMSE 0.626 | LMMSE SER 0.2845+-0.0014 dSER +0.0073+-0.0002 NMSE 0.724 | ratio 6.63 DR better in 16/16
+  pn         0.001   (linewidth 10 kHz, end-of-embedding phase sd 36 deg) g=0.907 SDR=15.7 dB | DR SER 0.0733+-0.0005 dSER +0.0327+-0.0006 NMSE 0.652 | LMMSE SER 0.3673+-0.0016 dSER +0.0901+-0.0011 NMSE 0.754 | ratio 5.01 DR better in 16/16
+  pn         0.003   (linewidth 30 kHz, end-of-embedding phase sd 63 deg) g=0.754 SDR=6.7 dB | DR SER 0.2174+-0.0026 dSER +0.1768+-0.0028 NMSE 0.719 | LMMSE SER 0.5635+-0.0027 dSER +0.2864+-0.0026 NMSE 0.823 | ratio 2.59 DR better in 16/16
+  pn         0.01    (linewidth 100 kHz, end-of-embedding phase sd 115 deg) g=0.437 SDR=-2.9 dB | DR SER 0.6600+-0.0055 dSER +0.6194+-0.0056 NMSE 0.910 | LMMSE SER 0.8666+-0.0020 dSER +0.5895+-0.0024 NMSE 1.006 | ratio 1.31 DR better in 16/16
+  static     10      (uniform within +-10 deg) g=0.995 SDR=46.8 dB | DR SER 0.0418+-0.0005 dSER +0.0012+-0.0001 NMSE 0.625 | LMMSE SER 0.2809+-0.0013 dSER +0.0037+-0.0001 NMSE 0.723 | ratio 6.72 DR better in 16/16
+  static     30      (uniform within +-30 deg) g=0.955 SDR=27.5 dB | DR SER 0.0521+-0.0006 dSER +0.0115+-0.0002 NMSE 0.636 | LMMSE SER 0.3136+-0.0014 dSER +0.0364+-0.0004 NMSE 0.737 | ratio 6.02 DR better in 16/16
+  static     60      (uniform within +-60 deg) g=0.827 SDR=14.8 dB | DR SER 0.1217+-0.0009 dSER +0.0810+-0.0009 NMSE 0.701 | LMMSE SER 0.4501+-0.0015 dSER +0.1730+-0.0008 NMSE 0.810 | ratio 3.70 DR better in 16/16
+  static     90      (uniform within +-90 deg) g=0.637 SDR=6.3 dB | DR SER 0.4906+-0.0018 dSER +0.4499+-0.0020 NMSE 87511.180 | LMMSE SER 0.7050+-0.0011 dSER +0.4279+-0.0014 NMSE 84138.854 | ratio 1.44 DR better in 16/16
+  static_sym 10      (uniform within +-10 deg) g=0.995 SDR=46.8 dB | DR SER 0.0418+-0.0005 dSER +0.0012+-0.0001 NMSE 0.625 | LMMSE SER 0.2810+-0.0013 dSER +0.0038+-0.0001 NMSE 0.723 | ratio 6.72 DR better in 16/16
+  static_sym 30      (uniform within +-30 deg) g=0.955 SDR=27.5 dB | DR SER 0.0523+-0.0006 dSER +0.0117+-0.0002 NMSE 0.636 | LMMSE SER 0.3137+-0.0014 dSER +0.0366+-0.0004 NMSE 0.736 | ratio 5.99 DR better in 16/16
+  static_sym 60      (uniform within +-60 deg) g=0.827 SDR=14.8 dB | DR SER 0.1203+-0.0013 dSER +0.0797+-0.0014 NMSE 0.680 | LMMSE SER 0.4575+-0.0022 dSER +0.1803+-0.0019 NMSE 0.783 | ratio 3.80 DR better in 16/16
+  static_sym 90      (uniform within +-90 deg) g=0.637 SDR=6.3 dB | DR SER 0.3677+-0.0046 dSER +0.3271+-0.0047 NMSE 0.771 | LMMSE SER 0.6904+-0.0028 dSER +0.4132+-0.0029 NMSE 0.872 | ratio 1.88 DR better in 16/16
+  gain       0.05    (sigma_e=0.05) g=1.000 SDR=inf dB | DR SER 0.0410+-0.0005 dSER +0.0003+-0.0001 NMSE 0.624 | LMMSE SER 0.2776+-0.0013 dSER +0.0004+-0.0001 NMSE 0.722 | ratio 6.77 DR better in 16/16
+  gain       0.1     (sigma_e=0.1) g=1.000 SDR=inf dB | DR SER 0.0417+-0.0004 dSER +0.0010+-0.0002 NMSE 0.626 | LMMSE SER 0.2788+-0.0013 dSER +0.0016+-0.0001 NMSE 0.724 | ratio 6.69 DR better in 16/16
+  gain       0.2     (sigma_e=0.2) g=1.000 SDR=inf dB | DR SER 0.0442+-0.0004 dSER +0.0035+-0.0003 NMSE 0.632 | LMMSE SER 0.2841+-0.0012 dSER +0.0070+-0.0002 NMSE 0.731 | ratio 6.43 DR better in 16/16
+  gain       0.3     (sigma_e=0.3) g=1.000 SDR=inf dB | DR SER 0.0480+-0.0004 dSER +0.0073+-0.0004 NMSE 0.642 | LMMSE SER 0.2925+-0.0013 dSER +0.0153+-0.0003 NMSE 0.742 | ratio 6.09 DR better in 16/16
+
+Front end RM: mean +- SE over 16 seeds; dSER = paired increase over the zero level of the same seed
+  none       0       () g=1.000 SDR=inf dB | DR SER 0.0839+-0.0021 dSER +0.0000+-0.0000 NMSE 0.700 | LMMSE SER 0.4651+-0.0057 dSER +0.0000+-0.0000 NMSE 0.813 | ratio 5.55 DR better in 16/16
+  cfo        0.01    (1.56 kHz = 0.26 ppm at 5.9 GHz) g=0.999 SDR=64.7 dB | DR SER 0.0841+-0.0021 dSER +0.0002+-0.0000 NMSE 0.700 | LMMSE SER 0.4654+-0.0057 dSER +0.0004+-0.0000 NMSE 0.813 | ratio 5.53 DR better in 16/16
+  cfo        0.05    (7.81 kHz = 1.32 ppm at 5.9 GHz) g=0.984 SDR=36.7 dB | DR SER 0.0899+-0.0023 dSER +0.0060+-0.0002 NMSE 0.702 | LMMSE SER 0.4755+-0.0056 dSER +0.0105+-0.0002 NMSE 0.815 | ratio 5.29 DR better in 16/16
+  cfo        0.1     (15.62 kHz = 2.65 ppm at 5.9 GHz) g=0.937 SDR=24.4 dB | DR SER 0.1096+-0.0028 dSER +0.0258+-0.0008 NMSE 0.708 | LMMSE SER 0.5103+-0.0056 dSER +0.0452+-0.0006 NMSE 0.822 | ratio 4.65 DR better in 16/16
+  cfo        0.25    (39.06 kHz = 6.62 ppm at 5.9 GHz) g=0.645 SDR=6.5 dB | DR SER 0.3916+-0.0061 dSER +0.3077+-0.0047 NMSE 0.787 | LMMSE SER 0.7881+-0.0035 dSER +0.3231+-0.0033 NMSE 0.896 | ratio 2.01 DR better in 16/16
+  timing     0.05    (5 ns at 10 Msym/s) g=0.996 SDR=22.6 dB | DR SER 0.0856+-0.0022 dSER +0.0017+-0.0001 NMSE 0.701 | LMMSE SER 0.4689+-0.0057 dSER +0.0039+-0.0003 NMSE 0.814 | ratio 5.48 DR better in 16/16
+  timing     0.1     (10 ns at 10 Msym/s) g=0.983 SDR=16.5 dB | DR SER 0.0915+-0.0023 dSER +0.0076+-0.0003 NMSE 0.703 | LMMSE SER 0.4807+-0.0056 dSER +0.0157+-0.0007 NMSE 0.817 | ratio 5.25 DR better in 16/16
+  timing     0.2     (20 ns at 10 Msym/s) g=0.933 SDR=10.1 dB | DR SER 0.1174+-0.0029 dSER +0.0335+-0.0010 NMSE 0.714 | LMMSE SER 0.5288+-0.0056 dSER +0.0638+-0.0015 NMSE 0.830 | ratio 4.50 DR better in 16/16
+  timing     0.3     (30 ns at 10 Msym/s) g=0.854 SDR=5.9 dB | DR SER 0.1785+-0.0038 dSER +0.0946+-0.0022 NMSE 0.735 | LMMSE SER 0.6137+-0.0053 dSER +0.1487+-0.0029 NMSE 0.853 | ratio 3.44 DR better in 16/16
+  pn         0.0001  (linewidth 1 kHz, end-of-embedding phase sd 11 deg) g=0.990 SDR=35.3 dB | DR SER 0.0876+-0.0022 dSER +0.0037+-0.0002 NMSE 0.701 | LMMSE SER 0.4714+-0.0057 dSER +0.0063+-0.0001 NMSE 0.814 | ratio 5.38 DR better in 16/16
+  pn         0.001   (linewidth 10 kHz, end-of-embedding phase sd 36 deg) g=0.907 SDR=15.7 dB | DR SER 0.1305+-0.0032 dSER +0.0466+-0.0012 NMSE 0.714 | LMMSE SER 0.5381+-0.0056 dSER +0.0730+-0.0006 NMSE 0.828 | ratio 4.12 DR better in 16/16
+  pn         0.003   (linewidth 30 kHz, end-of-embedding phase sd 63 deg) g=0.754 SDR=6.7 dB | DR SER 0.2784+-0.0047 dSER +0.1946+-0.0029 NMSE 0.757 | LMMSE SER 0.6752+-0.0044 dSER +0.2102+-0.0017 NMSE 0.870 | ratio 2.43 DR better in 16/16
+  pn         0.01    (linewidth 100 kHz, end-of-embedding phase sd 115 deg) g=0.437 SDR=-2.9 dB | DR SER 0.6804+-0.0039 dSER +0.5966+-0.0024 NMSE 0.899 | LMMSE SER 0.8894+-0.0016 dSER +0.4243+-0.0043 NMSE 0.993 | ratio 1.31 DR better in 16/16
+  static     10      (uniform within +-10 deg) g=0.995 SDR=46.8 dB | DR SER 0.0858+-0.0022 dSER +0.0019+-0.0001 NMSE 0.700 | LMMSE SER 0.4683+-0.0057 dSER +0.0032+-0.0001 NMSE 0.814 | ratio 5.46 DR better in 16/16
+  static     30      (uniform within +-30 deg) g=0.955 SDR=27.5 dB | DR SER 0.1022+-0.0026 dSER +0.0184+-0.0005 NMSE 0.705 | LMMSE SER 0.4967+-0.0056 dSER +0.0317+-0.0004 NMSE 0.819 | ratio 4.86 DR better in 16/16
+  static     60      (uniform within +-60 deg) g=0.827 SDR=14.8 dB | DR SER 0.1842+-0.0037 dSER +0.1004+-0.0019 NMSE 0.730 | LMMSE SER 0.6032+-0.0049 dSER +0.1381+-0.0010 NMSE 0.843 | ratio 3.27 DR better in 16/16
+  static     90      (uniform within +-90 deg) g=0.637 SDR=6.3 dB | DR SER 0.4097+-0.0042 dSER +0.3258+-0.0026 NMSE 0.791 | LMMSE SER 0.7558+-0.0032 dSER +0.2908+-0.0027 NMSE 0.896 | ratio 1.84 DR better in 16/16
+  static_sym 10      (uniform within +-10 deg) g=0.995 SDR=46.8 dB | DR SER 0.0858+-0.0022 dSER +0.0019+-0.0001 NMSE 0.700 | LMMSE SER 0.4683+-0.0057 dSER +0.0032+-0.0001 NMSE 0.814 | ratio 5.46 DR better in 16/16
+  static_sym 30      (uniform within +-30 deg) g=0.955 SDR=27.5 dB | DR SER 0.1022+-0.0026 dSER +0.0184+-0.0005 NMSE 0.705 | LMMSE SER 0.4967+-0.0056 dSER +0.0317+-0.0004 NMSE 0.819 | ratio 4.86 DR better in 16/16
+  static_sym 60      (uniform within +-60 deg) g=0.827 SDR=14.8 dB | DR SER 0.1842+-0.0037 dSER +0.1004+-0.0019 NMSE 0.730 | LMMSE SER 0.6032+-0.0049 dSER +0.1381+-0.0010 NMSE 0.843 | ratio 3.27 DR better in 16/16
+  static_sym 90      (uniform within +-90 deg) g=0.637 SDR=6.3 dB | DR SER 0.4097+-0.0042 dSER +0.3258+-0.0026 NMSE 0.791 | LMMSE SER 0.7558+-0.0032 dSER +0.2908+-0.0027 NMSE 0.896 | ratio 1.84 DR better in 16/16
+  gain       0.05    (sigma_e=0.05) g=1.000 SDR=inf dB | DR SER 0.0845+-0.0021 dSER +0.0006+-0.0001 NMSE 0.701 | LMMSE SER 0.4654+-0.0057 dSER +0.0003+-0.0002 NMSE 0.814 | ratio 5.51 DR better in 16/16
+  gain       0.1     (sigma_e=0.1) g=1.000 SDR=inf dB | DR SER 0.0863+-0.0022 dSER +0.0024+-0.0002 NMSE 0.704 | LMMSE SER 0.4671+-0.0057 dSER +0.0021+-0.0002 NMSE 0.817 | ratio 5.41 DR better in 16/16
+  gain       0.2     (sigma_e=0.2) g=1.000 SDR=inf dB | DR SER 0.0935+-0.0024 dSER +0.0096+-0.0004 NMSE 0.716 | LMMSE SER 0.4742+-0.0057 dSER +0.0091+-0.0003 NMSE 0.829 | ratio 5.07 DR better in 16/16
+  gain       0.3     (sigma_e=0.3) g=1.000 SDR=inf dB | DR SER 0.1047+-0.0027 dSER +0.0208+-0.0008 NMSE 0.736 | LMMSE SER 0.4856+-0.0057 dSER +0.0206+-0.0005 NMSE 0.848 | ratio 4.64 DR better in 16/16
