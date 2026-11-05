@@ -317,7 +317,7 @@ fig, ax = new_fig()
 for n in ORDER:
     plot(ax, snrs, [max(float(r[f"{n}_ser"]), 1e-4) for r in rows], n)
 ax.set_xlabel("per-user SNR (dB)")
-ax.set_ylabel("semantic error rate")
+ax.set_ylabel("SER")
 ax.set_ylim(8e-4, 1.5)
 ax.grid(True, which="both", alpha=0.3)
 legend(ax, loc="lower left", ncol=1, handletextpad=0.4, labelspacing=0.25,
@@ -381,7 +381,7 @@ fig, ax = new_fig()
 for k in ("OMA", "NOMA", "LMMSE", "DR-spec", "DR-adapt", "DR-oracle"):
     plot(ax, snrs, [max(float(r[f"{k}_ser"]), 1e-4) for r in rows], k)
 ax.set_xlabel("per-user SNR (dB)")
-ax.set_ylabel("semantic error rate")
+ax.set_ylabel("SER")
 ax.set_ylim(3e-3, 1.5)
 ax.grid(True, which="both", alpha=0.3)
 legend(ax, loc="lower left", labelspacing=0.3)
@@ -427,7 +427,7 @@ def e3_time_figure(rows, labels):
                                  1e-3, None), m, label=labels[m],
              markevery=(4 * i, 30))
     axes[1].set_xlabel("time slot $t$")
-    axes[1].set_ylabel("semantic error rate")
+    axes[1].set_ylabel("SER")
     axes[1].set_ylim(6e-3, 1.5)        # error rates never exceed one
     axes[1].grid(True, which="both", alpha=0.3)
     legend(axes[1], loc="lower center", ncol=3, columnspacing=0.5,
@@ -452,7 +452,7 @@ def e3_speed_figure(rows, labels, ylim):
         plot(ax, speeds, [max(float(r[f"{m}_ser"]), 1e-4) for r in rows], m,
              label=labels[m])
     ax.set_xlabel("user speed (m/slot)")
-    ax.set_ylabel("mean semantic error rate")
+    ax.set_ylabel("mean SER")
     ax.set_ylim(0.025, 1.5)            # legend in the empty band below DR
     ax.grid(True, which="both", alpha=0.3)
     legend(ax, loc="lower center", ncol=3, columnspacing=0.5,
@@ -498,7 +498,7 @@ for k, lb in (("Learned", "learned attention"), ("LMMSE", None), ("DR", None)):
     plot(ax, betas5, [max(float(r[f"{k}_ser"]), 1e-3) for r in rows], k,
          label=lb)
 ax.set_xlabel(r"affinity $\beta$")
-ax.set_ylabel("semantic error rate")
+ax.set_ylabel("SER")
 ax.set_ylim(8e-3, 1.5)
 ax.grid(True, which="both", alpha=0.3)
 legend(ax, loc="upper right", labelspacing=0.3)
@@ -524,7 +524,7 @@ vals = [float(r[f"{n}_ser"]) for n in ORDER for r in rows]
 for n in ORDER:
     plot(ax, snrs, [float(r[f"{n}_ser"]) for r in rows], n)
 ax.set_xlabel("per-user SNR (dB)")
-ax.set_ylabel("semantic error rate")
+ax.set_ylabel("SER")
 ax.set_ylim(min(v for v in vals if v > 0) * 0.5, 1.5)
 ax.grid(True, which="both", alpha=0.3)
 legend(ax, loc="lower left", ncol=1, handletextpad=0.4, labelspacing=0.25,
@@ -569,7 +569,7 @@ for n in ORDER_SI:
     else:
         plot(ax, bt, y, n)
 ax.set_xlabel(r"affinity $\beta$")
-ax.set_ylabel("semantic error rate")
+ax.set_ylabel("SER")
 # every curve starts near one at low affinity, so the lower-left corner is
 # empty; the floor is lowered to host the legend there (error rates never
 # exceed one, so no headroom above is admissible)
@@ -597,7 +597,7 @@ for n in ["OMA", "NOMA", "LMMSE", "BLMMSE", "DR"]:
 # because a curve at a different operating point invites the figure
 # to be read as a receiver comparison
 ax.set_xlabel(r"non-common fraction $\kappa$")
-ax.set_ylabel("semantic error rate")
+ax.set_ylabel("SER")
 ax.set_ylim(min(float(r["DR_ser"]) for r in r05) * 0.5, 1.5)
 ax.grid(True, which="both", alpha=0.3)
 legend(ax, loc="lower right", ncol=1, handletextpad=0.3, handlelength=1.6,
@@ -623,7 +623,7 @@ for u in range(U_):
     plot(ax, rd, yd, "DR", alpha=0.4 + 0.18 * u, lw=1.0,
          label="DR per user" if u == 0 else "_nolegend_")
 ax.set_xlabel("per-user power imbalance (dB)")
-ax.set_ylabel("semantic error rate")
+ax.set_ylabel("SER")
 ax.set_ylim(min(allv) * 0.16, max(allv) * 2.2)
 ax.grid(True, which="both", alpha=0.3)
 legend(ax, loc="lower left", ncol=2, columnspacing=0.6, handletextpad=0.3,

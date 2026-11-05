@@ -16,6 +16,9 @@ number in the paper is regenerated from the files here.
 - `code/overhead_accounting.py` — the pilot/feedback/calibration overhead accounting.
 - `data/` — raw results (CSV) and notes behind every figure and table.
 - `fig/` — figure PDFs as printed.
+- `docs/proof_proposition1.pdf` — complete proof of Proposition 1 (the three limits
+  and the optimality property). The paper states the proposition with a short argument,
+  and this note gives every step with the paper's notation and equation numbers.
 
 ## Figure to script to data
 | Figure | Script | Data |
